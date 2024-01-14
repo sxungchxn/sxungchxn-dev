@@ -1,18 +1,16 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires,no-undef
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { resolve } = require('node:path')
 
-// eslint-disable-next-line no-undef
 const project = resolve(process.cwd(), 'tsconfig.json')
 
 /** @type { import("eslint").Linter.BaseConfig } */
-// eslint-disable-next-line no-undef
 module.exports = {
   parserOptions: {
     ecmaVersion: 'es6',
     sourceType: 'module',
     project,
   },
-  env: { browser: true, es6: true },
+  env: { browser: true, es6: true, node: true },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended-type-checked',
@@ -25,7 +23,6 @@ module.exports = {
   ],
   plugins: ['unused-imports', 'react-hooks', 'prettier', 'react-refresh'],
   ignorePatterns: [
-    '.eslintrc.*js',
     'public',
     'dist',
     'node_modules',
@@ -33,6 +30,8 @@ module.exports = {
     '.vscode',
     '.idea',
     '!.lintstagedrc.*',
+    '!.storybook',
+    '!.eslintrc.*js',
   ],
   parser: '@typescript-eslint/parser',
   overrides: [
@@ -46,7 +45,7 @@ module.exports = {
     },
     {
       // preventing eslint-ts to check js file
-      files: ['**/*.js?(x)'],
+      files: ['**/*.js?(x)', '**/*.cjs'],
       extends: ['plugin:@typescript-eslint/disable-type-checked'],
     },
     {
