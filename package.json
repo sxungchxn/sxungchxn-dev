@@ -1,0 +1,35 @@
+{
+  "private": true,
+  "name": "seungchan-dev",
+  "version": "0.0.0",
+  "description": "seungchan-dev monorepo",
+  "scripts": {
+    "prepare": "husky install",
+    "format": "prettier --write \"**/*.{js*,ts*,md,json}\"",
+    "pre-commit": "lint-staged",
+    "post-commit": "git update-index --again"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "author": {
+    "name": "Yangseungchan",
+    "email": "uvzone@naver.com",
+    "url": "https://velog.io/@seungchan__y"
+  },
+  "packageManager": "pnpm@8.14.1+sha256.2df78e65d433d7693b9d3fbdaf431b2d96bb4f96a2ffecd51a50efe16e50a6a8",
+  "engineStrict": true,
+  "engines": {
+    "node": ">=20.11.0",
+    "pnpm": ">=8.14.1",
+    "npm": "⚠️use pnpm instead⚠️",
+    "yarn": "⚠️use pnpm instead⚠️"
+  },
+  "devDependencies": {
+    "commitizen": "^4.3.0",
+    "eslint": "^8.56.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.1",
+    "tsconfig": "workspace:*"
+  }
+}
