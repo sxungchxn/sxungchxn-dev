@@ -1,0 +1,18 @@
+import {IconGallery, IconItem, Meta} from '@storybook/blocks'
+import {icons} from '../dist/index'
+
+<Meta title="Icons" />
+
+# All Icons
+
+<br/>
+
+<IconGallery>
+    {Object.entries(icons).map(([name, Icon]) => (
+        <IconItem key={name} name={name}>
+            <Icon />
+        </IconItem>
+    ))}
+</IconGallery>
+
+

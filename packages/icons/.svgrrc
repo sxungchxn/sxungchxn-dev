@@ -1,0 +1,21 @@
+{
+  "icon": true,
+  "outDir": "src",
+  "jsxRuntime": "automatic",
+  "ref": true,
+  "svgoConfig": {
+    "plugins": [
+      {
+        "name": "preset-default",
+        "params": {
+           "overrides": {
+                "removeViewBox": false
+           }
+        }
+      },
+      {
+        "name": "prefixIds"
+      }
+    ]
+  }
+}

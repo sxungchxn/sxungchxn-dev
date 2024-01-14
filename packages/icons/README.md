@@ -1,0 +1,43 @@
+# @seungchan-dev/icons
+
+> shared react icons component library which is tree-shakable
+
+<br/>
+
+## Install
+
+`npm install @seungchan-dev/icons`
+
+`yarn add @seungchan-dev/icons`
+
+`pnpm add @seungchan-dev/icons`
+
+<br/>
+
+## Usage
+
+import icon source as react component.
+
+```tsx
+import { IconX } from '@seungchan-dev/icons'
+
+const Component = () => {
+  return <IconX />
+}
+```
+
+⚠️ it is not recommended to import `icons` object like below as it is not tree-shakable.
+
+```tsx
+import { icons } from '@seungchan-dev/icons'
+
+const Icon = icons.IconX // ❌
+```
+
+<br/>
+
+## Stacks
+
+- `rollup` - for the tree-shakable bundling
+- `babel` - for the transpiling js code
+- `svgr` - for transform svg into react component
