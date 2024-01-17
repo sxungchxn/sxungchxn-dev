@@ -63,7 +63,7 @@ export declare type IconName = ${iconNames.join(' | ')}
 /**
  * @deprecated If you import this module, all icons are bundled, so please import and use the individual icons.
  * @example
- * import { IconMadup } from '@seungchan-dev/icons'
+ * import { IconX } from '@seungchan-dev/icons'
  */
 export declare const icons: Record<IconName, IconSource>
 
