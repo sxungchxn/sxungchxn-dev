@@ -7,7 +7,8 @@
     "pre-commit": "lint-staged"
   },
   "keywords": [
-    "eslint"
+    "eslint",
+    "config"
   ],
   "author": {
     "name": "Yangseungchan",
