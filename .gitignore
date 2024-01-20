@@ -150,3 +150,6 @@ build-storybook.log
 
 # rollup visualizer
 stats.html
+
+# turbo
+.turbo

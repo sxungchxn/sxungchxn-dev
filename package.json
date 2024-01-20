@@ -30,6 +30,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
     "prettier": "^3.2.1",
-    "tsconfig": "workspace:*"
+    "tsconfig": "workspace:*",
+    "turbo": "^1.11.3"
   }
 }
