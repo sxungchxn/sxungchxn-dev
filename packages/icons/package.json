@@ -45,6 +45,9 @@
     "url": "https://velog.io/@seungchan__y"
   },
   "license": "ISC",
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.23.6",
     "@babel/plugin-transform-runtime": "^7.23.6",
@@ -65,7 +68,6 @@
     "@svgr/plugin-jsx": "^8.1.0",
     "@types/react": "^18.2.47",
     "eslint-config-custom": "workspace:*",
-    "react": "^18.2.0",
     "rimraf": "^5.0.5",
     "rollup": "^4.9.1",
     "rollup-plugin-visualizer": "^5.11.0",
