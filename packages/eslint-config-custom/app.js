@@ -39,8 +39,13 @@ module.exports = {
       parser: '@typescript-eslint/parser',
     },
     {
+      // Specify the extension or pattern you want to parse as JSON.
+      files: ['**/*.json'],
+      parser: 'jsonc-eslint-parser',
+    },
+    {
       // preventing eslint-ts to check js file
-      files: ['**/*.js?(x)'],
+      files: ['**/*.js?(x)', '**/*.cjs'],
       extends: ['plugin:@typescript-eslint/disable-type-checked'],
     },
     {
@@ -49,10 +54,6 @@ module.exports = {
         sourceType: 'module',
         ecmaVersion: '2015',
       },
-    },
-    {
-      files: ['*.json'], // Specify the extension or pattern you want to parse as JSON.
-      parser: 'jsonc-eslint-parser',
     },
   ],
   rules: {

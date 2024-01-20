@@ -1,9 +1,11 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+// eslint-disable-next-line @typescript-eslint/no-var-requires,no-undef
 const { resolve } = require('node:path')
 
+// eslint-disable-next-line no-undef
 const project = resolve(process.cwd(), 'tsconfig.json')
 
 /** @type { import("eslint").Linter.BaseConfig } */
+// eslint-disable-next-line no-undef
 module.exports = {
   parserOptions: {
     ecmaVersion: 'es6',
@@ -40,7 +42,8 @@ module.exports = {
       parser: '@typescript-eslint/parser',
     },
     {
-      files: ['**/*.json'], // Specify the extension or pattern you want to parse as JSON.
+      // Specify the extension or pattern you want to parse as JSON.
+      files: ['**/*.json'],
       parser: 'jsonc-eslint-parser',
     },
     {
