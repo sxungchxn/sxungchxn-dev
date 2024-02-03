@@ -28,7 +28,7 @@
     "build": "pnpm svgr && rollup -c",
     "lint": "eslint 'src/**/*' --ext .js  --report-unused-disable-directives --max-warnings 0 --fix",
     "format": "prettier --write \"**/*.{cjs,js,jsx,ts,tsx,json,css,scss,md}\"",
-    "storybook": "pnpm build && storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006",
     "pre-commit": "lint-staged"
   },
   "keywords": [
