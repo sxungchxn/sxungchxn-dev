@@ -10,7 +10,6 @@
     "moduleResolution": "node",
     "isolatedModules": false,
 
-    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "noEmit": true,
     "jsx": "react-jsx",
