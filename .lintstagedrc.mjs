@@ -1,4 +1,3 @@
 export default {
-  '*.md': 'prettier --write',
-  '*.json': 'prettier --write'
+  '*.{json,md}': 'prettier --write',
 }
