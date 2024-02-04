@@ -1,0 +1,19 @@
+import * as BoxStories from './box.stories'
+import {Canvas, Controls, Description, Meta, Story, Title} from '@storybook/blocks'
+
+<Meta of={BoxStories} />
+
+<Title/>
+
+<Description/>
+
+<Canvas>
+  <Story/>
+</Canvas>
+
+## 주의사항
+
+- `Box` 는 주로 내부적으로 공통 컴포넌트를 만들어낼때 사용됩니다.
+- 단순 레이아웃이 목적이라면 이것을 사용하지 말고 대신 `Flex` 컴포넌트를 사용해보세요.
+
+<Controls/>
