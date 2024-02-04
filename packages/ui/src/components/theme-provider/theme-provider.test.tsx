@@ -1,4 +1,5 @@
-import { THEME_ATTR_SELECTOR, ThemeProvider, useTheme } from './theme-provider'
+import { THEME_ATTR_SELECTOR, ThemeProvider } from './theme-provider'
+import { useTheme } from '@/hooks/use-theme'
 import { act, renderHook } from '@/tests/test-utils'
 import { expect } from 'vitest'
 

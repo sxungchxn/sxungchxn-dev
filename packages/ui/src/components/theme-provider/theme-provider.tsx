@@ -18,7 +18,7 @@ export interface ThemeContextValue {
 
 export const THEME_ATTR_SELECTOR = 'data-theme'
 export const THEME_LOCALSTORAGE_KEY = 'theme-mode'
-const ThemeContext = createContext<ThemeContextValue | null>(null)
+export const ThemeContext = createContext<ThemeContextValue | null>(null)
 
 export interface ThemeProviderProps {
   children: ReactNode
