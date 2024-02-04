@@ -57,12 +57,7 @@ export const inlineStylePropsSet = new Set([
   'maxHeight',
 ] as const)
 
-export interface SpaceProps {
-  /** css width property */
-  width?: AtomicProps['width']
-  /** css height property */
-  height?: AtomicProps['height']
-
+export interface SpaceProps extends ShorthandsProps {
   /** css margin-left property */
   marginLeft?: AtomicProps['marginLeft']
   /** css margin-right property */
