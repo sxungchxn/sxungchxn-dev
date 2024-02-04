@@ -49,14 +49,12 @@ const entryModuleContent = `
 `
 // type 파일 내용
 const entryTypesContent = `
-import type { ForwardRefExoticComponent, RefAttributes, SVGProps } from 'react'
-
 declare module '*.svg' {
   const content: string
   export default content
 }
 
-export declare type IconSource = ForwardRefExoticComponent<Omit<SVGProps<SVGSVGElement>, "ref"> & RefAttributes<SVGSVGElement>>
+export declare type IconSource = React.FunctionComponent<React.ComponentPropsWithRef<'svg'>>
 
 export declare type IconName = ${iconNames.join(' | ')}
 /**

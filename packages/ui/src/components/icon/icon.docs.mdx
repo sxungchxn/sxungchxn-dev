@@ -1,13 +1,13 @@
 import * as IconStories from './icon.stories'
-import {IconGallery, Meta, Source} from "@storybook/blocks";
-import {Icon} from "./icon";
-import {icons} from "@seungchan-dev/icons";
+import { Canvas, Controls, IconGallery, IconItem, Meta, Source, Story } from '@storybook/blocks'
+import { Icon } from './icon'
+import { icons } from '@seungchan-dev/icons'
 
-<Meta of={IconStories}/>
+<Meta of={IconStories} />
 
 # Icon
 
-<br/>
+<br />
 
 ## 사용 방법
 
@@ -15,15 +15,25 @@ import {icons} from "@seungchan-dev/icons";
 
 <Source language="tsx" code={`
 import { Icon } from '@seungchan-dev/ui'
-import { IconX } from '@seungchan-dev/icons'
+import { IconLogo } from '@seungchan-dev/icons'
 
-<Icon source={IconX} />
+<Icon source={IconLogo} />
 `}/>
 
 ## Icon 목록
 
 <IconGallery>
-  {Object.keys(icons).map((name) => (
+  {Object.keys(icons).map(name => (
+    <IconItem key={name}>
       <Icon source={icons[name]} />
+    </IconItem>
   ))}
 </IconGallery>
+
+## Icon Props
+
+<Canvas>
+  <Story />
+</Canvas>
+
+<Controls of={IconStories.Default} />

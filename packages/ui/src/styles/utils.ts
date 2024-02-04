@@ -1,6 +1,6 @@
 // convert given token path value to css var name
 // https://vanilla-extract.style/documentation/global-api/create-global-theme-contract/
-import { SpaceProps } from '@/types'
+import { InlineStyleProps, SpaceProps } from '@/types'
 import { LayoutProps } from '@/types/css-prop'
 
 export const getVarName = (_value: string | null, path: string[]) =>
@@ -46,12 +46,12 @@ export const getSpaceProps = (props: Record<string, unknown>) => {
       paddingBottom,
     } as SpaceProps,
     ...rest,
-  }
+  } as const
 }
 
 /** extract inline props from given props */
 export const getInlineProps = (props: Record<string, unknown>) => {
-  const { width, height, minWidth, maxWidth, minHeight, maxHeight } = props
+  const { width, height, minWidth, maxWidth, minHeight, maxHeight, ...notLayoutProps } = props
   return {
     inlineProps: {
       width,
@@ -60,8 +60,9 @@ export const getInlineProps = (props: Record<string, unknown>) => {
       maxWidth,
       minHeight,
       maxHeight,
-    },
-  }
+    } as InlineStyleProps,
+    ...notLayoutProps,
+  } as const
 }
 
 /** extract layout(space + inline) props from given props */
@@ -75,5 +76,5 @@ export const getLayoutProps = (props: Record<string, unknown>) => {
       ...inlineProps,
     } as LayoutProps,
     ...restProps,
-  }
+  } as const
 }
