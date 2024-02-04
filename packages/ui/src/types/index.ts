@@ -14,4 +14,5 @@ export type {
   InlineStyleProps,
   AtomicProps,
   SpaceProps,
+  LayoutProps,
 } from './css-prop'

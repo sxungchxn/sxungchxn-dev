@@ -63,7 +63,6 @@ export const responsiveProperties = {
   },
   fontWeight: vars.fontWeights,
   gap: space,
-  height: space,
   inset: space,
   justifyContent: [...flexAlignment, 'space-between', 'space-around'],
   justifySelf: flexAlignment,
@@ -74,14 +73,6 @@ export const responsiveProperties = {
   marginLeft: space,
   marginRight: space,
   marginTop: space,
-  maxHeight: space,
-  maxWidth: {
-    ...space,
-    ...extendedSpace,
-    none: 'none',
-  },
-  minHeight: space,
-  minWidth: space,
   overflow: ['auto', 'hidden', 'visible', 'scroll'],
   paddingBottom: space,
   paddingLeft: space,
@@ -91,10 +82,6 @@ export const responsiveProperties = {
   right: space,
   textAlign: ['left', 'center', 'right'],
   top: space,
-  width: {
-    ...space,
-    ...extendedSpace,
-  },
 } as const
 
 export const unresponsiveProperties = {
