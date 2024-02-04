@@ -4,10 +4,11 @@
     "check-types": {},
     "lint": {},
     "build": {
-      "dependsOn": ["^build", "check-types"],
+      "dependsOn": ["check-types", "^build"],
       "outputs": ["dist/**"]
     },
     "dev": {
+      "dependsOn": ["^build"],
       "cache": false,
       "persistent": true
     }
