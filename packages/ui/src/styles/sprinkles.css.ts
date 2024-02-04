@@ -1,3 +1,5 @@
+// reset style 부분이 최상단에서 적용되도록 설정
+import './reset.css'
 import {
   type ConditionalValue,
   createMapValueFn,

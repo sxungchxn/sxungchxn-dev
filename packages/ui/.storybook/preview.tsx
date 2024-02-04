@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/react'
+import { ThemeProvider } from '@/components/theme-provider'
 
 const preview: Preview = {
   parameters: {
@@ -9,8 +10,21 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    theme: {
+      selector: ':root',
+      dataAttr: 'data-theme',
+      nameLightTheme: 'light',
+      nameDarkTheme: 'dark',
+    },
     chromatic: { disableSnapshot: true },
   },
+  decorators: [
+    Story => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 }
 
 export default preview

@@ -80,6 +80,7 @@
     "jsdom": "^24.0.0",
     "rollup-plugin-visualizer": "^5.11.0",
     "storybook": "^7.6.6",
+    "storybook-theme-css-vars": "^0.0.12",
     "tsconfig": "workspace:*",
     "typescript": "^5.2.2",
     "vite": "^4.5.0",

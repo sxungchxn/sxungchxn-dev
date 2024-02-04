@@ -24,7 +24,7 @@ export const spaceArgTypes = [
   }
 }, {})
 
-export const LayoutArgTypes = [
+export const layoutArgTypes = [
   'margin',
   'marginX',
   'marginY',

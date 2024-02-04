@@ -17,6 +17,7 @@ const config: StorybookConfig = {
     },
     '@storybook/addon-interactions',
     '@storybook/addon-docs',
+    'storybook-theme-css-vars',
   ],
   core: {
     builder: '@storybook/builder-vite',
