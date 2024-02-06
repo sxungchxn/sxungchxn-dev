@@ -1,0 +1,30 @@
+import * as ThemeSwitchStories from './theme-switch.stories'
+import { Canvas, Controls, Description, Meta, Source, Story, Title } from '@storybook/blocks'
+
+<Meta of={ThemeSwitchStories} />
+
+<Title />
+
+<Description />
+
+<Canvas>
+  <Story />
+</Canvas>
+<Controls />
+
+<br />
+
+## Requirements
+
+`ThemeSwitch` 컴포넌트를 사용하기 위해서는 아래와 같이 `ThemeProvider` 컴포넌트를 해당 컴포넌트의 상단 혹은 최상단에 위치시키세요
+
+<Source
+  language="tsx"
+  code={`
+<ThemeProvider>
+    {...}
+   <ThemeSwitch />
+    {...}
+</ThemeProvider>
+`}
+/>

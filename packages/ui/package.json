@@ -87,5 +87,8 @@
     "vite-plugin-dts": "^3.7.1",
     "vite-tsconfig-paths": "^4.3.1",
     "vitest": "^1.2.2"
+  },
+  "dependencies": {
+    "framer-motion": "^11.0.3"
   }
 }

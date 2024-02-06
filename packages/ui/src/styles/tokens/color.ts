@@ -6,7 +6,7 @@ const baseColors = {
   /** #000000 */
   black: '#000000',
   /** currentColor */
-  current: 'currentColor',
+  currentColor: 'currentColor',
   /** inherit */
   inherit: 'inherit',
   /** transparent */
