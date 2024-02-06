@@ -5,7 +5,7 @@ import { useTheme } from '@/hooks'
 import { layoutArgTypes } from '@/stories/argTypes'
 
 export default {
-  title: 'atoms/ThemeSwitch',
+  title: 'components/ThemeSwitch',
   component: ThemeSwitch,
   argTypes: {
     ...layoutArgTypes,

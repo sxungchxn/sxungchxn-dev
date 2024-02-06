@@ -1,15 +1,15 @@
 import { forwardRef, MouseEvent } from 'react'
 import { clsx } from 'clsx'
-import { Box } from '@/components/box'
+import { Box, BoxProps } from '@/components/box'
 import { Icon } from '@/components/icon'
-import { PolymorphicComponentPropWithRef, PolymorphicRef } from '@/types'
+import { PolymorphicRef } from '@/types'
 import * as styles from './theme-switch.css'
 import { useTheme } from '@/hooks'
 import { IconMoon, IconSun } from '@seungchan-dev/icons'
 import { motion } from 'framer-motion'
 
-export interface ThemeSwitchProps
-  extends Omit<PolymorphicComponentPropWithRef<'button', NonNullable<unknown>>, 'children'> {
+export interface ThemeSwitchProps extends Omit<BoxProps<'button'>, 'children'> {
+  /** theme switch size */
   size?: styles.Size
 }
 

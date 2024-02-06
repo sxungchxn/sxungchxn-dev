@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { layoutArgTypes } from '@/stories/argTypes'
 
 const meta: Meta<typeof Text> = {
-  title: 'atoms/Text',
+  title: 'components/Text',
   tags: ['autodocs'],
   component: Text,
   argTypes: {

@@ -4,7 +4,7 @@ import { layoutArgTypes } from '@/stories/argTypes'
 import { IconMoon } from '@seungchan-dev/icons'
 
 const meta = {
-  title: 'atoms/Icon',
+  title: 'components/Icon',
   component: Icon,
   argTypes: {
     ...layoutArgTypes,
