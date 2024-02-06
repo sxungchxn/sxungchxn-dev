@@ -1,14 +1,14 @@
 import { type ElementType, forwardRef, type ReactElement } from 'react'
 import type {
   AtomicProps,
+  LayoutProps,
   PolymorphicComponentPropWithRef,
   PolymorphicRef,
-  SpaceProps,
 } from '@/types'
 import { Box } from '@/components/box'
 import * as styles from './text.css'
 
-interface TextAtomsProps extends SpaceProps {
+interface TextAtomsProps extends LayoutProps {
   /** css text-align property */
   textAlign?: AtomicProps['textAlign']
   /** Text 컴포넌트 색상 */
