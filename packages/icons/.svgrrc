@@ -14,12 +14,6 @@
         }
       },
       {
-        "name": "convertColors",
-        "params": {
-            "currentColor": true
-        }
-      },
-      {
         "name": "prefixIds"
       }
     ]
