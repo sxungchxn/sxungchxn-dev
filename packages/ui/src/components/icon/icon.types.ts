@@ -6,7 +6,7 @@ export interface IconProps extends PolymorphicComponentPropWithRef<'svg', Layout
   /** IconSource 컴포넌트 */
   source: IconSource
   /** Icon Size */
-  size: number
+  size?: number
   /** Icon color */
-  color: AtomicProps['color']
+  color?: AtomicProps['color']
 }

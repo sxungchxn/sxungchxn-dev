@@ -10,14 +10,19 @@ export const useIconProps = (props: Omit<IconProps, 'source'>) => {
     inlineProps: { width, height, ...otherInlineProps },
     ...notLayoutProps
   } = getInlineProps(notSpaceProps)
-  const { size = 24, className, color, ...otherProps } = notLayoutProps as IconProps
+  const {
+    size = 24,
+    className,
+    color = 'currentColor',
+    ...otherProps
+  } = notLayoutProps as IconProps
 
   return {
     className: clsx(sprinkles({ ...spaceProps }), className),
     width: size ?? width,
     height: size ?? height,
     style: otherInlineProps,
-    color: color ? vars.colors[color] : 'currentColor',
+    color: vars.colors[color],
     ...otherProps,
   } as const
 }
