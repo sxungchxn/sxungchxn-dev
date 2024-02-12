@@ -5,8 +5,11 @@ export type {
   PolymorphicComponentProp,
   PolymorphicComponentPropWithRef,
 } from './polymorphic'
+
 export type { Theme, Mode } from './theme'
+
 export { inlineStylePropsSet } from './css-prop'
+
 export type {
   ResponsiveProps,
   UnresponsiveProps,
@@ -16,3 +19,5 @@ export type {
   SpaceProps,
   LayoutProps,
 } from './css-prop'
+
+export type { ContainerElements } from './element'
