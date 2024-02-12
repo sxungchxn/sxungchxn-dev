@@ -3,10 +3,9 @@ import {
   AtomicProps,
   ContainerElements,
   LayoutProps,
-  PolymorphicComponentProp,
-  PolymorphicRef,
+  PolymorphicComponentPropWithRef,
 } from '@/types'
-import { ElementType, forwardRef } from 'react'
+import { forwardRef } from 'react'
 
 export type FlexElements = ContainerElements
 
@@ -37,22 +36,16 @@ export interface FlexStyleProps extends LayoutProps {
   borderRadius?: AtomicProps['borderRadius']
 }
 
-export type FlexProps<C extends FlexElements = 'div'> = PolymorphicComponentProp<C, FlexStyleProps>
+export type FlexProps<C extends FlexElements = 'div'> = PolymorphicComponentPropWithRef<
+  C,
+  FlexStyleProps
+>
 
 /** display flex 속성을 기본으로 가지는 레이아웃 컴포넌트 */
 export const Flex = forwardRef(
-  <C extends FlexElements>(
-    { children, as, direction, ...rest }: FlexProps<C>,
-    ref: PolymorphicRef<C>,
-  ) => {
+  <C extends FlexElements>({ children, direction, ref, ...rest }: FlexProps<C>) => {
     return (
-      <Box
-        as={(as ?? 'div') as ElementType}
-        display="flex"
-        flexDirection={direction}
-        ref={ref}
-        {...rest}
-      >
+      <Box display="flex" flexDirection={direction} ref={ref} {...rest}>
         {children}
       </Box>
     )

@@ -7,6 +7,7 @@ import { clsx } from 'clsx'
 import { getInlineProps } from '@/styles/utils'
 
 export const useGridProps = <C extends GridElements>({
+  ref,
   style,
   columns,
   gridTemplateColumns,
@@ -26,6 +27,7 @@ export const useGridProps = <C extends GridElements>({
         [gridTemplateColumnsVar]: gridTemplatecolumnsValue,
       }),
     },
+    ref,
     className: clsx(className, styles.wrapper),
   } as BoxProps<C>
 }

@@ -18,7 +18,7 @@ export default meta
 type Story<C extends GridElements = 'div'> = StoryObj<GridProps<C>>
 
 const Template = <C extends GridElements = 'div'>(args: GridProps<C>) => {
-  return <Grid {...args}></Grid>
+  return <Grid {...args} />
 }
 
 export const Default: Story<'main'> = {

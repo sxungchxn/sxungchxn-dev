@@ -1,10 +1,5 @@
-import { type ElementType, forwardRef, type ReactElement } from 'react'
-import type {
-  AtomicProps,
-  LayoutProps,
-  PolymorphicComponentPropWithRef,
-  PolymorphicRef,
-} from '@/types'
+import { forwardRef, type ReactElement } from 'react'
+import type { AtomicProps, LayoutProps, PolymorphicComponentPropWithRef } from '@/types'
 import { Box } from '@/components/box'
 import * as styles from './text.css'
 
@@ -61,13 +56,17 @@ export type TextComponent = <C extends TextElements = 'div'>(
 
 /** Text 컴포넌트 */
 export const Text = forwardRef(
-  <C extends TextElements = 'div'>(
-    { as, children, variant, fontFace = 'primary', ellipsis, underline, ...rest }: TextProps<C>,
-    ref: PolymorphicRef<C>,
-  ) => {
+  <C extends TextElements = 'div'>({
+    children,
+    variant,
+    fontFace = 'primary',
+    ellipsis,
+    underline,
+    ref,
+    ...rest
+  }: TextProps<C>) => {
     return (
       <Box
-        as={as ?? ('div' as ElementType)}
         ref={ref}
         className={styles.fontStyle({
           variant,

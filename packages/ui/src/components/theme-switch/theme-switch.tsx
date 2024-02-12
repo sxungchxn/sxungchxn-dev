@@ -2,7 +2,6 @@ import { forwardRef, MouseEvent } from 'react'
 import { clsx } from 'clsx'
 import { Box, BoxProps } from '@/components/box'
 import { Icon } from '@/components/icon'
-import { PolymorphicRef } from '@/types'
 import * as styles from './theme-switch.css'
 import { useTheme } from '@/hooks'
 import { IconMoon, IconSun } from '@seungchan-dev/icons'
@@ -20,10 +19,7 @@ const SPRING_TRANSITION = {
 } as const
 
 export const ThemeSwitch = forwardRef(
-  (
-    { className, size = 'medium', onClick, ...rest }: ThemeSwitchProps,
-    ref: PolymorphicRef<'button'>,
-  ) => {
+  ({ className, size = 'medium', onClick, ref, ...rest }: ThemeSwitchProps) => {
     const { mode, toggle } = useTheme()
 
     const handleClickSwitch = (e: MouseEvent<HTMLButtonElement>) => {

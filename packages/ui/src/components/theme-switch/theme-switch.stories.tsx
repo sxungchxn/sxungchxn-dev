@@ -12,7 +12,7 @@ export default {
   },
 } satisfies Meta
 
-type Story = StoryObj<typeof ThemeSwitch>
+type Story = StoryObj<ThemeSwitchProps>
 
 const ThemeSwitchTemplate = (props: ThemeSwitchProps) => {
   const { mode } = useTheme()

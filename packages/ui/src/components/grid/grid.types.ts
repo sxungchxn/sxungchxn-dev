@@ -1,4 +1,9 @@
-import { AtomicProps, ContainerElements, LayoutProps, PolymorphicComponentProp } from '@/types'
+import {
+  AtomicProps,
+  ContainerElements,
+  LayoutProps,
+  PolymorphicComponentPropWithRef,
+} from '@/types'
 
 export type GridElements = ContainerElements
 
@@ -15,4 +20,7 @@ export interface GridStyleProps extends LayoutProps {
   columns?: number
 }
 
-export type GridProps<C extends GridElements = 'div'> = PolymorphicComponentProp<C, GridStyleProps>
+export type GridProps<C extends GridElements = 'div'> = PolymorphicComponentPropWithRef<
+  C,
+  GridStyleProps
+>
