@@ -24,4 +24,11 @@ describe('useIconProps 테스트', () => {
     expect(width).toBe(widthValue)
     expect(height).toBe(heightValue)
   })
+
+  test('size, width, height 모두 설정되어 있지 않으면 기본값 24를 가진다', () => {
+    const { width, height } = useIconProps({})
+
+    expect(width).toBe(24)
+    expect(height).toBe(24)
+  })
 })
