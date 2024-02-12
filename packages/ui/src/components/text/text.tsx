@@ -37,20 +37,31 @@ interface TextAtomsProps extends LayoutProps {
   underline?: styles.Underline
 }
 
-type TextElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'code' | 'div' | 'span' | 'p' | 'label'
+export type TextElements =
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'code'
+  | 'div'
+  | 'span'
+  | 'p'
+  | 'label'
 
-export type TextProps<C extends TextElement = 'div'> = PolymorphicComponentPropWithRef<
+export type TextProps<C extends TextElements = 'div'> = PolymorphicComponentPropWithRef<
   C,
   TextAtomsProps
 >
 
-export type TextComponent = <C extends TextElement = 'div'>(
+export type TextComponent = <C extends TextElements = 'div'>(
   props: TextProps<C>,
 ) => ReactElement<TextProps<C>>
 
 /** Text 컴포넌트 */
 export const Text = forwardRef(
-  <C extends TextElement = 'div'>(
+  <C extends TextElements = 'div'>(
     { as, children, variant, fontFace = 'primary', ellipsis, underline, ...rest }: TextProps<C>,
     ref: PolymorphicRef<C>,
   ) => {

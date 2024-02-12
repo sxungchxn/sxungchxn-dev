@@ -1,31 +1,14 @@
 import { Box } from '@/components/box'
-import { AtomicProps, LayoutProps, PolymorphicComponentProp, PolymorphicRef } from '@/types'
+import {
+  AtomicProps,
+  ContainerElements,
+  LayoutProps,
+  PolymorphicComponentProp,
+  PolymorphicRef,
+} from '@/types'
 import { ElementType, forwardRef } from 'react'
 
-export type FlexElements =
-  | 'div'
-  | 'section'
-  | 'article'
-  | 'aside'
-  | 'header'
-  | 'footer'
-  | 'nav'
-  | 'main'
-  | 'form'
-  | 'fieldset'
-  | 'legend'
-  | 'label'
-  | 'details'
-  | 'summary'
-  | 'figure'
-  | 'figcaption'
-  | 'table'
-  | 'caption'
-  | 'tbody'
-  | 'thead'
-  | 'tr'
-  | 'td'
-  | 'th'
+export type FlexElements = ContainerElements
 
 export interface FlexStyleProps extends LayoutProps {
   /** css gap property */
@@ -58,7 +41,7 @@ export type FlexProps<C extends FlexElements = 'div'> = PolymorphicComponentProp
 
 /** display flex 속성을 기본으로 가지는 레이아웃 컴포넌트 */
 export const Flex = forwardRef(
-  <C extends FlexElements = 'div'>(
+  <C extends FlexElements>(
     { children, as, direction, ...rest }: FlexProps<C>,
     ref: PolymorphicRef<C>,
   ) => {

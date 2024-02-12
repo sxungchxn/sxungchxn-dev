@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Flex, type FlexProps } from './flex'
+import { Flex, FlexElements, type FlexProps } from './flex'
 import { Text } from '@/components/text'
 import { layoutArgTypes } from '@/stories/argTypes'
 
@@ -14,15 +14,16 @@ const meta: Meta<typeof Flex> = {
 
 export default meta
 
-type Story = StoryObj<FlexProps>
+type Story<C extends FlexElements = 'div'> = StoryObj<FlexProps<C>>
 
-const Template = (args: FlexProps) => {
+const Template = <C extends FlexElements = 'div'>(args: FlexProps<C>) => {
   return <Flex {...args}></Flex>
 }
 
-export const Default: Story = {
+export const Default: Story<'header'> = {
   render: Template,
   args: {
+    as: 'header',
     gap: '8px',
     color: 'purple500',
     backgroundColor: 'purple100',

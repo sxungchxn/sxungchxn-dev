@@ -2,6 +2,7 @@ import { Box } from '@/components/box'
 import { Text, type TextProps } from '@/components/text'
 import type { Meta, StoryObj } from '@storybook/react'
 import { layoutArgTypes } from '@/stories/argTypes'
+import { TextElements } from '@/components/text/text'
 
 const meta: Meta<typeof Text> = {
   title: 'components/Text',
@@ -14,17 +15,17 @@ const meta: Meta<typeof Text> = {
 
 export default meta
 
-type Story = StoryObj<TextProps>
+type Story<C extends TextElements> = StoryObj<TextProps<C>>
 
-const Template = (args: TextProps) => {
+const Template = (args: TextProps<'h1'>) => {
   return <Text {...args} />
 }
 
-export const Default: Story = {
+export const Default: Story<'h1'> = {
   render: Template,
   args: {
     children: 'Text',
-    as: 'div',
+    as: 'h1',
     variant: 'display4',
   },
   argTypes: {},
