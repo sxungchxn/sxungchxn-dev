@@ -7,3 +7,5 @@ export * from './theme-provider'
 export * from './text'
 
 export * from './flex'
+
+export * from './grid'

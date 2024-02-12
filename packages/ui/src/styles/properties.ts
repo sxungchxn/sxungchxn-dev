@@ -63,6 +63,8 @@ export const responsiveProperties = {
   },
   fontWeight: vars.fontWeights,
   gap: space,
+  rowGap: space,
+  columnGap: space,
   inset: space,
   justifyContent: [...flexAlignment, 'space-between', 'space-around'],
   justifySelf: flexAlignment,
