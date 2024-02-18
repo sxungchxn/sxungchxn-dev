@@ -1,16 +1,10 @@
 export type Mode = 'light' | 'dark'
 
-const baseColors = {
+const hexaColors = {
   /** #FFFFFF */
   white: '#FFFFFF',
   /** #000000 */
   black: '#000000',
-  /** currentColor */
-  currentColor: 'currentColor',
-  /** inherit */
-  inherit: 'inherit',
-  /** transparent */
-  transparent: 'transparent',
   /** #F0F1F8 */
   purple100: '#F0F1F8',
   /** #9FA4CD */
@@ -25,6 +19,31 @@ const baseColors = {
   purple600: '#2F3142',
   /** #13141E */
   purple700: '#13141E',
+}
+
+export type HexaColor = keyof typeof hexaColors
+
+export type HoverColor = `${HexaColor}Hover`
+
+const hoverColors: Record<HoverColor, string> = Object.entries(hexaColors)
+  .map(([key, value]) => [key + 'Hover', value + '12'])
+  .reduce(
+    (acc, [colorKey, colorVal]) => {
+      acc[colorKey as HoverColor] = colorVal
+      return acc
+    },
+    {} as Record<HoverColor, string>,
+  )
+
+const baseColors = {
+  ...hexaColors,
+  ...hoverColors,
+  /** currentColor */
+  currentColor: 'currentColor',
+  /** inherit */
+  inherit: 'inherit',
+  /** transparent */
+  transparent: 'transparent',
   /** rgba(255, 255, 255, 0.4) */
   transparentWhite: 'rgba(255, 255, 255, 0.4)',
   /** rgba(19, 20, 30, 0.25) */

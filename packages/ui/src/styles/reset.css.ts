@@ -17,7 +17,7 @@ export const base = style({
   borderStyle: vars.borderStyles.solid,
   borderWidth: 0,
 
-  color: vars.colors.current,
+  color: vars.colors.currentColor,
   fontSize: '100%',
   fontFamily: vars.fonts.primary,
   verticalAlign: 'baseline',
@@ -106,6 +106,7 @@ const input = style([
 
 const button = style({
   background: 'none',
+  cursor: 'pointer',
 })
 
 const a = style({
