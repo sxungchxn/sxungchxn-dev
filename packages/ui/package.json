@@ -9,9 +9,8 @@
     "vanilla-extract"
   ],
   "author": {
-    "name": "Yangseungchan",
-    "email": "uvzone@naver.com",
-    "url": "https://velog.io/@seungchan__y"
+    "name": "sxungchxn",
+    "email": "uvzone@naver.com"
   },
   "type": "module",
   "main": "dist/seungchan-dev-ui.cjs",

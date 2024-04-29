@@ -6,7 +6,8 @@
   "scripts": {
     "prepare": "husky install",
     "format": "prettier --write \"**/*.{js*,ts*,md,json}\"",
-    "pre-commit": "lint-staged && pnpm --filter '{packages/*}' '{apps/*}' pre-commit"
+    "pre-commit": "lint-staged && pnpm --filter '{packages/*}' '{apps/*}' pre-commit",
+    "check-types": "turbo run check-types test --filter ui --filter icons --cache-dir=.turbo"
   },
   "keywords": [],
   "license": "ISC",
@@ -30,6 +31,7 @@
     "lint-staged": "^15.2.0",
     "prettier": "^3.2.1",
     "tsconfig": "workspace:*",
-    "turbo": "^1.11.3"
+    "turbo": "^1.11.3",
+    "typescript": "5.2.2"
   }
 }
