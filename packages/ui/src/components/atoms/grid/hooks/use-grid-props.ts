@@ -1,8 +1,8 @@
-import { GridElements, GridProps } from '@/components/atoms/grid/grid.types'
+import type { GridElements, GridProps } from '@/components/atoms/grid/grid.types'
 import { assignInlineVars } from '@vanilla-extract/dynamic'
 import * as styles from '@/components/atoms/grid/grid.css'
 import { gridTemplateColumnsVar } from '@/components/atoms/grid/grid.css'
-import { BoxProps } from '@/components'
+import type { BoxProps } from '@/components'
 import { clsx } from 'clsx'
 import { getInlineProps } from '@/styles/utils'
 

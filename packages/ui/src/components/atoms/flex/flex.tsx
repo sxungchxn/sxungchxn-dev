@@ -1,5 +1,5 @@
 import { Box } from '@/components/atoms/box'
-import {
+import type {
   AtomicProps,
   ContainerElements,
   LayoutProps,

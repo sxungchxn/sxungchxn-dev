@@ -1,8 +1,8 @@
 import { clsx } from 'clsx'
-import { ElementType } from 'react'
-import { BoxProps } from '@/components/atoms/box/box.types'
+import type { ElementType } from 'react'
+import type { BoxProps } from '@/components/atoms/box/box.types'
 import { sprinkles } from '@/styles/sprinkles.css'
-import { AtomicProps, InlineStyleProps, inlineStylePropsSet } from '@/types'
+import { type AtomicProps, type InlineStyleProps, inlineStylePropsSet } from '@/types'
 import * as resetStyles from '@/styles/reset.css'
 
 export const useBoxProps = <C extends ElementType = 'div'>(props: BoxProps<C>) => {

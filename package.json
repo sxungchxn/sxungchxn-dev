@@ -6,6 +6,7 @@
   "scripts": {
     "prepare": "husky install",
     "format": "prettier --write \"**/*.{js*,ts*,md,json}\"",
+    "dev:playground": "turbo run dev --filter react-playground",
     "pre-commit": "lint-staged && pnpm --filter '{packages/*}' '{apps/*}' pre-commit",
     "check": "turbo run check-types test --filter ui --filter icons --cache-dir=.turbo"
   },
@@ -32,6 +33,6 @@
     "prettier": "^3.2.1",
     "tsconfig": "workspace:*",
     "turbo": "^1.11.3",
-    "typescript": "5.2.2"
+    "typescript": "5.4.5"
   }
 }

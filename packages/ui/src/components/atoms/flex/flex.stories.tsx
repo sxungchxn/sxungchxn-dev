@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Flex, FlexElements, type FlexProps } from './flex'
+import { Flex, type FlexElements, type FlexProps } from './flex'
 import { Text } from '@/components/atoms/text'
 import { layoutArgTypes } from '@/stories/argTypes'
 import { useRef } from 'react'

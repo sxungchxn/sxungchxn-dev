@@ -1,4 +1,4 @@
-import { IconProps } from '@/components/atoms/icon/icon.types'
+import type { IconProps } from '@/components/atoms/icon/icon.types'
 import { useIconProps } from '@/components/atoms/icon/hooks/use-icon-props'
 
 describe('useIconProps 테스트', () => {

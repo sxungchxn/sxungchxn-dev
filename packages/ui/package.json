@@ -81,7 +81,7 @@
     "storybook": "^7.6.6",
     "storybook-theme-css-vars": "^0.0.12",
     "tsconfig": "workspace:*",
-    "typescript": "^5.2.2",
+    "typescript": "5.4.5",
     "vite": "^4.5.0",
     "vite-plugin-dts": "^3.7.1",
     "vite-tsconfig-paths": "^4.3.1",

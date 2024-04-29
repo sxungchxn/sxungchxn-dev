@@ -28,8 +28,10 @@ export type HoverColor = `${HexaColor}Hover`
 const hoverColors: Record<HoverColor, string> = Object.entries(hexaColors)
   .map(([key, value]) => [key + 'Hover', value + '12'])
   .reduce(
-    (acc, [colorKey, colorVal]) => {
-      acc[colorKey as HoverColor] = colorVal
+    (acc, colorPair) => {
+      const colorKey = colorPair[0] as HoverColor
+      const colorValue = colorPair[1] as string
+      acc[colorKey] = colorValue
       return acc
     },
     {} as Record<HoverColor, string>,

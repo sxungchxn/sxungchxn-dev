@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { layoutArgTypes } from '@/stories/argTypes'
 import { Grid } from './grid'
-import { GridElements, GridProps } from './grid.types'
+import type { GridElements, GridProps } from './grid.types'
 import { Flex } from '@/components'
 
 const meta: Meta<typeof Grid> = {

@@ -1,26 +1,23 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "target": "es6",
-    "downlevelIteration": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "ESNext",
+    /* Base Options: */
+    "esModuleInterop": true,
     "skipLibCheck": true,
-
-    "moduleResolution": "node",
-    "isolatedModules": false,
-
+    "target": "es2022",
+    "allowJs": true,
     "resolveJsonModule": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-
-    /* linting */
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    /* Strictness */
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "strictNullChecks": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "verbatimModuleSyntax": true,
+    /* If NOT transpiling with TypeScript: */
+    "module": "preserve",
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
   "exclude": ["node_modules"]
 }

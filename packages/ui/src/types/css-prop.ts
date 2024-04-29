@@ -1,5 +1,5 @@
 import { colorProperties, responsiveProperties, unresponsiveProperties } from '@/styles/properties'
-import { ShorthandsProperties } from '@/styles/sprinkles.css'
+import type { ShorthandsProperties } from '@/styles/sprinkles.css'
 
 type ShorthandsProps = {
   [key in keyof ShorthandsProperties]?: keyof ShorthandsProperties[key]

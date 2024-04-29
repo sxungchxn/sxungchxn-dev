@@ -1,11 +1,16 @@
 import { vars } from '@/styles/vars.css'
 import { assignInlineVars } from '@vanilla-extract/dynamic'
-import { Children, cloneElement, ElementType, forwardRef, ReactElement } from 'react'
+import { Children, cloneElement, type ElementType, forwardRef, type ReactElement } from 'react'
 import { Box } from '@/components/atoms/box'
-import { AtomicProps, LayoutProps, PolymorphicComponentPropWithRef, PolymorphicRef } from '@/types'
+import type {
+  AtomicProps,
+  LayoutProps,
+  PolymorphicComponentPropWithRef,
+  PolymorphicRef,
+} from '@/types'
 import * as styles from './icon-button.css'
 import { clsx } from 'clsx'
-import { HexaColor, HoverColor } from '@/styles/tokens/color'
+import type { HexaColor, HoverColor } from '@/styles/tokens/color'
 
 export interface IconButtonStyleProps {
   color: HexaColor

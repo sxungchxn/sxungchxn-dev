@@ -2,7 +2,7 @@ import { Box } from '@/components/atoms/box'
 import { Text, type TextProps } from '@/components/atoms/text'
 import type { Meta, StoryObj } from '@storybook/react'
 import { layoutArgTypes } from '@/stories/argTypes'
-import { TextElements } from '@/components/atoms/text/text'
+import type { TextElements } from '@/components/atoms/text/text'
 import { useRef } from 'react'
 
 const meta: Meta<typeof Text> = {

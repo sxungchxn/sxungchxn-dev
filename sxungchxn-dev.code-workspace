@@ -11,6 +11,10 @@
     {
       "name": "monorepo",
       "path": "."
+    },
+    {
+      "name": "playground",
+      "path": "apps/react-playground"
     }
   ],
   "settings": {

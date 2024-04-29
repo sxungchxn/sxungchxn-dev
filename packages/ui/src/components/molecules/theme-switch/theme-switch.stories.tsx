@@ -1,5 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react'
-import { ThemeSwitch, ThemeSwitchProps } from './theme-switch'
+import type { Meta, StoryObj } from '@storybook/react'
+import { ThemeSwitch, type ThemeSwitchProps } from './theme-switch'
 import { Flex } from '@/components/atoms/flex'
 import { useTheme } from '@/hooks'
 import { layoutArgTypes } from '@/stories/argTypes'
