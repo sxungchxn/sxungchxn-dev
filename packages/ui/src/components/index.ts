@@ -1,11 +1,17 @@
-export * from './box'
+/* atoms */
 
-export * from './icon'
+export * from './atoms/box'
 
-export * from './theme-provider'
+export * from './atoms/icon'
 
-export * from './text'
+export * from './atoms/text'
 
-export * from './flex'
+export * from './atoms/flex'
 
-export * from './grid'
+export * from './atoms/grid'
+
+/* molecules */
+
+export * from './molecules/icon-button'
+
+export * from './molecules/theme-switch'

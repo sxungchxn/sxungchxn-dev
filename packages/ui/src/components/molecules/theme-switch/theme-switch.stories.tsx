@@ -1,11 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { ThemeSwitch, ThemeSwitchProps } from './theme-switch'
-import { Flex } from '@/components/flex'
+import { Flex } from '@/components/atoms/flex'
 import { useTheme } from '@/hooks'
 import { layoutArgTypes } from '@/stories/argTypes'
 
 export default {
-  title: 'components/ThemeSwitch',
+  title: 'components/molecules/ThemeSwitch',
   component: ThemeSwitch,
   argTypes: {
     ...layoutArgTypes,

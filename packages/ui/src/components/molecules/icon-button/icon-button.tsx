@@ -1,7 +1,7 @@
 import { vars } from '@/styles/vars.css'
 import { assignInlineVars } from '@vanilla-extract/dynamic'
 import { Children, cloneElement, ElementType, forwardRef, ReactElement } from 'react'
-import { Box } from '@/components/box'
+import { Box } from '@/components/atoms/box'
 import { AtomicProps, LayoutProps, PolymorphicComponentPropWithRef, PolymorphicRef } from '@/types'
 import * as styles from './icon-button.css'
 import { clsx } from 'clsx'

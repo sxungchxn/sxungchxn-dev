@@ -7,7 +7,7 @@
     "prepare": "husky install",
     "format": "prettier --write \"**/*.{js*,ts*,md,json}\"",
     "pre-commit": "lint-staged && pnpm --filter '{packages/*}' '{apps/*}' pre-commit",
-    "check-types": "turbo run check-types test --filter ui --filter icons --cache-dir=.turbo"
+    "check": "turbo run check-types test --filter ui --filter icons --cache-dir=.turbo"
   },
   "keywords": [],
   "license": "ISC",

@@ -1,6 +1,6 @@
 import { clsx } from 'clsx'
 import { ElementType } from 'react'
-import { BoxProps } from '@/components/box/box.types'
+import { BoxProps } from '@/components/atoms/box/box.types'
 import { sprinkles } from '@/styles/sprinkles.css'
 import { AtomicProps, InlineStyleProps, inlineStylePropsSet } from '@/types'
 import * as resetStyles from '@/styles/reset.css'

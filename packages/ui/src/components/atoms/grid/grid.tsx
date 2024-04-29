@@ -1,6 +1,6 @@
-import { Box } from '@/components/box'
-import { GridElements, GridProps } from '@/components/grid/grid.types'
-import { useGridProps } from '@/components/grid/hooks/use-grid-props'
+import { Box } from '@/components/atoms/box'
+import { GridElements, GridProps } from '@/components/atoms/grid/grid.types'
+import { useGridProps } from '@/components/atoms/grid/hooks/use-grid-props'
 import { forwardRef } from 'react'
 import { PolymorphicRef } from '@/types'
 

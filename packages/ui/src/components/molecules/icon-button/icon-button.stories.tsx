@@ -5,7 +5,7 @@ import { Icon } from '@/components'
 import { IconMoon } from '@seungchan-dev/icons'
 
 const meta: Meta<typeof IconButton> = {
-  title: 'components/IconButton',
+  title: 'components/molecules/IconButton',
   tags: ['autodocs'],
   component: IconButton,
   argTypes: {

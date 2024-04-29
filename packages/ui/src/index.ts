@@ -1,1 +1,1 @@
-export * from '@/components/icon'
+export * from '@/components/atoms/icon'

@@ -10,7 +10,7 @@ import {
   type RenderResult,
 } from '@testing-library/react'
 import { type ReactElement, type ReactNode, Suspense } from 'react'
-import { ThemeProvider } from '@/components/theme-provider'
+import { ThemeProvider } from '@/providers/theme-provider'
 
 export const AllProviders = ({ children }: { children: ReactNode }) => {
   return (

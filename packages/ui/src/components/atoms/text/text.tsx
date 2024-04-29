@@ -5,7 +5,7 @@ import type {
   PolymorphicComponentPropWithRef,
   PolymorphicRef,
 } from '@/types'
-import { Box } from '@/components/box'
+import { Box } from '@/components/atoms/box'
 import * as styles from './text.css'
 
 interface TextAtomsProps extends LayoutProps {

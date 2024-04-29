@@ -1,5 +1,5 @@
 import { clsx } from 'clsx'
-import { IconProps } from '@/components/icon/icon.types'
+import { IconProps } from '@/components/atoms/icon/icon.types'
 import { getInlineProps, getSpaceProps } from '@/styles/utils'
 import { sprinkles } from '@/styles/sprinkles.css'
 import { vars } from '@/styles/vars.css'

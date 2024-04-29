@@ -5,7 +5,7 @@ import { GridElements, GridProps } from './grid.types'
 import { Flex } from '@/components'
 
 const meta: Meta<typeof Grid> = {
-  title: 'components/Grid',
+  title: 'components/atoms/Grid',
   tags: ['autodocs'],
   component: Grid,
   argTypes: {

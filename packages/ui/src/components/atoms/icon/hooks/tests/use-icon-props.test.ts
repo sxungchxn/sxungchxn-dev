@@ -1,5 +1,5 @@
-import { IconProps } from '@/components/icon/icon.types'
-import { useIconProps } from '@/components/icon/hooks/use-icon-props'
+import { IconProps } from '@/components/atoms/icon/icon.types'
+import { useIconProps } from '@/components/atoms/icon/hooks/use-icon-props'
 
 describe('useIconProps 테스트', () => {
   test('size가 설정되면 width, height 값은 무시된다', () => {

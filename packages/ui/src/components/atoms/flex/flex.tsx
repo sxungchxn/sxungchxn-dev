@@ -1,4 +1,4 @@
-import { Box } from '@/components/box'
+import { Box } from '@/components/atoms/box'
 import {
   AtomicProps,
   ContainerElements,
