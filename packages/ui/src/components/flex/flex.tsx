@@ -4,6 +4,7 @@ import {
   ContainerElements,
   LayoutProps,
   PolymorphicComponentPropWithRef,
+  PolymorphicRef,
 } from '@/types'
 import { forwardRef } from 'react'
 
@@ -43,11 +44,12 @@ export type FlexProps<C extends FlexElements = 'div'> = PolymorphicComponentProp
 
 /** display flex 속성을 기본으로 가지는 레이아웃 컴포넌트 */
 export const Flex = forwardRef(
-  <C extends FlexElements>({ children, direction, ref, ...rest }: FlexProps<C>) => {
-    return (
-      <Box display="flex" flexDirection={direction} ref={ref} {...rest}>
-        {children}
-      </Box>
-    )
-  },
+  <C extends FlexElements>(
+    { children, direction, ...rest }: FlexProps<C>,
+    ref: PolymorphicRef<C>,
+  ) => (
+    <Box display="flex" flexDirection={direction} ref={ref} {...rest}>
+      {children}
+    </Box>
+  ),
 )

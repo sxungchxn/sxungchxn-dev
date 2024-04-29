@@ -3,6 +3,7 @@ import { Text, type TextProps } from '@/components/text'
 import type { Meta, StoryObj } from '@storybook/react'
 import { layoutArgTypes } from '@/stories/argTypes'
 import { TextElements } from '@/components/text/text'
+import { useRef } from 'react'
 
 const meta: Meta<typeof Text> = {
   title: 'components/Text',
@@ -18,7 +19,8 @@ export default meta
 type Story<C extends TextElements> = StoryObj<TextProps<C>>
 
 const Template = (args: TextProps<'h1'>) => {
-  return <Text {...args} />
+  const ref = useRef<HTMLHeadingElement>(null)
+  return <Text {...args} as="h1" ref={ref} />
 }
 
 export const Default: Story<'h1'> = {

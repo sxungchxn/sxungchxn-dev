@@ -1,9 +1,12 @@
 import { forwardRef } from 'react'
 import { IconProps } from './icon.types'
 import { useIconProps } from '@/components/icon/hooks/use-icon-props'
+import { PolymorphicRef } from '@/types'
 
-export const Icon = forwardRef(({ source: SourceComponent, ...rest }: IconProps) => {
-  const { ref, ...iconProps } = useIconProps(rest)
+export const Icon = forwardRef(
+  ({ source: SourceComponent, ...rest }: IconProps, ref: PolymorphicRef<'svg'>) => {
+    const iconProps = useIconProps(rest)
 
-  return <SourceComponent ref={ref} {...iconProps} />
-})
+    return <SourceComponent ref={ref} {...iconProps} />
+  },
+)

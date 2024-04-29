@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Flex, FlexElements, type FlexProps } from './flex'
 import { Text } from '@/components/text'
 import { layoutArgTypes } from '@/stories/argTypes'
+import { useRef } from 'react'
 
 const meta: Meta<typeof Flex> = {
   title: 'components/Flex',
@@ -17,7 +18,9 @@ export default meta
 type Story<C extends FlexElements = 'div'> = StoryObj<FlexProps<C>>
 
 const Template = <C extends FlexElements = 'div'>(args: FlexProps<C>) => {
-  return <Flex {...args}></Flex>
+  const ref = useRef<HTMLDivElement>(null)
+
+  return <Flex {...args} as="div" ref={ref} />
 }
 
 export const Default: Story<'header'> = {

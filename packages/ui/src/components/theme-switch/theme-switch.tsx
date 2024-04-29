@@ -6,8 +6,9 @@ import * as styles from './theme-switch.css'
 import { useTheme } from '@/hooks'
 import { IconMoon, IconSun } from '@seungchan-dev/icons'
 import { motion } from 'framer-motion'
+import { PolymorphicRef } from '@/types'
 
-export interface ThemeSwitchProps extends Omit<BoxProps<'button'>, 'children'> {
+export type ThemeSwitchProps = Omit<BoxProps<'button'>, 'children'> & {
   /** theme switch size */
   size?: styles.Size
 }
@@ -19,7 +20,10 @@ const SPRING_TRANSITION = {
 } as const
 
 export const ThemeSwitch = forwardRef(
-  ({ className, size = 'medium', onClick, ref, ...rest }: ThemeSwitchProps) => {
+  (
+    { className, size = 'medium', onClick, ...rest }: ThemeSwitchProps,
+    ref: PolymorphicRef<'button'>,
+  ) => {
     const { mode, toggle } = useTheme()
 
     const handleClickSwitch = (e: MouseEvent<HTMLButtonElement>) => {
@@ -30,8 +34,8 @@ export const ThemeSwitch = forwardRef(
     return (
       <Box
         {...rest}
-        ref={ref}
         as="button"
+        ref={ref}
         className={clsx(className, styles.wrapper({ size, mode }))}
         onClick={handleClickSwitch}
       >

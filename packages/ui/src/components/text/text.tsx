@@ -1,5 +1,10 @@
 import { forwardRef, type ReactElement } from 'react'
-import type { AtomicProps, LayoutProps, PolymorphicComponentPropWithRef } from '@/types'
+import type {
+  AtomicProps,
+  LayoutProps,
+  PolymorphicComponentPropWithRef,
+  PolymorphicRef,
+} from '@/types'
 import { Box } from '@/components/box'
 import * as styles from './text.css'
 
@@ -44,6 +49,7 @@ export type TextElements =
   | 'span'
   | 'p'
   | 'label'
+  | 'a'
 
 export type TextProps<C extends TextElements = 'div'> = PolymorphicComponentPropWithRef<
   C,
@@ -56,15 +62,18 @@ export type TextComponent = <C extends TextElements = 'div'>(
 
 /** Text 컴포넌트 */
 export const Text = forwardRef(
-  <C extends TextElements = 'div'>({
-    children,
-    variant,
-    fontFace = 'primary',
-    ellipsis,
-    underline,
-    ref,
-    ...rest
-  }: TextProps<C>) => {
+  <C extends TextElements = 'div'>(
+    {
+      children,
+      variant,
+      fontFace = 'primary',
+      ellipsis,
+      underline,
+
+      ...rest
+    }: TextProps<C>,
+    ref: PolymorphicRef<C>,
+  ) => {
     return (
       <Box
         ref={ref}

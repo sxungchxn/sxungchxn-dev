@@ -2,7 +2,7 @@ import { vars } from '@/styles/vars.css'
 import { assignInlineVars } from '@vanilla-extract/dynamic'
 import { Children, cloneElement, ElementType, forwardRef, ReactElement } from 'react'
 import { Box } from '@/components/box'
-import { AtomicProps, LayoutProps, PolymorphicComponentProp, PolymorphicRef } from '@/types'
+import { AtomicProps, LayoutProps, PolymorphicComponentPropWithRef, PolymorphicRef } from '@/types'
 import * as styles from './icon-button.css'
 import { clsx } from 'clsx'
 import { HexaColor, HoverColor } from '@/styles/tokens/color'
@@ -14,7 +14,7 @@ export interface IconButtonStyleProps {
   borderRadius: AtomicProps['borderRadius']
 }
 
-export type IconButtonProps<C extends ElementType = 'button'> = PolymorphicComponentProp<
+export type IconButtonProps<C extends ElementType = 'button'> = PolymorphicComponentPropWithRef<
   C,
   IconButtonStyleProps & LayoutProps
 >
