@@ -28,12 +28,22 @@ export const button = recipe({
         },
       },
     },
+    shape: {
+      square: {
+        borderRadius: vars.radius['4px'],
+      },
+      circle: {
+        borderRadius: vars.radius.circle,
+      },
+    },
   },
   defaultVariants: {
     variant: 'subtle',
+    shape: 'circle',
   },
 })
 
 export type ButtonVariants = RecipeVariants<typeof button>
 
 export type Variant = NonNullable<ButtonVariants>['variant']
+export type Shape = NonNullable<ButtonVariants>['shape']

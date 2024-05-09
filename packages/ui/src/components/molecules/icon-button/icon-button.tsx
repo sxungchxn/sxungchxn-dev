@@ -17,6 +17,7 @@ export interface IconButtonStyleProps {
   variant: 'filled' | 'subtle'
   backgroundColor?: AtomicProps['backgroundColor']
   borderRadius: AtomicProps['borderRadius']
+  shape: styles.Shape
 }
 
 export type IconButtonProps<C extends ElementType = 'button'> = PolymorphicComponentPropWithRef<
@@ -34,25 +35,25 @@ export const IconButton = forwardRef(
       as,
       children,
       variant = 'subtle',
+      shape = 'circle',
       color,
       style,
       backgroundColor,
-      borderRadius = '4px',
       className,
       ...rest
     }: IconButtonProps<C>,
     ref: PolymorphicRef<C>,
   ) => {
-    const defaultBackgroundColor = color + 'Hover'
+    const defaultBackgroundColor = (color + 'Hover') as HoverColor
 
     return (
       <Box
         {...rest}
         as={(as ?? 'button') as ElementType}
         ref={ref}
-        borderRadius={borderRadius}
         className={clsx(
           styles.button({
+            shape,
             variant,
           }),
           className,
@@ -63,7 +64,7 @@ export const IconButton = forwardRef(
             [styles.backgroundColorVar]:
               variant === 'filled' && backgroundColor
                 ? vars.colors[backgroundColor]
-                : vars.colors[defaultBackgroundColor as HoverColor],
+                : vars.colors[defaultBackgroundColor],
           }),
         }}
       >
