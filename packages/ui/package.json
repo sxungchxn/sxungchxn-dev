@@ -88,6 +88,9 @@
     "vitest": "^1.2.2"
   },
   "dependencies": {
+    "embla-carousel": "^8.0.4",
+    "embla-carousel-autoplay": "^8.0.4",
+    "embla-carousel-react": "^8.0.4",
     "framer-motion": "^11.0.3"
   }
 }

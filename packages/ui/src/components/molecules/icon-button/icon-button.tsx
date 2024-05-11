@@ -16,8 +16,7 @@ export interface IconButtonStyleProps {
   color: HexaColor
   variant: 'filled' | 'subtle'
   backgroundColor?: AtomicProps['backgroundColor']
-  borderRadius: AtomicProps['borderRadius']
-  shape: styles.Shape
+  shape?: styles.Shape
 }
 
 export type IconButtonProps<C extends ElementType = 'button'> = PolymorphicComponentPropWithRef<

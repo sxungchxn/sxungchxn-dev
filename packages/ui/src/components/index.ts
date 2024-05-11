@@ -15,3 +15,6 @@ export * from './atoms/grid'
 export * from './molecules/icon-button'
 
 export * from './molecules/theme-switch'
+
+/* organisms */
+export * from './organism/carousel'
