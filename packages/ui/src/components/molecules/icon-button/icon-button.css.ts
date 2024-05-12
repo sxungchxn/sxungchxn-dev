@@ -12,7 +12,6 @@ export const button = recipe({
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      padding: vars.space['4px'],
     },
   ],
   variants: {

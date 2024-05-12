@@ -16,5 +16,7 @@ export * from './molecules/icon-button'
 
 export * from './molecules/theme-switch'
 
+export * from './molecules/chip'
+
 /* organisms */
 export * from './organism/carousel'

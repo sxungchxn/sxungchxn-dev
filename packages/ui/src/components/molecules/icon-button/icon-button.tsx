@@ -13,7 +13,7 @@ import { clsx } from 'clsx'
 import type { HexaColor, HoverColor } from '@/styles/tokens/color'
 
 export interface IconButtonStyleProps {
-  color: HexaColor
+  color: HexaColor | 'currentColor'
   variant: 'filled' | 'subtle'
   backgroundColor?: AtomicProps['backgroundColor']
   shape?: styles.Shape
@@ -35,21 +35,24 @@ export const IconButton = forwardRef(
       children,
       variant = 'subtle',
       shape = 'circle',
-      color,
+      color = 'currentColor',
       style,
       backgroundColor,
       className,
+      padding = '4px',
       ...rest
     }: IconButtonProps<C>,
     ref: PolymorphicRef<C>,
   ) => {
-    const defaultBackgroundColor = (color + 'Hover') as HoverColor
+    const defaultBackgroundColor =
+      color === 'currentColor' ? 'whiteHover' : ((color + 'Hover') as HoverColor)
 
     return (
       <Box
         {...rest}
         as={(as ?? 'button') as ElementType}
         ref={ref}
+        padding={padding}
         className={clsx(
           styles.button({
             shape,

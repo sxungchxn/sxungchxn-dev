@@ -1,3 +1,5 @@
+import '@/styles/reset.css'
+import '@/styles/vars.css'
 import type { Preview } from '@storybook/react'
 import { ThemeProvider } from '@/providers/theme-provider'
 
