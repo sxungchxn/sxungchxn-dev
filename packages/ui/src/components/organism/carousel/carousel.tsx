@@ -1,3 +1,5 @@
+'use client'
+
 import { clsx } from 'clsx'
 import { type MouseEventHandler, useMemo } from 'react'
 import { IconChevronLeft, IconChevronRight } from '@sxungchxn/dev-icons'

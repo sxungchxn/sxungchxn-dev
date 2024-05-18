@@ -1,3 +1,5 @@
+'use client'
+
 import { useCarouselApi } from '@/components/organism/carousel/hooks/use-carousel-api'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import type { EmblaCarouselType } from 'embla-carousel'

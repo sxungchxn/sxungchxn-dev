@@ -1,3 +1,5 @@
+'use client'
+
 import { createContext, type PropsWithChildren, useContext } from 'react'
 import type { useCarouselApi } from '@/components/organism/carousel/hooks/use-carousel-api'
 

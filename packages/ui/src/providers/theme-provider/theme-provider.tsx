@@ -1,3 +1,5 @@
+'use client'
+
 import {
   createContext,
   type ReactNode,
@@ -8,7 +10,7 @@ import {
   useState,
 } from 'react'
 import { useIsomorphicEffect, useMediaQuery } from '@/hooks'
-import { type Mode } from '@/types'
+import { type Mode } from '@/types/theme'
 
 export interface ThemeContextValue {
   mode: Mode
@@ -25,6 +27,7 @@ export interface ThemeProviderProps {
 }
 
 const getInitTheme: () => Mode = () => {
+  if (typeof window === 'undefined') return 'dark'
   const systemPrefers: Mode = window.matchMedia('(prefers-color-scheme: dark)').matches
     ? 'dark'
     : 'light'
@@ -59,6 +62,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   }, [setThemeAttrs, setColorMode, mode])
 
   useIsomorphicEffect(() => {
+    if (window === undefined) return
     if (firstRender.current) {
       const initTheme = getInitTheme()
       setColorMode(initTheme)

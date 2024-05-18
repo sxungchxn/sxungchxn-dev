@@ -6,6 +6,7 @@ import dts from 'vite-plugin-dts'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { resolve } from 'node:path'
 import { vanillaExtractPlugin } from '@vanilla-extract/rollup-plugin'
+import preserveDirectives from 'rollup-plugin-preserve-directives'
 
 /* css 파일명 들의 집합 */
 export const emittedCSSFiles = new Set<string>()
@@ -77,6 +78,12 @@ export default defineConfig({
     visualizer(),
   ],
   build: {
+    emptyOutDir: false,
+    terserOptions: {
+      compress: {
+        directives: false,
+      },
+    },
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'index',
@@ -90,11 +97,13 @@ export default defineConfig({
         vanillaExtractPlugin({
           identifiers: 'short',
         }),
+        // use client가 유지되도록 플러그인 추가
+        preserveDirectives(),
       ],
       // ignore use client directive in vite
       // https://github.com/TanStack/query/issues/5175
       onwarn(warning, warn) {
-        if (warning.code === 'MODULE_LEVEL_DIRECTIVE') {
+        if (warning.code === 'MODULE_LEVEL_DIRECTIVE' || warning.code === 'SOURCEMAP_ERROr') {
           return
         }
         warn(warning)

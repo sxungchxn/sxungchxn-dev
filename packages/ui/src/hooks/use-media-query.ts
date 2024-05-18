@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { useIsomorphicEffect } from '@/hooks/use-isomorphic-effect'
 
@@ -17,6 +19,7 @@ export const useMediaQuery = (query: string) => {
   }
 
   useIsomorphicEffect(() => {
+    if (typeof window === 'undefined') return
     const matchMedia = window.matchMedia(query)
 
     // Triggered at the first client-side load and if query changes

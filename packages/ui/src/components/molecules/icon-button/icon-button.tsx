@@ -1,3 +1,5 @@
+'use client'
+
 import { vars } from '@/styles/vars.css'
 import { assignInlineVars } from '@vanilla-extract/dynamic'
 import { Children, cloneElement, type ElementType, forwardRef, type ReactElement } from 'react'
