@@ -61,9 +61,17 @@ export default defineConfig({
     /* declaration type concerned plugin */
     dts({
       copyDtsFiles: true,
+      tsconfigPath: './tsconfig.build.json',
       outDir: 'dist',
       include: ['src'],
-      exclude: ['node_modules', 'dist', '**/*.stories.tsx', '**/*.test.ts*', './src/vite-env.d.ts'],
+      exclude: [
+        'node_modules',
+        'dist',
+        'tests',
+        '**/*.stories.tsx',
+        '**/*.test.ts*',
+        './src/vite-env.d.ts',
+      ],
     }),
     /* bundle visualizer */
     visualizer(),

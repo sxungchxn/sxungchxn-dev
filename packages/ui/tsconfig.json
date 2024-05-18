@@ -3,12 +3,10 @@
   "extends": ["tsconfig/tsconfig.library.json"],
   "compilerOptions": {
     "lib": ["es2022", "dom", "dom.iterable"],
-    "outDir": "dist",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
-    "rootDir": "src",
     "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom"]
   },
   "include": [
