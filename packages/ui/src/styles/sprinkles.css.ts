@@ -2,13 +2,10 @@
 import './reset.css'
 import {
   type ConditionalValue,
-  createMapValueFn,
-  createNormalizeValueFn,
   createSprinkles,
   defineProperties,
   type RequiredConditionalValue,
 } from '@vanilla-extract/sprinkles'
-import { createVar } from '@vanilla-extract/css'
 import { vars } from './vars.css'
 import { breakpoints } from './tokens/breakpoints'
 import { colorProperties, responsiveProperties, unresponsiveProperties } from '@/styles/properties'
@@ -36,53 +33,12 @@ const responsiveSprinklesProperties = defineProperties({
 })
 
 const unresponsiveSprinklesProperties = defineProperties({
-  properties: unresponsiveProperties,
-})
-
-const boxShadowColorVar = createVar()
-
-const selectorSprinklesProperties = defineProperties({
-  conditions: {
-    base: {},
-    active: { selector: '&:active' },
-    focus: { selector: '&:focus' },
-    hover: { selector: '&:hover' },
-  },
-  defaultCondition: 'base',
-  properties: {
-    boxShadow: {
-      '0.25': {
-        vars: {
-          [boxShadowColorVar]: vars.colors.shadow,
-        },
-        boxShadow: `${vars.shadows['0.25']} ${vars.colors.shadow}`,
-      },
-      '0.5': {
-        vars: {
-          [boxShadowColorVar]: vars.colors.shadow,
-        },
-        boxShadow: `${vars.shadows['0.5']} ${vars.colors.shadow}`,
-      },
-      '1': {
-        vars: {
-          [boxShadowColorVar]: vars.colors.shadow,
-        },
-        boxShadow: `${vars.shadows['1']} ${vars.colors.shadow}`,
-      },
-    },
-    boxShadowColor: {
-      shadow: {
-        vars: { [boxShadowColorVar]: vars.colors.shadow },
-      },
-    },
-    ...colorProperties,
-  },
+  properties: { ...unresponsiveProperties, ...colorProperties },
 })
 
 export const sprinkles = createSprinkles(
   responsiveSprinklesProperties,
   unresponsiveSprinklesProperties,
-  selectorSprinklesProperties,
 )
 
 export type ShorthandsProperties = {
@@ -110,5 +66,5 @@ export type RequiredResponsiveValue<Value extends string | number> = RequiredCon
   Value
 >
 
-export const normalizeResponsiveValue = createNormalizeValueFn(responsiveSprinklesProperties)
-export const mapResponsiveValue = createMapValueFn(responsiveSprinklesProperties)
+// export const normalizeResponsiveValue = createNormalizeValueFn(responsiveSprinklesProperties)
+// export const mapResponsiveValue = createMapValueFn(responsiveSprinklesProperties)

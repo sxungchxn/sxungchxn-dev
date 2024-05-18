@@ -65,7 +65,7 @@ export const responsiveProperties = {
   gap: space,
   rowGap: space,
   columnGap: space,
-  inset: space,
+  // inset: space,
   justifyContent: [...flexAlignment, 'space-between', 'space-around'],
   justifySelf: flexAlignment,
   left: space,
@@ -87,22 +87,22 @@ export const responsiveProperties = {
 } as const
 
 export const unresponsiveProperties = {
-  aspectRatio: {
-    auto: 'auto',
-    '1/1': '1 / 1',
-    '2/1': '2 / 1',
-    '4/1': '4 / 1',
-    '4/3': '4 / 3',
-    '16/9': '16 / 9',
-  },
+  // aspectRatio: {
+  //   auto: 'auto',
+  //   '1/1': '1 / 1',
+  //   '2/1': '2 / 1',
+  //   '4/1': '4 / 1',
+  //   '4/3': '4 / 3',
+  //   '16/9': '16 / 9',
+  // },
+  // isolation: ['isolate'],
+  // objectFit: ['contain', 'cover'],
+  // pointerEvents: ['none'],
+  // textTransform: ['capitalize', 'lowercase', 'uppercase'],
+  // opacity: vars.opacity,
+  // strokeWidth: vars.borderWidths,
   cursor: ['pointer', 'default', 'not-allowed'],
   fontFamily: vars.fonts,
-  isolation: ['isolate'],
-  objectFit: ['contain', 'cover'],
-  opacity: vars.opacity,
-  pointerEvents: ['none'],
-  strokeWidth: vars.borderWidths,
-  textTransform: ['capitalize', 'lowercase', 'uppercase'],
   transitionProperty: {
     none: 'none',
     all: 'all',
@@ -131,9 +131,3 @@ export const colorProperties = {
   color: vars.colors,
   outlineColor: vars.colors,
 } as const
-
-export const allProperties = {
-  ...responsiveProperties,
-  ...unresponsiveProperties,
-  ...colorProperties,
-}
