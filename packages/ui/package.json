@@ -30,14 +30,15 @@
       "types": "./dist/index.d.ts"
     },
     "./styles": {
-      "import": "./dist/styles.css",
-      "require": "./dist/style.css"
+      "import": "./dist/assets/index.css",
+      "require": "./dist/assets/index.css"
     }
   },
   "scripts": {
     "check-types": "tsc --noEmit",
     "build:vite": "vite build",
-    "build": "vite -c vite-build.config.ts build",
+    "build": "vite -c vite-build.config.ts build --emptyOutDir",
+    "build:watch": "vite -c vite-build.config.ts build --watch",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "test": "vitest --run",
@@ -84,6 +85,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rollup": "^4.9.1",
+    "rollup-plugin-preserve-directives": "^0.4.0",
     "rollup-plugin-visualizer": "^5.11.0",
     "storybook": "^7.6.6",
     "storybook-theme-css-vars": "^0.0.12",

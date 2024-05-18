@@ -15,6 +15,10 @@
     {
       "name": "playground",
       "path": "apps/react-playground"
+    },
+    {
+      "name": "blog",
+      "path": "apps/blog"
     }
   ],
   "settings": {

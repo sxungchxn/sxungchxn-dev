@@ -1,0 +1,27 @@
+{
+  "name": "blog",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "14.2.3",
+    "@sxungchxn/dev-ui": "workspace:*",
+    "@sxungchxn/dev-icons": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint-config-custom": "workspace:*",
+    "tsconfig": "workspace:*"
+  }
+}
