@@ -1,6 +1,6 @@
 import { clsx } from 'clsx'
 import { type MouseEventHandler, useMemo } from 'react'
-import { IconChevronLeft, IconChevronRight } from '@seungchan-dev/icons'
+import { IconChevronLeft, IconChevronRight } from '@sxungchxn/dev-icons'
 import { Box, type BoxProps } from '@/components/atoms/box'
 import { Icon } from '@/components/atoms/icon'
 import { IconButton, type IconButtonProps } from '@/components/molecules/icon-button'

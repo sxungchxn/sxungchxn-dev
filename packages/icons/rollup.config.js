@@ -60,7 +60,7 @@ export declare type IconName = ${iconNames.join(' | ')}
 /**
  * @deprecated If you import this module, all icons are bundled, so please import and use the individual icons.
  * @example
- * import { IconX } from '@seungchan-dev/icons'
+ * import { IconX } from '@sxungchxn/dev-icons'
  */
 export declare const icons: Record<IconName, IconSource>
 
@@ -125,11 +125,6 @@ export default defineConfig({
       exclude: 'node_modules/**',
       babelHelpers: 'runtime',
       plugins: ['@babel/plugin-transform-runtime'],
-    }),
-    // cjs dts file
-    emitFile({
-      fileName: 'index.d.cts',
-      source: entryTypesContent,
     }),
     // esm dts file
     emitFile({

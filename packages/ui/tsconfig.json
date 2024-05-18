@@ -8,9 +8,16 @@
     "paths": {
       "@/*": ["./src/*"]
     },
+    "rootDir": "src",
     "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": ["src", ".storybook/**/*", "**/*.stories.tsx", "vite.config.ts"],
+  "include": [
+    "src/**/*",
+    ".storybook/**/*",
+    "**/*.stories.tsx",
+    "vite.config.ts",
+    "vite-build.config.ts"
+  ],
   "exclude": ["node_modules", "dist"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

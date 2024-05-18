@@ -15,7 +15,8 @@ export default defineConfig(({ mode }) => ({
     // declaration type concerned plugin
     dts({
       copyDtsFiles: true,
-      include: ['src', 'src/types/global.d.ts'],
+      outDir: 'dist',
+      include: ['src'],
       exclude: ['node_modules', 'dist', '**/*.stories.tsx', '**/*.test.ts*', './src/vite-env.d.ts'],
     }),
     // bundle visualizer
@@ -28,8 +29,8 @@ export default defineConfig(({ mode }) => ({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      name: 'seungchan-dev-ui',
-      fileName: 'seungchan-dev-ui',
+      name: 'index',
+      fileName: 'index',
       formats: ['es', 'cjs'],
     },
     rollupOptions: {

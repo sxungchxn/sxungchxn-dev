@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "seungchan-dev",
+  "name": "@sxungchxn/dev-monorepo",
   "version": "0.0.0",
   "description": "seungchan-dev monorepo",
   "scripts": {

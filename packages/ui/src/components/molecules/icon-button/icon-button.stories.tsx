@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { IconButton } from './icon-button'
 import { layoutArgTypes } from '@/stories/argTypes'
 import { Icon } from '@/components'
-import { IconMoon } from '@seungchan-dev/icons'
+import { IconMoon } from '@sxungchxn/dev-icons'
 
 const meta: Meta<typeof IconButton> = {
   title: 'components/molecules/IconButton',

@@ -1,7 +1,7 @@
 import { createElement, type ElementType, forwardRef, type ReactElement } from 'react'
 import { type BoxProps } from './box.types'
 import { useBoxProps } from './hooks/use-box-props'
-import { type PolymorphicRef } from '@/types'
+import { type PolymorphicRef } from '@/types/polymorphic'
 
 export type BoxComponent = <C extends ElementType = 'div'>(
   props: BoxProps<C>,

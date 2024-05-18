@@ -3,10 +3,10 @@ import { clsx } from 'clsx'
 import { Box, type BoxProps } from '@/components/atoms/box'
 import { Icon } from '@/components/atoms/icon'
 import * as styles from './theme-switch.css'
-import { useTheme } from '@/hooks'
-import { IconMoon, IconSun } from '@seungchan-dev/icons'
-import { motion } from 'framer-motion'
-import { type PolymorphicRef } from '@/types'
+import { useTheme } from '@/hooks/use-theme'
+import { IconMoon, IconSun } from '@sxungchxn/dev-icons'
+import { m } from 'framer-motion'
+import { type PolymorphicRef } from '@/types/polymorphic'
 
 export type ThemeSwitchProps = Omit<BoxProps<'button'>, 'children'> & {
   /** theme switch size */
@@ -41,7 +41,7 @@ export const ThemeSwitch = forwardRef(
       >
         <Icon source={IconSun} className={styles.iconLeft({ size })} />
         <Icon source={IconMoon} className={styles.iconRight({ size })} />
-        <motion.div layout transition={SPRING_TRANSITION} className={styles.knob({ mode, size })} />
+        <m.div layout transition={SPRING_TRANSITION} className={styles.knob({ mode, size })} />
       </Box>
     )
   },

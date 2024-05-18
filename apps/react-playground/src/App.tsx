@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import './App.css'
-import { IconSun } from '@seungchan-dev/icons'
-import { Icon } from '@seungchan-dev/ui'
+import { IconSun } from '@sxungchxn/dev-icons'
+import { Box, Icon } from '@sxungchxn/dev-ui'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -27,6 +27,7 @@ function App() {
       <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
       <IconSun ref={ref} />
       <Icon source={IconSun} />
+      <Box as="button">box</Box>
     </>
   )
 }

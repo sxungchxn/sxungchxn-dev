@@ -1,4 +1,4 @@
-# @seungchan-dev/icons
+# @sxungchxn/dev-icons
 
 > shared react icons component library which is tree-shakable
 
@@ -6,11 +6,11 @@
 
 ## Install
 
-`npm install @seungchan-dev/icons`
+`npm install @sxungchxn/dev-icons`
 
-`yarn add @seungchan-dev/icons`
+`yarn add @sxungchxn/dev-icons`
 
-`pnpm add @seungchan-dev/icons`
+`pnpm add @sxungchxn/dev-icons`
 
 <br/>
 
@@ -19,7 +19,7 @@
 import icon source as react component.
 
 ```tsx
-import { IconX } from '@seungchan-dev/icons'
+import { IconX } from '@sxungchxn/dev-icons'
 
 const Component = () => {
   return <IconX />
@@ -29,7 +29,7 @@ const Component = () => {
 ⚠️ it is not recommended to import `icons` object like below as it is not tree-shakable.
 
 ```tsx
-import { icons } from '@seungchan-dev/icons'
+import { icons } from '@sxungchxn/dev-icons'
 
 const Icon = icons.IconX // ❌
 ```

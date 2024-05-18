@@ -1,26 +1,22 @@
 {
-  "name": "@seungchan-dev/icons",
+  "name": "@sxungchxn/dev-icons",
   "version": "0.0.0",
   "description": "shared react icons component library which is tree-shakable",
   "type": "module",
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      },
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    }
-  },
+  "sideEffects": false,
   "files": [
     "dist"
   ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
     "prebuild": "rimraf src && rimraf dist",
     "svgr": "svgr --config-file .svgrrc assets",
@@ -82,6 +78,5 @@
     "pnpm": ">=8.14.1",
     "npm": "⚠️use pnpm instead⚠️",
     "yarn": "⚠️use pnpm instead⚠️"
-  },
-  "sideEffects": false
+  }
 }

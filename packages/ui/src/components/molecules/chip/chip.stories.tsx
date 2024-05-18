@@ -2,7 +2,7 @@ import { Chip } from './chip'
 import type { Meta, StoryObj } from '@storybook/react'
 import { layoutArgTypes } from '@/stories/argTypes'
 import { Icon } from '@/components/atoms/icon'
-import { IconX } from '@seungchan-dev/icons'
+import { IconX } from '@sxungchxn/dev-icons'
 
 const meta: Meta<typeof Chip> = {
   title: 'components/molecules/Chip',
@@ -21,6 +21,7 @@ export const Default: Story = {
   render: args => <Chip {...args} />,
   args: {
     children: 'sxungchxn',
+    color: 'secondary',
   },
 }
 

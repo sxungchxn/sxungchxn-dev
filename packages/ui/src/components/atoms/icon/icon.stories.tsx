@@ -1,7 +1,7 @@
 import { Icon } from './icon'
 import type { Meta, StoryObj } from '@storybook/react'
 import { layoutArgTypes } from '@/stories/argTypes'
-import { IconMoon } from '@seungchan-dev/icons'
+import { IconMoon } from '@sxungchxn/dev-icons'
 
 const meta = {
   title: 'components/atoms/Icon',

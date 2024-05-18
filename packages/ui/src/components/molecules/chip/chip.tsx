@@ -1,11 +1,3 @@
-// [x] variant - filled, bordered
-// [x] size - sm : 32, md:48
-// [x] prefix, postfix
-// [x] gap
-// [x] as
-// fullWidth
-// flex?
-
 import * as styles from './chip.css'
 import { forwardRef, type ReactNode } from 'react'
 import type {
