@@ -1,9 +1,9 @@
-import { ThemeSwitch } from '@sxungchxn/dev-ui'
+import { ThemeToggleSwitch } from '@/components/theme-toggle-switch/theme-toggle-switch'
 
 export default function Home() {
   return (
     <main>
-      <ThemeSwitch />
+      <ThemeToggleSwitch />
     </main>
   )
 }

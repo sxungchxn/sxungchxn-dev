@@ -1,7 +1,8 @@
 import '@sxungchxn/dev-ui/styles'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { Box, ThemeProvider } from '@sxungchxn/dev-ui'
+import { AnimationProvider, Box } from '@sxungchxn/dev-ui'
+import { ThemeProvider } from '@/providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,9 +17,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <Box as="body" backgroundColor="primary" height="100vh">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <AnimationProvider>{children}</AnimationProvider>
+        </ThemeProvider>
       </Box>
     </html>
   )
