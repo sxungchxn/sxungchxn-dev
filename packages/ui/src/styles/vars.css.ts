@@ -30,11 +30,7 @@ const createGlobalTheme = <ThemeContract extends Contract>(
 
 const { colors, ...restTokens } = tokens
 
-const baseTokens = restTokens as Omit<Theme, 'colors' | 'mode'>
-const baseVars = createGlobalThemeContract(baseTokens, getVarName)
-createGlobalTheme(':root', baseVars, baseTokens) // 공통 theme 설정
-
-const getModeColorScheme = (mode: Mode = 'light') => {
+const getModeColorTokens = (mode: Mode = 'light') => {
   return {
     colors: {
       ...colors.base,
@@ -43,17 +39,25 @@ const getModeColorScheme = (mode: Mode = 'light') => {
   }
 }
 
-const lightModeTokens = getModeColorScheme('light')
-const darkModeTokens = getModeColorScheme('dark')
-const modeVars = createGlobalThemeContract(lightModeTokens, getVarName)
+// 기본 테마는 라이트이므로 라이트 관련 theme는 없애기
+
+const baseTokens = restTokens as Omit<Theme, 'colors' | 'mode'>
+const lightModeColorTokens = getModeColorTokens('light')
+const darkModeColorTokens = getModeColorTokens('dark')
+const defaultTokens = { ...baseTokens, ...lightModeColorTokens }
+
+const commonVars = createGlobalThemeContract(defaultTokens, getVarName)
+createGlobalTheme(':root', commonVars, defaultTokens) // 공통 theme 설정
+
+const modeVars = createGlobalThemeContract(lightModeColorTokens, getVarName)
 
 // light theme 설정
-createGlobalTheme('[data-theme="light"]', modeVars, lightModeTokens)
+// createGlobalTheme('[data-theme="light"]', modeVars, lightModeColorTokens)
 // dark theme 설정
-createGlobalTheme('[data-theme="dark"]', modeVars, darkModeTokens)
+createGlobalTheme('[data-theme="dark"]', modeVars, darkModeColorTokens)
 
-type ThemeVars = typeof baseVars & typeof modeVars
+type ThemeVars = typeof commonVars & typeof modeVars
 
 // 모든 css 변수 들의 집합
 // 아래에 등록된 vars는 build 시 정적 css variable로 뽑혀진다
-export const vars = merge(baseVars, modeVars) as ThemeVars
+export const vars = merge(commonVars, modeVars) as ThemeVars

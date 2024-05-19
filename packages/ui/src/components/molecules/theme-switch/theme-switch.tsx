@@ -5,14 +5,17 @@ import { clsx } from 'clsx'
 import { Box, type BoxProps } from '@/components/atoms/box'
 import { Icon } from '@/components/atoms/icon'
 import * as styles from './theme-switch.css'
-import { useTheme } from '@/hooks/use-theme'
 import { IconMoon, IconSun } from '@sxungchxn/dev-icons'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { type PolymorphicRef } from '@/types/polymorphic'
 
-export type ThemeSwitchProps = Omit<BoxProps<'button'>, 'children'> & {
+export interface ThemeSwitchProps extends Omit<BoxProps<'button'>, 'children'> {
   /** theme switch size */
   size?: styles.Size
+  /** mode value */
+  mode: 'dark' | 'light'
+  /** theme toggle handler */
+  onToggleTheme: () => void
 }
 
 const SPRING_TRANSITION = {
@@ -23,19 +26,17 @@ const SPRING_TRANSITION = {
 
 export const ThemeSwitch = forwardRef(
   (
-    { className, size = 'medium', onClick, ...rest }: ThemeSwitchProps,
+    { className, size = 'medium', mode, onToggleTheme, onClick, ...otherProps }: ThemeSwitchProps,
     ref: PolymorphicRef<'button'>,
   ) => {
-    const { mode, toggle } = useTheme()
-
     const handleClickSwitch = (e: MouseEvent<HTMLButtonElement>) => {
-      toggle()
+      onToggleTheme()
       onClick?.(e)
     }
 
     return (
       <Box
-        {...rest}
+        {...otherProps}
         as="button"
         ref={ref}
         className={clsx(className, styles.wrapper({ size, mode }))}
@@ -43,7 +44,7 @@ export const ThemeSwitch = forwardRef(
       >
         <Icon source={IconSun} className={styles.iconLeft({ size })} />
         <Icon source={IconMoon} className={styles.iconRight({ size })} />
-        <motion.div layout transition={SPRING_TRANSITION} className={styles.knob({ mode, size })} />
+        <m.div layout transition={SPRING_TRANSITION} className={styles.knob({ mode, size })} />
       </Box>
     )
   },

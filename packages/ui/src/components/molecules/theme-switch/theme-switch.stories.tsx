@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeSwitch, type ThemeSwitchProps } from './theme-switch'
 import { Flex } from '@/components/atoms/flex'
-import { useTheme } from '@/hooks'
 import { layoutArgTypes } from '@/stories/argTypes'
+import { useState } from 'react'
 
 export default {
   title: 'components/molecules/ThemeSwitch',
@@ -14,12 +14,16 @@ export default {
 
 type Story = StoryObj<ThemeSwitchProps>
 
-const ThemeSwitchTemplate = (props: ThemeSwitchProps) => {
-  const { mode } = useTheme()
+const ThemeSwitchTemplate = (props: Omit<ThemeSwitchProps, 'onToggleTheme' | 'mode'>) => {
+  const [mode, setMode] = useState<'dark' | 'light'>('light')
+
+  const toggleTheme = () => {
+    setMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'))
+  }
 
   return (
     <Flex gap="10px" alignItems="center">
-      <ThemeSwitch {...props} />
+      <ThemeSwitch {...props} mode={mode} onToggleTheme={toggleTheme} />
       {mode}
     </Flex>
   )

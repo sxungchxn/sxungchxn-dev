@@ -1,7 +1,7 @@
 import '@/styles/reset.css'
 import '@/styles/vars.css'
 import type { Preview } from '@storybook/react'
-import { ThemeProvider } from '@/providers/theme-provider'
+import { AnimationProvider, ThemeProvider } from '@/providers'
 
 const preview: Preview = {
   parameters: {
@@ -22,9 +22,11 @@ const preview: Preview = {
   },
   decorators: [
     Story => (
-      <ThemeProvider>
-        <Story />
-      </ThemeProvider>
+      <AnimationProvider>
+        <ThemeProvider>
+          <Story />
+        </ThemeProvider>
+      </AnimationProvider>
     ),
   ],
 }
