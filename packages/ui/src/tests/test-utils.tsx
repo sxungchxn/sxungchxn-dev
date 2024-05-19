@@ -10,14 +10,9 @@ import {
   type RenderResult,
 } from '@testing-library/react'
 import { type ReactElement, type ReactNode, Suspense } from 'react'
-import { ThemeProvider } from '@/providers/theme-provider'
 
 export const AllProviders = ({ children }: { children: ReactNode }) => {
-  return (
-    <ThemeProvider>
-      <Suspense>{children}</Suspense>
-    </ThemeProvider>
-  )
+  return <Suspense>{children}</Suspense>
 }
 
 type CustomRenderer = (ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>) => RenderResult

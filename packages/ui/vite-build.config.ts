@@ -55,7 +55,8 @@ export const bundleCssEmits = (): Plugin => ({
   },
 })
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  publicDir: command === 'build' ? false : 'public',
   plugins: [
     /* parse tsconfig paths */
     tsconfigPaths(),
@@ -63,16 +64,6 @@ export default defineConfig({
     dts({
       copyDtsFiles: true,
       tsconfigPath: './tsconfig.build.json',
-      outDir: 'dist',
-      include: ['src'],
-      exclude: [
-        'node_modules',
-        'dist',
-        'tests',
-        '**/*.stories.tsx',
-        '**/*.test.ts*',
-        './src/vite-env.d.ts',
-      ],
     }),
     /* bundle visualizer */
     visualizer(),
@@ -103,7 +94,7 @@ export default defineConfig({
       // ignore use client directive in vite
       // https://github.com/TanStack/query/issues/5175
       onwarn(warning, warn) {
-        if (warning.code === 'MODULE_LEVEL_DIRECTIVE' || warning.code === 'SOURCEMAP_ERROr') {
+        if (warning.code === 'MODULE_LEVEL_DIRECTIVE' || warning.code === 'SOURCEMAP_ERROR') {
           return
         }
         warn(warning)
@@ -151,4 +142,4 @@ export default defineConfig({
   resolve: {
     dedupe: ['react', 'react-dom'],
   },
-})
+}))
