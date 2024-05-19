@@ -63,15 +63,7 @@ export type TextComponent = <C extends TextElements = 'div'>(
 /** Text 컴포넌트 */
 export const Text = forwardRef(
   <C extends TextElements = 'div'>(
-    {
-      children,
-      variant,
-      fontFace = 'primary',
-      ellipsis,
-      underline,
-
-      ...rest
-    }: TextProps<C>,
+    { children, variant, fontFace = 'primary', ellipsis, underline, ...rest }: TextProps<C>,
     ref: PolymorphicRef<C>,
   ) => {
     return (
