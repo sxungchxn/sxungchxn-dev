@@ -1,10 +1,19 @@
 import '@sxungchxn/dev-ui/styles'
+import type { ReactNode } from 'react'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import { AnimationProvider, Box } from '@sxungchxn/dev-ui'
-import { ThemeProvider } from '@/providers'
+import { Kalam } from 'next/font/google'
+import { Box, vars } from '@sxungchxn/dev-ui'
+import { Providers } from '@/providers'
+import { assignInlineVars } from '@vanilla-extract/dynamic'
 
-const inter = Inter({ subsets: ['latin'] })
+const kalam = Kalam({
+  weight: ['400', '700'],
+  style: ['normal'],
+  subsets: ['latin'],
+  preload: true,
+  display: 'swap',
+  variable: '--fonts-secondary',
+})
 
 export const metadata: Metadata = {
   title: 'sxungchxn',
@@ -14,14 +23,25 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: ReactNode
 }>) {
+  /**
+   * https://github.com/vanilla-extract-css/vanilla-extract/discussions/1019
+   * override sxungchxn/dev-ui vars' fontfamily with next/font
+   * serialization is necessary for preventing server component warning.
+   */
+  const inlinedKalamFontFamily = JSON.parse(
+    JSON.stringify(
+      assignInlineVars({
+        [vars.fonts.secondary]: kalam.style.fontFamily,
+      }),
+    ),
+  )
+
   return (
-    <html lang="en" suppressHydrationWarning>
-      <Box as="body" backgroundColor="primary" height="100vh">
-        <ThemeProvider>
-          <AnimationProvider>{children}</AnimationProvider>
-        </ThemeProvider>
+    <html lang="ko-KR" suppressHydrationWarning>
+      <Box as="body" backgroundColor="primary" height="100vh" style={inlinedKalamFontFamily}>
+        <Providers>{children}</Providers>
       </Box>
     </html>
   )

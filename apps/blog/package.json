@@ -7,11 +7,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "check-types": "tsc --noEmit"
   },
   "dependencies": {
     "@sxungchxn/dev-icons": "workspace:*",
     "@sxungchxn/dev-ui": "workspace:*",
+    "@vanilla-extract/css": "^1.14.0",
+    "@vanilla-extract/dynamic": "^2.1.0",
+    "@vanilla-extract/recipes": "^0.5.1",
     "next": "14.2.3",
     "next-themes": "^0.3.0",
     "react": "^18",
@@ -24,6 +28,6 @@
     "@vanilla-extract/next-plugin": "^2.4.0",
     "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*",
-    "typescript": "^5"
+    "typescript": "5.4.5"
   }
 }
