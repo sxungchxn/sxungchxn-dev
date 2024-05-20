@@ -13,7 +13,7 @@
     "email": "uvzone@naver.com"
   },
   "type": "module",
-  "sideEffect": [
+  "sideEffects": [
     "*.css",
     "*.css.ts"
   ],
