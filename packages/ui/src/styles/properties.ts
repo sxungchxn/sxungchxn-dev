@@ -118,6 +118,7 @@ export const unresponsiveProperties = {
     out: 'cubic-bezier(0, 0, 0.2, 1)',
     inOut: 'cubic-bezier(0.42, 0, 0.58, 1)',
   },
+  position: ['relative', 'fixed', 'absolute'],
   visibility: ['hidden', 'visible'],
   whiteSpace: ['normal', 'nowrap', 'pre', 'pre-line', 'pre-wrap', 'initial', 'inherit'],
   wordBreak: ['normal', 'break-all', 'keep-all', 'break-word'],

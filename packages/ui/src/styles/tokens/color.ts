@@ -60,14 +60,14 @@ export const colors = {
     primary: baseColors.white,
     secondary: baseColors.purple100,
     textPrimary: baseColors.purple700,
-    textSecondary: baseColors.purple200,
+    textSecondary: baseColors.purple300,
     transparent: baseColors.transparentWhite,
   },
   dark: {
     primary: baseColors.purple700,
     secondary: baseColors.purple600,
     textPrimary: baseColors.purple100,
-    textSecondary: baseColors.purple300,
+    textSecondary: baseColors.purple200,
     transparent: baseColors.transparentGrey,
   },
 }

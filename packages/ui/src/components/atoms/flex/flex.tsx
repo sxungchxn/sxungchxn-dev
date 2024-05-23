@@ -35,6 +35,9 @@ export interface FlexStyleProps extends LayoutProps {
   color?: AtomicProps['color']
   /** css border-radius property */
   borderRadius?: AtomicProps['borderRadius']
+  /** css position property */
+  position?: AtomicProps['position']
+  zIndex?: AtomicProps['zIndex']
 }
 
 export type FlexProps<C extends FlexElements = 'div'> = PolymorphicComponentPropWithRef<

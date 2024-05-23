@@ -3,7 +3,6 @@ import { space } from './space'
 import { colors } from './color'
 import { opacity } from './opacity'
 import { zIndex } from './z-index'
-import { shadows } from './shadows'
 import { fonts, fontSizes, fontWeights, letterSpacings, lineHeights } from './typography'
 
 /**
@@ -20,7 +19,6 @@ export const tokens = {
   lineHeights,
   opacity,
   radius,
-  shadows,
   space,
   zIndex,
 }

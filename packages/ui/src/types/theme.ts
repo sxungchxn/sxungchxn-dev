@@ -20,7 +20,6 @@ export interface Theme {
   mode: ThemeMode
   radius: Tokens['radius']
   space: Tokens['space']
-  shadows: Tokens['shadows']
   lineHeights: Tokens['lineHeights']
   letterSpacings: Tokens['letterSpacings']
   opacity: Tokens['opacity']
