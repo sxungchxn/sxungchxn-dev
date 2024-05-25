@@ -18,6 +18,12 @@ export interface GridStyleProps extends LayoutProps {
   gridTemplateColumns?: string
   /** same as repeat(n, 1fr) */
   columns?: number
+  /** css background-color property */
+  backgroundColor?: AtomicProps['backgroundColor']
+  /** css color property */
+  color?: AtomicProps['color']
+  /** css border-radius property */
+  borderRadius?: AtomicProps['borderRadius']
 }
 
 export type GridProps<C extends GridElements = 'div'> = PolymorphicComponentPropWithRef<

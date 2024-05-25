@@ -104,12 +104,13 @@ export const CarouselPrevButton = ({ onClick, ...props }: CarouselPrevButtonProp
   return (
     <IconButton
       {...props}
-      color="purple400"
-      variant="subtle"
+      color="purple700"
+      backgroundColor="transparentWhite"
+      variant="filled"
       disabled={prevBtnDisabled}
       onClick={handleClickPrevButton}
     >
-      <Icon source={IconChevronLeft} size={24} />
+      <Icon source={IconChevronLeft} size={16} />
     </IconButton>
   )
 }
@@ -135,12 +136,13 @@ export const CarouselNextButton = ({ onClick, ...props }: CarouselNextButtonProp
   return (
     <IconButton
       {...props}
-      color="purple400"
-      variant="subtle"
+      color="purple700"
+      backgroundColor="transparentWhite"
+      variant="filled"
       disabled={nextBtnDisabled}
       onClick={handleClickNextButton}
     >
-      <Icon source={IconChevronRight} size={24} />
+      <Icon source={IconChevronRight} size={16} />
     </IconButton>
   )
 }
