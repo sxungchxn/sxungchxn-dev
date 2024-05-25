@@ -7,6 +7,8 @@ import type {
 } from '@/types'
 import { Box } from '@/components/atoms/box'
 import * as styles from './text.css'
+import { clsx } from 'clsx'
+import { assignInlineVars } from '@vanilla-extract/dynamic'
 
 interface TextAtomsProps extends LayoutProps {
   /** css text-align property */
@@ -35,6 +37,8 @@ interface TextAtomsProps extends LayoutProps {
   ellipsis?: styles.Ellipsis
   /** 밑줄 표시 여부 */
   underline?: styles.Underline
+  /** 텍스트를 몇 줄로 나누면서 말줄임을 적용할지의 값 */
+  multiLineEllipsis?: number
 }
 
 export type TextElements =
@@ -63,19 +67,41 @@ export type TextComponent = <C extends TextElements = 'div'>(
 /** Text 컴포넌트 */
 export const Text = forwardRef(
   <C extends TextElements = 'div'>(
-    { children, variant, fontFace = 'primary', ellipsis, underline, ...rest }: TextProps<C>,
+    {
+      children,
+      variant,
+      fontFace = 'primary',
+      ellipsis,
+      underline,
+      className,
+      style,
+      multiLineEllipsis,
+      ...rest
+    }: TextProps<C>,
     ref: PolymorphicRef<C>,
   ) => {
     return (
       <Box
-        ref={ref}
-        className={styles.fontStyle({
-          variant,
-          fontFace,
-          ellipsis,
-          underline,
-        })}
         {...rest}
+        ref={ref}
+        style={{
+          ...style,
+          ...assignInlineVars({
+            [styles.multiLineEllipsisLinesVar]: multiLineEllipsis
+              ? String(multiLineEllipsis)
+              : undefined,
+          }),
+        }}
+        className={clsx(
+          styles.fontStyle({
+            variant,
+            fontFace,
+            ellipsis,
+            underline,
+            multiLineEllipsis: Boolean(multiLineEllipsis),
+          }),
+          className,
+        )}
       >
         {children}
       </Box>

@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css'
+import { createVar, style } from '@vanilla-extract/css'
 import type { RecipeVariants } from '@vanilla-extract/recipes'
 import { recipe } from '@vanilla-extract/recipes'
 import { sprinkles } from '@/styles/sprinkles.css'
@@ -128,6 +128,8 @@ export const fontFaceVariation = {
   }),
 }
 
+export const multiLineEllipsisLinesVar = createVar()
+
 export const fontStyle = recipe({
   variants: {
     variant,
@@ -151,6 +153,25 @@ export const fontStyle = recipe({
         }),
       ]),
     },
+    multiLineEllipsis: {
+      true: style([
+        {
+          display: '-webkit-box',
+          WebkitBoxOrient: 'vertical',
+          textOverflow: 'ellipsis',
+          WebkitLineClamp: multiLineEllipsisLinesVar,
+        },
+        sprinkles({
+          overflow: 'hidden',
+          wordWrap: 'break-word',
+        }),
+      ]),
+    },
+  },
+  defaultVariants: {
+    underline: false,
+    ellipsis: false,
+    multiLineEllipsis: false,
   },
 })
 
