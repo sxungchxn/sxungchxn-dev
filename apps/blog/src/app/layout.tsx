@@ -1,14 +1,11 @@
 import '@sxungchxn/dev-ui/styles'
-
 import type { CSSProperties, ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { Kalam } from 'next/font/google'
-import { Box, Flex, vars } from '@sxungchxn/dev-ui'
+import { Box, vars } from '@sxungchxn/dev-ui'
 import { Providers } from '@/providers'
 import { assignInlineVars } from '@vanilla-extract/dynamic'
-import { Header } from '@/components/header/header'
-import { Footer } from '@/components/footer/footer'
-import * as styles from '@/styles/layout.css'
+import { CommonLayout } from '@/components/common-layout/common-layout'
 
 const kalam = Kalam({
   weight: ['400', '700'],
@@ -46,18 +43,7 @@ export default function RootLayout({
     <html lang="ko-KR" suppressHydrationWarning>
       <Box as="body" backgroundColor="primary" height="100vh" style={inlinedKalamFontFamily}>
         <Providers>
-          <Header />
-          <Flex
-            as="main"
-            backgroundColor="primary"
-            marginTop="48px"
-            position="relative"
-            zIndex="above"
-            className={styles.container}
-          >
-            {children}
-          </Flex>
-          <Footer />
+          <CommonLayout>{children}</CommonLayout>
         </Providers>
       </Box>
     </html>

@@ -22,7 +22,7 @@ export const Footer = () => {
           </Box>
         </Flex>
         <Text as="span" variant="body4" color="textSecondary">
-          Copyright © 2024 • Yangseungchan
+          Copyright © 2024 • sxungchxn@github
         </Text>
       </div>
     </footer>
