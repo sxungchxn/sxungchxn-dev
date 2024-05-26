@@ -17,5 +17,7 @@ export * from './molecules/theme-switch'
 
 export * from './molecules/chip'
 
+export * from './molecules/progressive-hover-circle'
+
 /* organisms */
 export * from './organism/carousel'

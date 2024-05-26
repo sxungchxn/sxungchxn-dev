@@ -98,6 +98,7 @@
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.2.2",
+    "@radix-ui/react-slot": "^1.0.2",
     "@sxungchxn/dev-icons": "workspace:*",
     "embla-carousel": "^8.0.4",
     "embla-carousel-autoplay": "^8.0.4",

@@ -33,4 +33,5 @@ export type PolymorphicComponentPropWithRef<
   Props = NonNullable<unknown>,
 > = PolymorphicComponentProp<C, Props> & {
   ref?: PolymorphicRef<C>
+  asChild?: boolean
 }
