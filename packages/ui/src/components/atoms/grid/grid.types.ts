@@ -24,6 +24,7 @@ export interface GridStyleProps extends LayoutProps {
   color?: AtomicProps['color']
   /** css border-radius property */
   borderRadius?: AtomicProps['borderRadius']
+  cursor?: AtomicProps['cursor']
 }
 
 export type GridProps<C extends GridElements = 'div'> = PolymorphicComponentPropWithRef<

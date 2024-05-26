@@ -64,15 +64,6 @@ export const knob = recipe({
         selected: true,
       },
       style: {
-        width: '16px',
-      },
-    },
-    {
-      variants: {
-        size: 'md',
-        selected: true,
-      },
-      style: {
         width: '24px',
       },
     },
@@ -82,7 +73,16 @@ export const knob = recipe({
         selected: true,
       },
       style: {
-        width: '32px',
+        width: '36px',
+      },
+    },
+    {
+      variants: {
+        size: 'md',
+        selected: true,
+      },
+      style: {
+        width: '48px',
       },
     },
   ],

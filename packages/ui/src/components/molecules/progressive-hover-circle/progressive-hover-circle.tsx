@@ -39,9 +39,14 @@ export const ProgressiveHoverCircle = ({
   ...props
 }: ProgressiveHoverCircleProps) => {
   return (
-    <Box {...props} className={clsx(styles.wrapper, className)}>
+    <Box
+      {...props}
+      className={clsx(styles.wrapper, className)}
+      width={`${size}px`}
+      height={`${size}px`}
+    >
       {children}
-      <m.svg width={36} height={36} viewBox={`0 0 ${size} ${size}`} className={styles.svg}>
+      <m.svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className={styles.svg}>
         <m.circle
           cx={size / 2}
           cy={size / 2}
