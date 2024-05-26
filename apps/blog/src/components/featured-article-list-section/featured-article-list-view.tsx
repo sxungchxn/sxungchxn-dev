@@ -35,8 +35,14 @@ export const FeaturedArticleListView = ({ featuredArticleList }: FeaturedArticle
       onMouseLeave={() => setIsHover(false)}
     >
       <Flex direction="column" justifyContent="space-between">
-        <Flex direction="column" gap="16px" className={styles.textField}>
-          <Text asChild variant="heading3" color="textPrimary" height="60px" multiLineEllipsis={2}>
+        <Flex direction="column" className={styles.textField}>
+          <Text
+            asChild
+            variant="heading3"
+            color="textPrimary"
+            multiLineEllipsis={2}
+            className={styles.title}
+          >
             <m.h2
               key={id}
               initial={{ opacity: 0 }}
@@ -99,7 +105,7 @@ const FeaturedArticleListCarousel = ({
       <Carousel.SlideViewPort borderRadius="8px">
         {featuredArticleList.map(({ id, title, thumbnailUrl }) => (
           <Carousel.Slide key={id} className={styles.slide}>
-            <Image src={thumbnailUrl} alt={title} layout="fill" className={styles.image} />
+            <Image src={thumbnailUrl} alt={title} fill className={styles.image} />
           </Carousel.Slide>
         ))}
       </Carousel.SlideViewPort>

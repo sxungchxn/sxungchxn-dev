@@ -17,7 +17,9 @@ export const wrapper = style({
       display: 'flex',
       flexDirection: 'column-reverse',
     },
-    [mediaQuery.tablet]: {},
+    [mediaQuery.tablet]: {
+      gap: vars.space['28px'],
+    },
     [mediaQuery.mobile]: {
       gap: vars.space['20px'],
       padding: `${vars.space['24px']} ${vars.space['20px']}`,
@@ -27,10 +29,19 @@ export const wrapper = style({
 
 export const textField = style({
   marginRight: vars.space['40px'],
+  gap: vars.space['16px'],
   '@media': {
     [mediaQuery.belowPc]: {
       marginRight: '0px',
       marginBottom: vars.space['24px'],
+    },
+  },
+})
+
+export const title = style({
+  '@media': {
+    [mediaQuery.pc]: {
+      height: '60px',
     },
   },
 })
