@@ -4,30 +4,13 @@ import { vars } from '@/styles/vars.css'
 import * as styles from './progresive-hover-circle.css'
 import type { AtomicProps } from '@/types'
 import { clsx } from 'clsx'
-
-const hoverAnimateVariants = {
-  unhover: {
-    pathLength: 0,
-    opacity: 0,
-  },
-  hover: {
-    pathLength: 1,
-    opacity: 1,
-    transition: {
-      pathLength: {
-        type: 'spring',
-        duration: 0.5,
-        bounce: 0,
-      },
-      opacity: { duration: 0.2 },
-    },
-  },
-}
+import { useMemo } from 'react'
 
 export interface ProgressiveHoverCircleProps extends BoxProps {
   isHover?: boolean
   size?: number
   fillColor?: AtomicProps['color']
+  duration?: number
 }
 
 export const ProgressiveHoverCircle = ({
@@ -36,8 +19,31 @@ export const ProgressiveHoverCircle = ({
   fillColor = 'primary',
   isHover = false,
   className,
+  duration = 0.5,
   ...props
 }: ProgressiveHoverCircleProps) => {
+  const hoverAnimateVariants = useMemo(
+    () => ({
+      unhover: {
+        pathLength: 0,
+        opacity: 0,
+      },
+      hover: {
+        pathLength: 1,
+        opacity: 1,
+        transition: {
+          pathLength: {
+            type: 'spring',
+            duration,
+            bounce: 0,
+          },
+          opacity: { duration },
+        },
+      },
+    }),
+    [duration],
+  )
+
   return (
     <Box
       {...props}

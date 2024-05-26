@@ -39,6 +39,7 @@ export default defineConfig(({ mode }) => ({
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
+          'framer-motion': 'FramerMotion',
         },
       },
     },
@@ -55,6 +56,6 @@ export default defineConfig(({ mode }) => ({
     },
   },
   resolve: {
-    dedupe: ['react', 'react-dom'],
+    dedupe: ['react', 'react-dom', 'framer-motion'],
   },
 }))

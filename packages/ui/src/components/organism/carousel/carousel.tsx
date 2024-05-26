@@ -166,6 +166,13 @@ export const CarouselPagination = ({
     handleNavButtonClick,
   )
 
+  const handleClickDotButton =
+    (index: number): MouseEventHandler<HTMLButtonElement> =>
+    e => {
+      e.stopPropagation()
+      onDotButtonClick(index)
+    }
+
   return (
     <Box className={clsx(styles.knobList, className)} {...rest}>
       {scrollSnaps.map((_, index) => (
@@ -177,7 +184,7 @@ export const CarouselPagination = ({
             size,
             selected: selectedIndex === index,
           })}
-          onClick={() => onDotButtonClick(index)}
+          onClick={handleClickDotButton(index)}
         />
       ))}
     </Box>

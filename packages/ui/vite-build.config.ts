@@ -82,7 +82,7 @@ export default defineConfig(({ command }) => ({
     },
     rollupOptions: {
       input: ['src/index.ts'],
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', 'framer-motion'],
       preserveEntrySignatures: 'strict',
       plugins: [
         vanillaExtractPlugin({
@@ -122,6 +122,7 @@ export default defineConfig(({ command }) => ({
           globals: {
             'react-dom': 'ReactDOM',
             react: 'React',
+            'framer-motion': 'FramerMotion',
           },
         },
         {
@@ -134,12 +135,13 @@ export default defineConfig(({ command }) => ({
           globals: {
             'react-dom': 'ReactDOM',
             react: 'React',
+            'framer-motion': 'FramerMotion',
           },
         },
       ],
     },
   },
   resolve: {
-    dedupe: ['react', 'react-dom'],
+    dedupe: ['react', 'react-dom', 'framer-motion'],
   },
 }))
