@@ -2,6 +2,7 @@ import { createElement, type ElementType, forwardRef, type ReactElement } from '
 import { type BoxProps } from './box.types'
 import { useBoxProps } from './hooks/use-box-props'
 import { type PolymorphicRef } from '@/types/polymorphic'
+import { Slot } from '@radix-ui/react-slot'
 
 export type BoxComponent = <C extends ElementType = 'div'>(
   props: BoxProps<C>,
@@ -9,8 +10,8 @@ export type BoxComponent = <C extends ElementType = 'div'>(
 
 export const Box = forwardRef(
   <C extends ElementType = 'div'>(props: BoxProps<C>, ref: PolymorphicRef<C>) => {
-    const { as, ...otherBoxProps } = useBoxProps(props)
+    const { as, asChild, ...otherBoxProps } = useBoxProps(props)
 
-    return createElement(as ?? 'div', { ref, ...otherBoxProps })
+    return createElement(asChild ? Slot : as ?? 'div', { ref, ...otherBoxProps })
   },
 ) as BoxComponent

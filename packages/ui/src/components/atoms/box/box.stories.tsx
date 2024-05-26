@@ -23,3 +23,19 @@ export const Default: Story = {
     borderRadius: '4px',
   },
 }
+
+export const SlotExample: Story = {
+  render: args => (
+    <Box {...args}>
+      <button>child element</button>
+    </Box>
+  ),
+  args: {
+    asChild: true,
+    children: <button>child element</button>,
+    backgroundColor: 'secondary',
+    color: 'textPrimary',
+    padding: '20px',
+    borderRadius: '4px',
+  },
+}

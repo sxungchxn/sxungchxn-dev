@@ -6,7 +6,7 @@ import { type AtomicProps, type InlineStyleProps, inlineStylePropsSet } from '@/
 import * as resetStyles from '@/styles/reset.css'
 
 export const useBoxProps = <C extends ElementType = 'div'>(props: BoxProps<C>) => {
-  const { as: boxElementType, className, ...otherProps } = props
+  const { as: boxElementType, asChild, className, style, ...otherProps } = props
   const atomicProps: Record<string, unknown> = {}
   const inlineStyleProps: Record<string, unknown> = {}
   const restProps: Record<string, unknown> = {}
@@ -22,14 +22,15 @@ export const useBoxProps = <C extends ElementType = 'div'>(props: BoxProps<C>) =
   }
 
   return {
+    ...restProps,
     as: boxElementType ?? 'div',
+    asChild,
     className: clsx(
       resetStyles.base,
       resetStyles.element[boxElementType as resetStyles.Element],
       sprinkles(atomicProps),
       className,
     ),
-    style: inlineStyleProps,
-    ...restProps,
+    style: { ...style, ...inlineStyleProps },
   } as const
 }
