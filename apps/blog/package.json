@@ -17,6 +17,8 @@
     "@vanilla-extract/css": "^1.14.0",
     "@vanilla-extract/dynamic": "^2.1.0",
     "@vanilla-extract/recipes": "^0.5.1",
+    "date-fns": "^3.6.0",
+    "framer-motion": "^11.2.0",
     "next": "14.2.3",
     "next-themes": "^0.3.0",
     "react": "^18",

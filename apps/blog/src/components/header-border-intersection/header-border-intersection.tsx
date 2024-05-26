@@ -15,5 +15,13 @@ export const HeaderBorderIntersection = ({
     },
   })
 
-  return <div ref={ref} />
+  return (
+    <div
+      ref={ref}
+      style={{
+        position: 'absolute',
+        top: 0,
+      }}
+    />
+  )
 }

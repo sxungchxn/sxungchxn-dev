@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react'
 import { ThemeProvider } from 'next-themes'
-import { AnimationProvider } from '@sxungchxn/dev-ui'
+import { AnimationProvider } from '@/providers/animation-provider/animation-provider'
 
 export interface ProvidersProps extends PropsWithChildren {}
 
