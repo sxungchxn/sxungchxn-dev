@@ -39,9 +39,13 @@ export const textField = style({
 })
 
 export const title = style({
+  height: '60px',
+})
+
+export const description = style({
   '@media': {
-    [mediaQuery.pc]: {
-      height: '60px',
+    [mediaQuery.belowPc]: {
+      height: '72px',
     },
   },
 })
@@ -84,7 +88,7 @@ export const image = style({
 })
 
 export const linkArrow = style({
-  transition: 'transform 0.5s ease-in-out',
+  transition: 'transform 0.3s ease-in-out',
   selectors: {
     [`${wrapper}:hover &`]: {
       transform: 'translateX(4px)',

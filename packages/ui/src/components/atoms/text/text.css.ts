@@ -3,7 +3,7 @@ import type { RecipeVariants } from '@vanilla-extract/recipes'
 import { recipe } from '@vanilla-extract/recipes'
 import { sprinkles } from '@/styles/sprinkles.css'
 
-const variant = {
+export const textVariants = {
   display1: sprinkles({
     fontSize: '52px',
     lineHeight: '1.3',
@@ -132,7 +132,7 @@ export const multiLineEllipsisLinesVar = createVar()
 
 export const fontStyle = recipe({
   variants: {
-    variant,
+    variant: textVariants,
     fontFace: fontFaceVariation,
     underline: {
       true: {

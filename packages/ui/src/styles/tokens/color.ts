@@ -62,6 +62,7 @@ export const colors = {
     textPrimary: baseColors.purple700,
     textSecondary: baseColors.purple300,
     transparent: baseColors.transparentGrey,
+    transparentPrimary: 'rgba(255, 255, 255, 0.8)',
   },
   dark: {
     primary: baseColors.purple700,
@@ -69,5 +70,6 @@ export const colors = {
     textPrimary: baseColors.purple100,
     textSecondary: baseColors.purple200,
     transparent: baseColors.transparentWhite,
+    transparentPrimary: 'rgba(19, 20, 30, 0.8)',
   },
 }

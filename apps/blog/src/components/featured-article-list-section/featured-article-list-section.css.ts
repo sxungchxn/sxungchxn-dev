@@ -1,5 +1,16 @@
 import { style } from '@vanilla-extract/css'
-import { mediaQuery, vars } from '@sxungchxn/dev-ui'
+import { mediaQuery, textVariants, vars } from '@sxungchxn/dev-ui'
+
+export const title = style([
+  textVariants.display3,
+  {
+    '@media': {
+      [mediaQuery.belowPc]: {
+        fontSize: '36px !important',
+      },
+    },
+  },
+])
 
 export const section = style({
   '@media': {

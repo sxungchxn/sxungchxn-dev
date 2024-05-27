@@ -62,7 +62,13 @@ export const FeaturedArticleListView = ({ featuredArticleList }: FeaturedArticle
               {getYearMonthDay(createdAt)} • {getDistanceFromToday(createdAt)}
             </m.span>
           </Text>
-          <Text asChild variant="body2" color="textSecondary" multiLineEllipsis={3}>
+          <Text
+            asChild
+            variant="body2"
+            color="textSecondary"
+            multiLineEllipsis={3}
+            className={styles.description}
+          >
             <m.span
               key={id}
               initial={{ opacity: 0 }}

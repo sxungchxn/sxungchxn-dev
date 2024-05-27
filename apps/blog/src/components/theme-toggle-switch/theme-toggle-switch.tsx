@@ -1,10 +1,12 @@
 'use client'
 
-import { type Mode, ThemeSwitch } from '@sxungchxn/dev-ui'
+import { type Mode, ThemeSwitch, type ThemeSwitchProps } from '@sxungchxn/dev-ui'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 
-export const ThemeToggleSwitch = () => {
+export interface ThemeToggleSwitchProps extends Omit<ThemeSwitchProps, 'mode' | 'onToggleTheme'> {}
+
+export const ThemeToggleSwitch = (props: ThemeToggleSwitchProps) => {
   const [mounted, setMounted] = useState(false)
   const { resolvedTheme, setTheme } = useTheme()
 
@@ -19,5 +21,5 @@ export const ThemeToggleSwitch = () => {
   // by blocking logic with useEffect, the logic below is not affected on server render
   if (!mounted) return null
 
-  return <ThemeSwitch mode={resolvedTheme as Mode} onToggleTheme={handleToggleTheme} />
+  return <ThemeSwitch {...props} mode={resolvedTheme as Mode} onToggleTheme={handleToggleTheme} />
 }
