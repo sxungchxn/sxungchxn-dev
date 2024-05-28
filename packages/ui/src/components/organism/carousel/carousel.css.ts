@@ -20,6 +20,9 @@ export const container = style({
 export const slide = style({
   flex: '0 0 100%',
   minWidth: 0,
+  userSelect: 'none',
+  WebkitUserSelect: 'none',
+  msUserSelect: 'none',
 })
 
 export const knobList = sprinkles({ display: 'flex', alignItems: 'center', gap: '2px' })
