@@ -13,6 +13,7 @@ export const title = style([
 ])
 
 export const section = style({
+  marginBottom: '100px',
   '@media': {
     [mediaQuery.tablet]: {
       padding: `0px ${vars.space['32px']}`,
