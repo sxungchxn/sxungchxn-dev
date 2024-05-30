@@ -1,4 +1,9 @@
-import type { FeaturedArticle, QueryPageResponse } from '@/api/types'
+import type {
+  ArticleTag,
+  DataBaseMetaDataResponse,
+  FeaturedArticle,
+  QueryPageResponse,
+} from '@/api/types'
 
 export class NotionPageListAdapter {
   private pageList: Array<QueryPageResponse>
@@ -17,5 +22,17 @@ export class NotionPageListAdapter {
         thumbnailUrl: thumbnail.files?.[0]?.file.url ?? '기본 이미지 url',
       }),
     )
+  }
+}
+
+export class NotionDataBaseMetaDataAdapter {
+  private metaData: DataBaseMetaDataResponse
+
+  constructor(metaData: DataBaseMetaDataResponse) {
+    this.metaData = metaData
+  }
+
+  convertToTagList(): ArticleTag[] {
+    return this.metaData.properties.tags.multi_select.options
   }
 }

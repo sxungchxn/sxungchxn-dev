@@ -1,8 +1,8 @@
 import 'server-only'
 import { cache } from 'react'
 import { notion } from '@/api/notion'
-import { NotionPageListAdapter } from '@/api/adapter'
-import type { QueryPageResponse } from '@/api/types'
+import { NotionDataBaseMetaDataAdapter, NotionPageListAdapter } from '@/api/adapter'
+import type { DataBaseMetaDataResponse, QueryPageResponse } from '@/api/types'
 
 export const fetchFeaturedArticleList = cache(async () => {
   const queryResponse = await notion.databases.query({
@@ -35,3 +35,13 @@ export const fetchFeaturedArticleList = cache(async () => {
     queryResponse.results as Array<QueryPageResponse>,
   ).convertToFeaturedArticleList()
 })
+
+export const fetchArticleTagList = async () => {
+  const metaDataResponse = await notion.databases.retrieve({
+    database_id: process.env.NOTION_DATABASE_ID!,
+  })
+
+  return new NotionDataBaseMetaDataAdapter(metaDataResponse as unknown as DataBaseMetaDataResponse)
+    .convertToTagList()
+    .sort((tag1, tag2) => (tag1.name > tag2.name ? 1 : -1))
+}

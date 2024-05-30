@@ -1,6 +1,7 @@
-import {
-  type PageObjectResponse,
-  type TextRichTextItemResponse,
+import type {
+  DatabaseObjectResponse,
+  PageObjectResponse,
+  TextRichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints'
 
 /**
@@ -81,6 +82,23 @@ export interface QueryPageResponse extends Omit<PageObjectResponse, 'properties'
   }
 }
 
+export interface DataBaseMetaDataResponse extends Omit<DatabaseObjectResponse, 'properties'> {
+  properties: {
+    tags: {
+      type: 'multi_select'
+      multi_select: {
+        options: Array<{
+          id: string
+          name: string
+          description: string | null
+        }>
+      }
+      id: string
+      name: string
+    }
+  }
+}
+
 /** 주요 게시글 */
 export interface FeaturedArticle {
   /** notion database id property */
@@ -94,3 +112,12 @@ export interface FeaturedArticle {
   /** 게시글 썸네일 url */
   thumbnailUrl: string
 }
+
+/** 게시글 태그 */
+export interface ArticleTag {
+  id: string
+  name: string
+}
+
+/** 모든 게시글 항목에 있는 게시글 */
+export interface ArticleListItem {}
