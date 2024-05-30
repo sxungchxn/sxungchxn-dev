@@ -17,7 +17,7 @@ const kalam = Kalam({
 })
 
 export const metadata: Metadata = {
-  title: 'sxungchxn',
+  title: 'sxungchxn.dev',
   description: 'dev blog built by sxungchxn',
 }
 

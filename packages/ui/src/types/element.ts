@@ -13,3 +13,4 @@ export type ContainerElements =
   | 'summary'
   | 'figure'
   | 'figcaption'
+  | 'ul'
