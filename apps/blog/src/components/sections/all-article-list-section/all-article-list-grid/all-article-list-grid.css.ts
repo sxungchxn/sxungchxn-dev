@@ -2,7 +2,6 @@ import { style } from '@vanilla-extract/css'
 import { mediaQuery, vars } from '@sxungchxn/dev-ui'
 
 export const list = style({
-  marginBottom: '300px',
   position: 'relative',
   '@media': {
     [mediaQuery.belowPc]: {

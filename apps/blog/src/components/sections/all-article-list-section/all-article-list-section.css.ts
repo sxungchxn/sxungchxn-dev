@@ -2,6 +2,7 @@ import { style } from '@vanilla-extract/css'
 import { mediaQuery, vars } from '@sxungchxn/dev-ui'
 
 export const section = style({
+  marginBottom: '300px',
   '@media': {
     [mediaQuery.tablet]: {
       padding: `0px ${vars.space['32px']}`,

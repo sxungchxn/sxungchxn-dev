@@ -69,8 +69,8 @@ export const chip = recipe({
         color: 'primary',
       },
       style: {
-        color: vars.colors.primary,
-        border: `1.5px solid ${vars.colors.primary}`,
+        color: vars.colors.textPrimary,
+        border: `2px solid ${vars.colors.textPrimary}`,
       },
     },
     {
@@ -79,8 +79,8 @@ export const chip = recipe({
         color: 'secondary',
       },
       style: {
-        color: vars.colors.secondary,
-        border: `1.5px solid ${vars.colors.secondary}`,
+        color: vars.colors.textSecondary,
+        border: `2px solid ${vars.colors.textSecondary}`,
       },
     },
   ],
