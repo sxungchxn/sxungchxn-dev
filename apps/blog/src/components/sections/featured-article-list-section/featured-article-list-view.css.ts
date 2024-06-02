@@ -62,7 +62,7 @@ export const slide = style({
       height: '280px',
     },
     [mediaQuery.belowPc]: {
-      aspectRatio: '4/3',
+      aspectRatio: '5/4',
     },
   },
 })
