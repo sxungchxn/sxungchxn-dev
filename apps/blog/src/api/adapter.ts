@@ -1,4 +1,5 @@
 import type {
+  AllArticle,
   ArticleTag,
   DataBaseMetaDataResponse,
   FeaturedArticle,
@@ -18,6 +19,18 @@ export class NotionPageListAdapter {
         id: id.unique_id.number,
         title: name.title?.[0]?.plain_text ?? '',
         description: description.rich_text?.[0]?.plain_text ?? '',
+        createdAt: new Date(createdAt.date?.start ?? created_time),
+        thumbnailUrl: thumbnail.files?.[0]?.file.url ?? '기본 이미지 url',
+      }),
+    )
+  }
+
+  convertToAllArticleList(): AllArticle[] {
+    return this.pageList.map(
+      ({ properties: { id, name, createdAt, tags, thumbnail }, created_time }) => ({
+        id: id.unique_id.number,
+        title: name.title?.[0]?.plain_text ?? '',
+        tagList: tags.multi_select.map(({ id, name }) => ({ id, name })),
         createdAt: new Date(createdAt.date?.start ?? created_time),
         thumbnailUrl: thumbnail.files?.[0]?.file.url ?? '기본 이미지 url',
       }),

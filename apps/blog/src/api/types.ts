@@ -120,4 +120,15 @@ export interface ArticleTag {
 }
 
 /** 모든 게시글 항목에 있는 게시글 */
-export interface ArticleListItem {}
+export interface AllArticle {
+  /** notion database id property */
+  id: number
+  /** 게시글 제목 */
+  title: string
+  /** 게시글 태그 목록 */
+  tagList: ArticleTag[]
+  /** 게시글 생성 일자*/
+  createdAt: Date
+  /** 게시글 썸네일 url */
+  thumbnailUrl: string
+}

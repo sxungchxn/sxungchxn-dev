@@ -14,3 +14,4 @@ export type ContainerElements =
   | 'figure'
   | 'figcaption'
   | 'ul'
+  | 'li'

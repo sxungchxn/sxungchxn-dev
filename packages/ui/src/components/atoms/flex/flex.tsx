@@ -37,7 +37,10 @@ export interface FlexStyleProps extends LayoutProps {
   borderRadius?: AtomicProps['borderRadius']
   /** css position property */
   position?: AtomicProps['position']
+  /** css z-index property */
   zIndex?: AtomicProps['zIndex']
+  /** css cursor property */
+  cursor?: AtomicProps['cursor']
 }
 
 export type FlexProps<C extends FlexElements = 'div'> = PolymorphicComponentPropWithRef<

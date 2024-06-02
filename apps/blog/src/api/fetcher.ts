@@ -36,7 +36,7 @@ export const fetchFeaturedArticleList = cache(async () => {
   ).convertToFeaturedArticleList()
 })
 
-export const fetchArticleTagList = async () => {
+export const fetchArticleTagList = cache(async () => {
   const metaDataResponse = await notion.databases.retrieve({
     database_id: process.env.NOTION_DATABASE_ID!,
   })
@@ -44,4 +44,30 @@ export const fetchArticleTagList = async () => {
   return new NotionDataBaseMetaDataAdapter(metaDataResponse as unknown as DataBaseMetaDataResponse)
     .convertToTagList()
     .sort((tag1, tag2) => (tag1.name > tag2.name ? 1 : -1))
-}
+})
+
+export const fetchAllArticleList = cache(async () => {
+  const queryResponse = await notion.databases.query({
+    database_id: process.env.NOTION_DATABASE_ID!,
+    filter: {
+      and: [
+        {
+          property: 'releasable',
+          checkbox: {
+            equals: true,
+          },
+        },
+      ],
+    },
+    sorts: [
+      {
+        property: 'createdAt',
+        direction: 'descending',
+      },
+    ],
+  })
+
+  return new NotionPageListAdapter(
+    queryResponse.results as Array<QueryPageResponse>,
+  ).convertToAllArticleList()
+})
