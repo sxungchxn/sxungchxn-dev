@@ -1,6 +1,6 @@
 'use client'
 
-import { useIntersectionObserver } from '@/hooks/use-intersection-observer'
+import { useIntersectionObserver } from '@/hooks/utils/use-intersection-observer'
 
 export interface HeaderBorderIntersectionProps {
   onChangeIntersection: (isIntersecting: boolean) => void

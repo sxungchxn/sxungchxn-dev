@@ -11,7 +11,7 @@ export interface AllArticleListItemProps {
 export const AllArticleListItem = ({ article }: AllArticleListItemProps) => {
   const { title, tagList, createdAt, thumbnailUrl } = article
   return (
-    <Flex as="div" direction="column" cursor="pointer" className={styles.listItem}>
+    <Flex as="li" direction="column" cursor="pointer" className={styles.listItem}>
       <Box position="relative" className={styles.thumbnailWrapper} marginBottom="20px">
         <Image
           src={thumbnailUrl}

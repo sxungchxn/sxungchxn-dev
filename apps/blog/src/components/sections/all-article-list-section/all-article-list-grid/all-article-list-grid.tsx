@@ -19,7 +19,7 @@ export const AllArticleListGrid = async () => {
       >
         <AllArticleList allArticleList={allArticleList} />
       </Grid>
-      <AllArticleMoreLoadButton maxArticleLength={allArticleList.length} />
+      <AllArticleMoreLoadButton allArticleList={allArticleList} />
     </>
   )
 }

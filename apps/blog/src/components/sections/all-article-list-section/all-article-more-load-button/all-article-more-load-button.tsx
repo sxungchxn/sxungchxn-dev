@@ -2,23 +2,22 @@
 
 import { Chip, Flex, Icon, Text } from '@sxungchxn/dev-ui'
 import { IconPlus } from '@sxungchxn/dev-icons'
-import { loadMoreArticle, store } from '@/store/article-filter.store'
-import { useSnapshot } from 'valtio'
+import { loadMoreArticle } from '@/store/article-filter.store'
+import type { AllArticle } from '@/api/types'
+import { useFilteredArticleList } from '@/hooks/service/use-filtered-article-list'
 
 export interface AllArticleMoreLoadButtonProps {
-  maxArticleLength: number
+  allArticleList: AllArticle[]
 }
 
-export const AllArticleMoreLoadButton = ({ maxArticleLength }: AllArticleMoreLoadButtonProps) => {
-  const { articleSliceLength } = useSnapshot(store)
-
-  const isLoadable = articleSliceLength < maxArticleLength
+export const AllArticleMoreLoadButton = ({ allArticleList }: AllArticleMoreLoadButtonProps) => {
+  const { isMoreArticleLoadable } = useFilteredArticleList(allArticleList)
 
   const handleClickLoadMoreArticle = () => {
     loadMoreArticle()
   }
 
-  return isLoadable ? (
+  return isMoreArticleLoadable ? (
     <Flex marginX="auto">
       <Chip
         as="button"

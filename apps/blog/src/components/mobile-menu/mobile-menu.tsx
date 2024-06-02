@@ -1,7 +1,7 @@
 'use client'
 
 import { m } from 'framer-motion'
-import { useBooleanState } from '@/hooks/use-boolean-state'
+import { useBooleanState } from '@/hooks/utils/use-boolean-state'
 import { MobileMenuToggleButton } from '@/components/mobile-menu/mobile-menu-toggle-button'
 import * as styles from './mobile-menu.css'
 import { Flex, Text } from '@sxungchxn/dev-ui'
