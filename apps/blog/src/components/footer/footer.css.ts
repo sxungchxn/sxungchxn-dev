@@ -16,6 +16,8 @@ export const footerSpacer = style({
 
 export const footer = style({
   height: footerHeight,
+  width: '100%',
+  maxWidth: '100vw',
   zIndex: 0,
   position: 'fixed',
   left: 0,

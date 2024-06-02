@@ -1,4 +1,3 @@
-// [ ] global state
 'use client'
 
 import { Chip, Text } from '@sxungchxn/dev-ui'
@@ -11,8 +10,6 @@ export interface ArticleFilterTagProps {
 }
 
 export const ArticleFilterTag = ({ tag }: ArticleFilterTagProps) => {
-  // switch to global state
-  // const [isSelected, toggle] = useBooleanState(false)
   const { filterTagList } = useArticleFilterStore()
   const isSelected = filterTagList.some(({ name }) => tag.name === name)
 

@@ -1,24 +1,26 @@
-import { Grid } from '@sxungchxn/dev-ui'
-import { fetchAllArticleList } from '@/api/fetcher'
-import * as styles from './all-article-list.css'
-import { AllArticleListItem } from '@/components/sections/all-article-list-section/all-article-list/all-article-list-item'
+'use client'
 
-export const AllArticleList = async () => {
-  const allArticleList = await fetchAllArticleList()
+import type { AllArticle } from '@/api/types'
+import { AllArticleListItem } from '@/components/sections/all-article-list-section/all-article-list/all-article-list-item'
+import { useArticleFilterStore } from '@/store/article-filter.store'
+
+export interface AllArticleListProps {
+  allArticleList: AllArticle[]
+}
+
+export const AllArticleList = ({ allArticleList }: AllArticleListProps) => {
+  const { filterTagList } = useArticleFilterStore()
+  const filterTagIdSet = new Set(filterTagList.map(({ id }) => id))
+  const filteredAllArticleList =
+    filterTagIdSet.size > 0
+      ? allArticleList.filter(({ tagList }) => tagList.some(tag => filterTagIdSet.has(tag.id)))
+      : allArticleList
 
   return (
-    <Grid
-      as="ul"
-      marginTop="48px"
-      width="100%"
-      columns={2}
-      className={styles.list}
-      columnGap="24px"
-      rowGap="48px"
-    >
-      {allArticleList.map(allArticle => (
+    <>
+      {filteredAllArticleList.map(allArticle => (
         <AllArticleListItem key={allArticle.id} article={allArticle} />
       ))}
-    </Grid>
+    </>
   )
 }

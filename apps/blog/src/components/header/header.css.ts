@@ -5,6 +5,7 @@ import { style } from '@vanilla-extract/css'
 export const header = recipe({
   base: {
     position: 'fixed',
+    maxWidth: '100vw',
     width: '100%',
     top: 0,
     zIndex: vars.zIndex.docked,

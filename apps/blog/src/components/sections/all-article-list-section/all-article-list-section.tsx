@@ -1,7 +1,7 @@
 import { Flex, Text } from '@sxungchxn/dev-ui'
 import * as styles from './all-article-list-section.css'
 import { ArticleFilterTagList } from '@/components/sections/all-article-list-section/article-filter-tag-list/article-filter-tag-list'
-import { AllArticleList } from '@/components/sections/all-article-list-section/all-article-list/all-article-list'
+import { AllArticleListGrid } from '@/components/sections/all-article-list-section/all-article-list/all-article-list-grid'
 
 export const AllArticleListSection = () => {
   return (
@@ -10,7 +10,7 @@ export const AllArticleListSection = () => {
         모든 게시글
       </Text>
       <ArticleFilterTagList />
-      <AllArticleList />
+      <AllArticleListGrid />
     </Flex>
   )
 }
