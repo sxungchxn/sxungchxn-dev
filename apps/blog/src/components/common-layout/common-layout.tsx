@@ -6,6 +6,7 @@ import * as styles from '@/styles/layout.css'
 import { Footer } from '@/components/footer/footer'
 import { type PropsWithChildren, useState } from 'react'
 import { HeaderBorderIntersection } from '@/components/header-border-intersection/header-border-intersection'
+import { Fab } from '@/components/fab/fab'
 
 export interface CommonLayoutProps extends PropsWithChildren {}
 
@@ -27,6 +28,7 @@ export const CommonLayout = ({ children }: CommonLayoutProps) => {
         {children}
       </Flex>
       <Footer />
+      <Fab />
     </>
   )
 }
