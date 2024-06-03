@@ -10,7 +10,7 @@ import {
   Text,
   useCarousel,
 } from '@sxungchxn/dev-ui'
-import type { FeaturedArticle } from '@/api/types'
+import type { FeaturedArticle, FeaturedArticleWithBlur } from '@/api/types'
 import Image from 'next/image'
 import * as styles from './featured-article-list-view.css'
 import { getDistanceFromToday, getYearMonthDay } from '@/utils/date'
@@ -19,7 +19,7 @@ import { useState } from 'react'
 import { m } from 'framer-motion'
 
 export interface FeaturedArticleListViewProps {
-  featuredArticleList: FeaturedArticle[]
+  featuredArticleList: FeaturedArticleWithBlur[]
 }
 
 export const FeaturedArticleListView = ({ featuredArticleList }: FeaturedArticleListViewProps) => {
@@ -59,7 +59,7 @@ export const FeaturedArticleListView = ({ featuredArticleList }: FeaturedArticle
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              {getYearMonthDay(createdAt)} • {getDistanceFromToday(createdAt)}
+              {getYearMonthDay(createdAt)}&nbsp;&nbsp;{getDistanceFromToday(createdAt)}
             </m.span>
           </Text>
           <Text
@@ -99,7 +99,7 @@ export const FeaturedArticleListView = ({ featuredArticleList }: FeaturedArticle
 }
 
 interface FeaturedArticleListCarouselProps extends CarouselRootProps {
-  featuredArticleList: FeaturedArticle[]
+  featuredArticleList: FeaturedArticleWithBlur[]
 }
 
 const FeaturedArticleListCarousel = ({
@@ -109,9 +109,16 @@ const FeaturedArticleListCarousel = ({
   return (
     <Carousel {...carouselApi}>
       <Carousel.SlideViewPort borderRadius="8px">
-        {featuredArticleList.map(({ id, title, thumbnailUrl }) => (
+        {featuredArticleList.map(({ id, title, thumbnailUrl, blurDataUrl }) => (
           <Carousel.Slide key={id} className={styles.slide}>
-            <Image src={thumbnailUrl} alt={title} fill className={styles.image} />
+            <Image
+              src={thumbnailUrl}
+              alt={title}
+              fill
+              className={styles.image}
+              placeholder="blur"
+              blurDataURL={blurDataUrl}
+            />
           </Carousel.Slide>
         ))}
       </Carousel.SlideViewPort>

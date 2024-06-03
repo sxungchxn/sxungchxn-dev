@@ -113,6 +113,11 @@ export interface FeaturedArticle {
   thumbnailUrl: string
 }
 
+export interface FeaturedArticleWithBlur extends FeaturedArticle {
+  /** blurData url */
+  blurDataUrl: string
+}
+
 /** 게시글 태그 */
 export interface ArticleTag {
   id: string
@@ -131,4 +136,9 @@ export interface AllArticle {
   createdAt: Date
   /** 게시글 썸네일 url */
   thumbnailUrl: string
+}
+
+export interface AllArticleWithBlur extends AllArticle {
+  /** blurData url */
+  blurDataUrl: string
 }

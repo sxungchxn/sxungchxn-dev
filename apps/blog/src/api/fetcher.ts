@@ -2,9 +2,26 @@ import 'server-only'
 import { cache } from 'react'
 import { notion } from '@/api/notion'
 import { NotionDataBaseMetaDataAdapter, NotionPageListAdapter } from '@/api/adapter'
-import type { DataBaseMetaDataResponse, QueryPageResponse } from '@/api/types'
+import type {
+  DataBaseMetaDataResponse,
+  FeaturedArticleWithBlur,
+  QueryPageResponse,
+} from '@/api/types'
+import { getPlaiceholder } from 'plaiceholder'
 
-export const fetchFeaturedArticleList = cache(async () => {
+export const fetchBlurDataUrl = async (thumbnailUrl: string) => {
+  try {
+    const buffer = await fetch(thumbnailUrl, {
+      cache: 'no-cache',
+    }).then(async res => Buffer.from(await res.arrayBuffer()))
+    const { base64 } = await getPlaiceholder(buffer)
+    return base64
+  } catch (err) {
+    return thumbnailUrl
+  }
+}
+
+export const fetchFeaturedArticleList = cache(async (): Promise<FeaturedArticleWithBlur[]> => {
   const queryResponse = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE_ID!,
     filter: {
@@ -31,9 +48,17 @@ export const fetchFeaturedArticleList = cache(async () => {
     ],
   })
 
-  return new NotionPageListAdapter(
+  const convertedFeaturedArticleList = new NotionPageListAdapter(
     queryResponse.results as Array<QueryPageResponse>,
   ).convertToFeaturedArticleList()
+
+  return Promise.all(
+    convertedFeaturedArticleList.map(async ({ thumbnailUrl, ...rest }) => ({
+      ...rest,
+      thumbnailUrl,
+      blurDataUrl: await fetchBlurDataUrl(thumbnailUrl),
+    })),
+  )
 })
 
 export const fetchArticleTagList = cache(async () => {
@@ -67,7 +92,15 @@ export const fetchAllArticleList = cache(async () => {
     ],
   })
 
-  return new NotionPageListAdapter(
+  const convertedAllArticleList = new NotionPageListAdapter(
     queryResponse.results as Array<QueryPageResponse>,
   ).convertToAllArticleList()
+
+  return Promise.all(
+    convertedAllArticleList.map(async ({ thumbnailUrl, ...rest }) => ({
+      ...rest,
+      thumbnailUrl,
+      blurDataUrl: await fetchBlurDataUrl(thumbnailUrl),
+    })),
+  )
 })

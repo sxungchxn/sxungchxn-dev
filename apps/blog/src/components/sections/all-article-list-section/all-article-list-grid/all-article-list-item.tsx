@@ -1,15 +1,15 @@
 import { Box, Chip, Flex, Text } from '@sxungchxn/dev-ui'
-import type { AllArticle } from '@/api/types'
+import type { AllArticleWithBlur } from '@/api/types'
 import Image from 'next/image'
 import * as styles from './all-article-list-grid.css'
 import { getDistanceFromToday, getYearMonthDay } from '@/utils/date'
 
 export interface AllArticleListItemProps {
-  article: AllArticle
+  article: AllArticleWithBlur
 }
 
 export const AllArticleListItem = ({ article }: AllArticleListItemProps) => {
-  const { title, tagList, createdAt, thumbnailUrl } = article
+  const { title, tagList, createdAt, thumbnailUrl, blurDataUrl } = article
   return (
     <Flex as="li" direction="column" cursor="pointer" className={styles.listItem}>
       <Box position="relative" className={styles.thumbnailWrapper} marginBottom="20px">
@@ -19,6 +19,8 @@ export const AllArticleListItem = ({ article }: AllArticleListItemProps) => {
           fill
           sizes="(min-width: 1024px) 476px, 100vw"
           className={styles.thumbnail}
+          placeholder="blur"
+          blurDataURL={blurDataUrl}
         />
       </Box>
       <Flex direction="column" gap="16px">

@@ -1,7 +1,7 @@
-import type { AllArticle } from '@/api/types'
+import type { AllArticleWithBlur } from '@/api/types'
 import { useArticleFilterStore } from '@/store/article-filter.store'
 
-export const useFilteredArticleList = (allArticleList: AllArticle[]) => {
+export const useFilteredArticleList = (allArticleList: AllArticleWithBlur[]) => {
   const { filterTagList, articleSliceLength } = useArticleFilterStore()
   const filterTagIdSet = new Set(filterTagList.map(({ id }) => id))
 
