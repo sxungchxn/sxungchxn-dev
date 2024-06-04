@@ -15,9 +15,10 @@ export const NavText = <C extends TextElements = 'div'>({
   ...props
 }: NavTextProps<C>) => {
   const currentPathName = usePathname()
+  const isUnderlined = currentPathName.includes(pathname)
   return (
     <Link href={pathname}>
-      <Text {...props} variant={variant} underline={currentPathName === pathname}>
+      <Text {...props} variant={variant} underline={isUnderlined}>
         {children}
       </Text>
     </Link>
