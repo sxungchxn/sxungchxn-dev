@@ -2,9 +2,10 @@
 
 import { Chip, Flex, Icon, Text } from '@sxungchxn/dev-ui'
 import { IconPlus } from '@sxungchxn/dev-icons'
-import { loadMoreArticle } from '@/store/article-filter.store'
+import { loadMoreArticle, resetFilterStore } from '@/store/article-filter.store'
 import type { AllArticle } from '@/api/types'
 import { useFilteredArticleList } from '@/hooks/service/use-filtered-article-list'
+import { useEffect } from 'react'
 
 export interface AllArticleMoreLoadButtonProps {
   allArticleList: AllArticle[]
@@ -16,6 +17,10 @@ export const AllArticleMoreLoadButton = ({ allArticleList }: AllArticleMoreLoadB
   const handleClickLoadMoreArticle = () => {
     loadMoreArticle()
   }
+
+  useEffect(() => {
+    return resetFilterStore
+  }, [])
 
   return isMoreArticleLoadable ? (
     <Flex marginX="auto">

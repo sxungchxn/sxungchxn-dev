@@ -23,4 +23,9 @@ export const loadMoreArticle = () => {
   store.articleSliceLength += 4
 }
 
+export const resetFilterStore = () => {
+  store.filterTagList = []
+  store.articleSliceLength = 4
+}
+
 export const useArticleFilterStore = () => useSnapshot(store)
