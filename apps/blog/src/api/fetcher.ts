@@ -3,6 +3,7 @@ import { cache } from 'react'
 import { notion } from '@/api/notion'
 import { NotionDataBaseMetaDataAdapter, NotionPageListAdapter } from '@/api/adapter'
 import type {
+  AllArticleWithBlur,
   DataBaseMetaDataResponse,
   FeaturedArticleWithBlur,
   QueryPageResponse,
@@ -71,7 +72,7 @@ export const fetchArticleTagList = cache(async () => {
     .sort((tag1, tag2) => (tag1.name > tag2.name ? 1 : -1))
 })
 
-export const fetchAllArticleList = cache(async () => {
+export const fetchAllArticleList = cache(async (): Promise<AllArticleWithBlur[]> => {
   const queryResponse = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE_ID!,
     filter: {

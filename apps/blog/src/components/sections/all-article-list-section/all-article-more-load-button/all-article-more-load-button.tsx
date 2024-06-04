@@ -3,12 +3,12 @@
 import { Chip, Flex, Icon, Text } from '@sxungchxn/dev-ui'
 import { IconPlus } from '@sxungchxn/dev-icons'
 import { loadMoreArticle, resetFilterStore } from '@/store/article-filter.store'
-import type { AllArticle } from '@/api/types'
+import type { AllArticleWithBlur } from '@/api/types'
 import { useFilteredArticleList } from '@/hooks/service/use-filtered-article-list'
 import { useEffect } from 'react'
 
 export interface AllArticleMoreLoadButtonProps {
-  allArticleList: AllArticle[]
+  allArticleList: AllArticleWithBlur[]
 }
 
 export const AllArticleMoreLoadButton = ({ allArticleList }: AllArticleMoreLoadButtonProps) => {

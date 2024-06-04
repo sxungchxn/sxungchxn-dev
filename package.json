@@ -9,7 +9,7 @@
     "dev:playground": "turbo run dev --filter react-playground",
     "dev:blog": "turbo run dev --filter blog",
     "pre-commit": "lint-staged && pnpm --filter '{packages/*}' '{apps/*}' pre-commit",
-    "check": "turbo run check-types test --filter dev-ui --filter dev-icons --cache-dir=.turbo"
+    "check": "turbo run check-types test --filter dev-ui --filter dev-icons --filter blog --cache-dir=.turbo"
   },
   "keywords": [],
   "license": "ISC",
