@@ -111,6 +111,8 @@ export interface FeaturedArticle {
   createdAt: Date
   /** 게시글 썸네일 url */
   thumbnailUrl: string
+  /** queried notion page id */
+  pageId: string
 }
 
 export interface FeaturedArticleWithBlur extends FeaturedArticle {
@@ -136,6 +138,8 @@ export interface AllArticle {
   createdAt: Date
   /** 게시글 썸네일 url */
   thumbnailUrl: string
+  /** queried notion page id */
+  pageId: string
 }
 
 export interface AllArticleWithBlur extends AllArticle {

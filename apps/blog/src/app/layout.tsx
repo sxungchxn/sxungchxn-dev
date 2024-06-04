@@ -42,7 +42,7 @@ export default function RootLayout({
 
   return (
     <html lang="ko-KR" suppressHydrationWarning>
-      <Box as="body" backgroundColor="primary" height="100vh" style={inlinedKalamFontFamily}>
+      <Box as="body" backgroundColor="primary" style={inlinedKalamFontFamily}>
         <Providers>
           <CommonLayout>{children}</CommonLayout>
         </Providers>

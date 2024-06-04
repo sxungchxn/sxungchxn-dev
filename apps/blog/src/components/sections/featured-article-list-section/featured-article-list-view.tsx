@@ -17,6 +17,7 @@ import { getDistanceFromToday, getYearMonthDay } from '@/utils/date'
 import { IconArrowRight } from '@sxungchxn/dev-icons'
 import { useState } from 'react'
 import { m } from 'framer-motion'
+import Link from 'next/link'
 
 export interface FeaturedArticleListViewProps {
   featuredArticleList: FeaturedArticleWithBlur[]
@@ -26,75 +27,82 @@ export const FeaturedArticleListView = ({ featuredArticleList }: FeaturedArticle
   const [isHover, setIsHover] = useState(false)
   const { selectedIndex, ...carouselApi } = useCarousel()
   const selectedFeaturedArticle = featuredArticleList[selectedIndex] as FeaturedArticle
-  const { id, title, description, createdAt } = selectedFeaturedArticle
+  const { id, title, description, createdAt, pageId } = selectedFeaturedArticle
 
   return (
-    <Box
-      className={styles.wrapper}
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
-    >
-      <Flex direction="column" justifyContent="space-between">
-        <Flex direction="column" className={styles.textField}>
-          <Text
-            asChild
-            variant="heading3"
-            color="textPrimary"
-            multiLineEllipsis={2}
-            className={styles.title}
-          >
-            <m.h2
-              key={id}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1 }}
-            >
-              {title}
-            </m.h2>
-          </Text>
-          <Text asChild variant="body3" as="span" color="textSecondary">
-            <m.span
-              key={id}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1 }}
-            >
-              {getYearMonthDay(createdAt)}&nbsp;&nbsp;{getDistanceFromToday(createdAt)}
-            </m.span>
-          </Text>
-          <Text
-            asChild
-            variant="body2"
-            color="textSecondary"
-            multiLineEllipsis={3}
-            className={styles.description}
-          >
-            <m.span
-              key={id}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1 }}
-            >
-              {description}
-            </m.span>
-          </Text>
-        </Flex>
-        <Flex alignItems="center" gap="12px" marginLeft="auto">
-          <Text as="span" variant="title2" color="textPrimary">
-            자세히 보기
-          </Text>
-          <ProgressiveHoverCircle size={36} isHover={isHover} fillColor="textPrimary" duration={1}>
-            <Icon
-              className={styles.linkArrow}
-              source={IconArrowRight}
-              size={24}
+    <Link href={`/blog/${pageId}`}>
+      <Box
+        className={styles.wrapper}
+        onMouseEnter={() => setIsHover(true)}
+        onMouseLeave={() => setIsHover(false)}
+      >
+        <Flex direction="column" justifyContent="space-between">
+          <Flex direction="column" className={styles.textField}>
+            <Text
+              asChild
+              variant="heading3"
               color="textPrimary"
-            />
-          </ProgressiveHoverCircle>
+              multiLineEllipsis={2}
+              className={styles.title}
+            >
+              <m.h2
+                key={id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+              >
+                {title}
+              </m.h2>
+            </Text>
+            <Text asChild variant="body3" as="span" color="textSecondary">
+              <m.span
+                key={id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+              >
+                {getYearMonthDay(createdAt)}&nbsp;&nbsp;{getDistanceFromToday(createdAt)}
+              </m.span>
+            </Text>
+            <Text
+              asChild
+              variant="body2"
+              color="textSecondary"
+              multiLineEllipsis={3}
+              className={styles.description}
+            >
+              <m.span
+                key={id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+              >
+                {description}
+              </m.span>
+            </Text>
+          </Flex>
+          <Flex alignItems="center" gap="12px" marginLeft="auto">
+            <Text as="span" variant="title2" color="textPrimary">
+              자세히 보기
+            </Text>
+            <ProgressiveHoverCircle
+              size={36}
+              isHover={isHover}
+              fillColor="textPrimary"
+              duration={1}
+            >
+              <Icon
+                className={styles.linkArrow}
+                source={IconArrowRight}
+                size={24}
+                color="textPrimary"
+              />
+            </ProgressiveHoverCircle>
+          </Flex>
         </Flex>
-      </Flex>
-      <FeaturedArticleListCarousel featuredArticleList={featuredArticleList} {...carouselApi} />
-    </Box>
+        <FeaturedArticleListCarousel featuredArticleList={featuredArticleList} {...carouselApi} />
+      </Box>
+    </Link>
   )
 }
 
@@ -131,8 +139,18 @@ const FeaturedArticleListCarousel = ({
         paddingX="16px"
         className={styles.controller}
       >
-        <Carousel.PrevButton onClick={e => e.stopPropagation()} />
-        <Carousel.NextButton onClick={e => e.stopPropagation()} />
+        <Carousel.PrevButton
+          onClick={e => {
+            e.preventDefault()
+            e.stopPropagation()
+          }}
+        />
+        <Carousel.NextButton
+          onClick={e => {
+            e.preventDefault()
+            e.stopPropagation()
+          }}
+        />
       </Flex>
     </Carousel>
   )

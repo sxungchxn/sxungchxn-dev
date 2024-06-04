@@ -169,6 +169,7 @@ export const CarouselPagination = ({
   const handleClickDotButton =
     (index: number): MouseEventHandler<HTMLButtonElement> =>
     e => {
+      e.preventDefault()
       e.stopPropagation()
       onDotButtonClick(index)
     }
