@@ -116,7 +116,9 @@ const FeaturedArticleListCarousel = ({
               alt={title}
               fill
               className={styles.image}
+              sizes="(min-width 1024px) 500px, 100vw"
               placeholder="blur"
+              priority
               blurDataURL={blurDataUrl}
             />
           </Carousel.Slide>
