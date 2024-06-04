@@ -29,7 +29,7 @@ export const AllArticleMoreLoadButton = ({ allArticleList }: AllArticleMoreLoadB
         marginTop="64px"
         onClick={handleClickLoadMoreArticle}
       >
-        <Text variant="title3" color="textSecondary">
+        <Text variant="title2" color="textSecondary">
           게시글 더 보기
         </Text>
       </Chip>
