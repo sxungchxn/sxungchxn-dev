@@ -1,4 +1,5 @@
 import '@sxungchxn/dev-ui/styles'
+import '@/styles/global.css'
 import type { CSSProperties, ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { Kalam } from 'next/font/google'

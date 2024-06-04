@@ -4,9 +4,10 @@ import { m } from 'framer-motion'
 import { useBooleanState } from '@/hooks/utils/use-boolean-state'
 import { MobileMenuToggleButton } from '@/components/mobile-menu/mobile-menu-toggle-button'
 import * as styles from './mobile-menu.css'
-import { Flex, Text } from '@sxungchxn/dev-ui'
+import { Flex } from '@sxungchxn/dev-ui'
 import { ThemeToggleSwitch } from '@/components'
 import { useCallback, useEffect } from 'react'
+import { NavText } from '@/components/nav-text/nav-text'
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -74,12 +75,12 @@ export const MobileMenu = () => {
       <MobileMenuToggleButton onToggle={toggleMenu} />
       <m.div className={styles.background} variants={sidebar}>
         <Flex direction="column" width="100%" className={styles.menuContent}>
-          <Text as="h2" variant="logo" color="textPrimary">
-            blog
-          </Text>
-          <Text as="h2" variant="logo" color="textPrimary">
-            about
-          </Text>
+          <NavText as="h2" pathname="/blog" variant="logo" color="textPrimary">
+            Blog
+          </NavText>
+          <NavText pathname="/about" variant="logo" color="textPrimary">
+            About
+          </NavText>
           <ThemeToggleSwitch />
         </Flex>
       </m.div>

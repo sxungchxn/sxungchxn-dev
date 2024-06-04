@@ -1,8 +1,9 @@
-import { Flex, Text } from '@sxungchxn/dev-ui'
+import { Flex } from '@sxungchxn/dev-ui'
 import { Logo } from '@/components/logo/logo'
 import { ThemeToggleSwitch } from '@/components'
 import * as styles from './header.css'
 import { MobileMenu } from '@/components/mobile-menu/mobile-menu'
+import { NavText } from '@/components/nav-text/nav-text'
 
 export interface HeaderProps {
   isBordered: boolean
@@ -21,12 +22,12 @@ export const Header = ({ isBordered }: HeaderProps) => {
         <Logo />
         <Flex as="nav" gap="24px" alignItems="center" className={styles.pcNavBar}>
           <ThemeToggleSwitch />
-          <Text as="span" variant="nav3">
+          <NavText as="span" variant="nav3" pathname="/blog" color="textPrimary">
             Blog
-          </Text>
-          <Text as="span" variant="nav3">
+          </NavText>
+          <NavText as="span" variant="nav3" pathname="/about" color="textPrimary">
             About
-          </Text>
+          </NavText>
         </Flex>
         <MobileMenu />
       </Flex>
