@@ -14,6 +14,9 @@ const nextConfig = {
       },
     ],
   },
+  redirects: async () => {
+    return [{ source: '/', destination: '/blog', permanent: true }]
+  },
 }
 
 export default withPlaiceholder(withVanillaExtract(nextConfig))
