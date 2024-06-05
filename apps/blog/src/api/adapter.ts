@@ -1,10 +1,33 @@
 import type {
   AllArticle,
+  ArticlePageHeaderData,
   ArticleTag,
   DataBaseMetaDataResponse,
   FeaturedArticle,
   QueryPageResponse,
 } from '@/api/types'
+
+export class NotionPageAdapter {
+  private page: QueryPageResponse
+
+  constructor(page: QueryPageResponse) {
+    this.page = page
+  }
+
+  convertToArticlePageHeaderData(): ArticlePageHeaderData {
+    const {
+      properties: { name, description, tags, createdAt, thumbnail },
+      created_time,
+    } = this.page
+    return {
+      title: name.title?.[0]?.plain_text ?? '',
+      description: description.rich_text?.[0]?.plain_text ?? '',
+      tagList: tags.multi_select.map(({ id, name }) => ({ id, name })),
+      createdAt: new Date(createdAt.date?.start ?? created_time),
+      thumbnailUrl: thumbnail.files?.[0]?.file.url ?? '기본 이미지 url',
+    }
+  }
+}
 
 export class NotionPageListAdapter {
   private pageList: Array<QueryPageResponse>

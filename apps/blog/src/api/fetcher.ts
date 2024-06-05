@@ -1,7 +1,11 @@
 import 'server-only'
 import { cache } from 'react'
 import { notion } from '@/api/notion'
-import { NotionDataBaseMetaDataAdapter, NotionPageListAdapter } from '@/api/adapter'
+import {
+  NotionDataBaseMetaDataAdapter,
+  NotionPageAdapter,
+  NotionPageListAdapter,
+} from '@/api/adapter'
 import type {
   AllArticleWithBlur,
   DataBaseMetaDataResponse,
@@ -105,3 +109,17 @@ export const fetchAllArticleList = cache(async (): Promise<AllArticleWithBlur[]>
     })),
   )
 })
+
+export const fetchPageMetaData = async (pageId: string) => {
+  const pageResponse = await notion.pages.retrieve({
+    page_id: pageId,
+  })
+
+  const convertedArticlePageHeaderData = new NotionPageAdapter(
+    pageResponse as QueryPageResponse,
+  ).convertToArticlePageHeaderData()
+  return {
+    ...convertedArticlePageHeaderData,
+    blurDataUrl: await fetchBlurDataUrl(convertedArticlePageHeaderData.thumbnailUrl),
+  }
+}

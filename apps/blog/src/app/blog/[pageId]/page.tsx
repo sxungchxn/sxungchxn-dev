@@ -1,4 +1,4 @@
-import { fetchAllArticleList } from '@/api/fetcher'
+import { fetchAllArticleList, fetchPageMetaData } from '@/api/fetcher'
 import { Box } from '@sxungchxn/dev-ui'
 
 export async function generateStaticParams() {
@@ -9,6 +9,12 @@ export async function generateStaticParams() {
   }))
 }
 
-export default function ArticleDetailPage({ params: { pageId } }: { params: { pageId: string } }) {
+export default async function ArticleDetailPage({
+  params: { pageId },
+}: {
+  params: { pageId: string }
+}) {
+  const articlePageHeaderData = await fetchPageMetaData(pageId)
+  // console.log(articlePageHeaderData)
   return <Box height="1200px">{pageId}</Box>
 }

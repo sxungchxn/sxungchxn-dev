@@ -4,6 +4,10 @@ import type {
   TextRichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints'
 
+/*----------------------------------------------------------------------
+ * internal type for notion client response
+ * ----------------------------------------------------------------------*/
+
 /**
  * api로 부터 받아오는 노션 page response
  * property들은 노션 데이터베이스 schema를 따른다.
@@ -99,6 +103,10 @@ export interface DataBaseMetaDataResponse extends Omit<DatabaseObjectResponse, '
   }
 }
 
+/*----------------------------------------------------------------------
+ * internal type for blog app
+ * ----------------------------------------------------------------------/
+
 /** 주요 게시글 */
 export interface FeaturedArticle {
   /** notion database id property */
@@ -144,5 +152,22 @@ export interface AllArticle {
 
 export interface AllArticleWithBlur extends AllArticle {
   /** blurData url */
+  blurDataUrl: string
+}
+
+export interface ArticlePageHeaderData {
+  /** 게시글 제목 */
+  title: string
+  /** 게시글 요약 설명 */
+  description: string
+  /** 게시글 태그 목록 */
+  tagList: ArticleTag[]
+  /** 게시글 생성 일자*/
+  createdAt: Date
+  /** 게시글 썸네일 url */
+  thumbnailUrl: string
+}
+
+export interface ArticlePageHeaderDataWithBlur extends ArticlePageHeaderData {
   blurDataUrl: string
 }
