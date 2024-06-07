@@ -8,3 +8,21 @@ export const section = style({
     },
   },
 })
+
+export const thumbnailWrapper = style({
+  position: 'relative',
+  borderRadius: vars.radius['8px'],
+  overflow: 'hidden',
+  '@media': {
+    [mediaQuery.pc]: {
+      width: '980px',
+      height: '580px',
+    },
+    [mediaQuery.tablet]: {
+      aspectRatio: '5/3',
+    },
+    [mediaQuery.mobile]: {
+      aspectRatio: '5/4',
+    },
+  },
+})

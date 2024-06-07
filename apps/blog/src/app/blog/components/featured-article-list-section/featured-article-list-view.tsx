@@ -11,13 +11,13 @@ import {
   useCarousel,
 } from '@sxungchxn/dev-ui'
 import type { FeaturedArticle, FeaturedArticleWithBlur } from '@/api/types'
-import Image from 'next/image'
 import * as styles from './featured-article-list-view.css'
 import { getDistanceFromToday, getYearMonthDay } from '@/utils/date'
 import { IconArrowRight } from '@sxungchxn/dev-icons'
 import { useState } from 'react'
 import { m } from 'framer-motion'
 import Link from 'next/link'
+import { BlurImage } from '@/components/blur-image/blur-image'
 
 export interface FeaturedArticleListViewProps {
   featuredArticleList: FeaturedArticleWithBlur[]
@@ -119,13 +119,12 @@ const FeaturedArticleListCarousel = ({
       <Carousel.SlideViewPort borderRadius="8px">
         {featuredArticleList.map(({ id, title, thumbnailUrl, blurDataUrl }) => (
           <Carousel.Slide key={id} className={styles.slide}>
-            <Image
+            <BlurImage
               src={thumbnailUrl}
               alt={title}
               fill
               className={styles.image}
               sizes="(min-width 1024px) 500px, 100vw"
-              placeholder="blur"
               priority
               blurDataURL={blurDataUrl}
             />

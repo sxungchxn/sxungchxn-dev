@@ -1,9 +1,9 @@
 import { Box, Chip, Flex, Text } from '@sxungchxn/dev-ui'
 import type { AllArticleWithBlur } from '@/api/types'
-import Image from 'next/image'
 import * as styles from './all-article-list-grid.css'
 import { getDistanceFromToday, getYearMonthDay } from '@/utils/date'
 import Link from 'next/link'
+import { BlurImage } from '@/components/blur-image/blur-image'
 
 export interface AllArticleListItemProps {
   article: AllArticleWithBlur
@@ -16,13 +16,12 @@ export const AllArticleListItem = ({ article }: AllArticleListItemProps) => {
       <Flex asChild direction="column" width="100%">
         <Link href={`/blog/${pageId}`}>
           <Box position="relative" className={styles.thumbnailWrapper} marginBottom="20px">
-            <Image
+            <BlurImage
               src={thumbnailUrl}
               alt={title}
               fill
               sizes="(min-width: 1024px) 476px, 100vw"
               className={styles.thumbnail}
-              placeholder="blur"
               blurDataURL={blurDataUrl}
             />
           </Box>
