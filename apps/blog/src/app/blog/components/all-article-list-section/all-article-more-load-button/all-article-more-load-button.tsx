@@ -4,7 +4,7 @@ import { Chip, Flex, Icon, Text } from '@sxungchxn/dev-ui'
 import { IconPlus } from '@sxungchxn/dev-icons'
 import { loadMoreArticle, resetFilterStore } from '@/store/article-filter.store'
 import type { AllArticleWithBlur } from '@/api/types'
-import { useFilteredArticleList } from '@/hooks/service/use-filtered-article-list'
+import { useFilteredArticleList } from '@/app/blog/hooks'
 import { useEffect } from 'react'
 
 export interface AllArticleMoreLoadButtonProps {

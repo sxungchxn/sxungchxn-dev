@@ -1,6 +1,6 @@
 import { Box } from '@sxungchxn/dev-ui'
-import { FeaturedArticleListSection } from '@/components/sections/featured-article-list-section/featured-article-list-section'
-import { AllArticleListSection } from '@/components/sections/all-article-list-section/all-article-list-section'
+import { FeaturedArticleListSection } from '@/app/blog/components'
+import { AllArticleListSection } from '@/app/blog/components'
 
 // 50분마다 갱신
 export const revalidate = 3000

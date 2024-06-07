@@ -1,5 +1,5 @@
 import { fetchFeaturedArticleList } from '@/api/fetcher'
-import { FeaturedArticleListView } from '@/components/sections/featured-article-list-section/featured-article-list-view'
+import { FeaturedArticleListView } from '@/app/blog/components/featured-article-list-section/featured-article-list-view'
 import { Flex, Text } from '@sxungchxn/dev-ui'
 import * as styles from './featured-article-list-section.css'
 

@@ -16,5 +16,5 @@ export default async function ArticleDetailPage({
 }) {
   const articlePageHeaderData = await fetchPageMetaData(pageId)
   // console.log(articlePageHeaderData)
-  return <Box height="1200px">{pageId}</Box>
+  return <Box minHeight="1200px">{pageId}</Box>
 }

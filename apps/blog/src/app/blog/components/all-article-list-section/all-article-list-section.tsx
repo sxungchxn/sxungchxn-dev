@@ -1,7 +1,7 @@
 import { Flex, Text } from '@sxungchxn/dev-ui'
 import * as styles from './all-article-list-section.css'
-import { ArticleFilterTagList } from '@/components/sections/all-article-list-section/article-filter-tag-list/article-filter-tag-list'
-import { AllArticleListGrid } from '@/components/sections/all-article-list-section/all-article-list-grid/all-article-list-grid'
+import { ArticleFilterTagList } from '@/app/blog/components/all-article-list-section/article-filter-tag-list/article-filter-tag-list'
+import { AllArticleListGrid } from '@/app/blog/components/all-article-list-section/all-article-list-grid/all-article-list-grid'
 
 export const AllArticleListSection = () => {
   return (
