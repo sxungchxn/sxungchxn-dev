@@ -8,6 +8,7 @@ import {
 } from '@/api/adapter'
 import type {
   AllArticleWithBlur,
+  ArticlePageHeaderDataWithBlur,
   DataBaseMetaDataResponse,
   FeaturedArticleWithBlur,
   QueryPageResponse,
@@ -110,7 +111,9 @@ export const fetchAllArticleList = cache(async (): Promise<AllArticleWithBlur[]>
   )
 })
 
-export const fetchPageMetaData = async (pageId: string) => {
+export const fetchArticlePageHeaderData = async (
+  pageId: string,
+): Promise<ArticlePageHeaderDataWithBlur> => {
   const pageResponse = await notion.pages.retrieve({
     page_id: pageId,
   })
