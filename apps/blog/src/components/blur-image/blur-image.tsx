@@ -7,7 +7,7 @@ import { useBooleanState } from '@/hooks/utils/use-boolean-state'
 import { type ForwardedRef, forwardRef } from 'react'
 
 export interface BlurImageProps extends Omit<ImageProps, 'placeholder' | 'blurDataURL'> {
-  blurDataURL: ImageProps['blurDataURL']
+  blurDataURL?: ImageProps['blurDataURL']
 }
 
 export const BlurImage = forwardRef(

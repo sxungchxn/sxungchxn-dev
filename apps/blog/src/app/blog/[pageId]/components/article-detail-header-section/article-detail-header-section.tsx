@@ -1,17 +1,16 @@
 import { Flex, Text, Chip, Box } from '@sxungchxn/dev-ui'
-import type { ArticlePageHeaderDataWithBlur } from '@/api/types'
 import { getDistanceFromToday, getYearMonthDay } from '@/utils/date'
 import * as styles from './article-detail-header-section.css'
 import { BlurImage } from '@/components/blur-image/blur-image'
+import { fetchArticlePageHeaderData } from '@/api/fetcher'
 
 export interface ArticleDetailHeaderSectionProps {
-  articleDetailHeaderData: ArticlePageHeaderDataWithBlur
+  pageId: string
 }
 
-export const ArticleDetailHeaderSection = ({
-  articleDetailHeaderData,
-}: ArticleDetailHeaderSectionProps) => {
-  const { title, createdAt, tagList, thumbnailUrl, blurDataUrl } = articleDetailHeaderData
+export const ArticleDetailHeaderSection = async ({ pageId }: ArticleDetailHeaderSectionProps) => {
+  const { title, createdAt, tagList, thumbnailUrl, blurDataUrl } =
+    await fetchArticlePageHeaderData(pageId)
   return (
     <Flex as="section" direction="column" width="100%" marginTop="40px" className={styles.section}>
       <Text as="h1" variant="display3" color="textPrimary" marginBottom="24px">

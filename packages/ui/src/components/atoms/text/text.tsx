@@ -54,6 +54,8 @@ export type TextElements =
   | 'p'
   | 'label'
   | 'a'
+  | 'li'
+  | 'blockquote'
 
 export type TextProps<C extends TextElements = 'div'> = PolymorphicComponentPropWithRef<
   C,

@@ -1,6 +1,6 @@
 import 'server-only'
 import { cache } from 'react'
-import { notion } from '@/api/notion'
+import { n2m, notion } from '@/api/clients'
 import {
   NotionDataBaseMetaDataAdapter,
   NotionPageAdapter,
@@ -125,4 +125,11 @@ export const fetchArticlePageHeaderData = async (
     ...convertedArticlePageHeaderData,
     blurDataUrl: await fetchBlurDataUrl(convertedArticlePageHeaderData.thumbnailUrl),
   }
+}
+
+export const fetchArticlePageContent = async (pageId: string) => {
+  const mdBlocks = await n2m.pageToMarkdown(pageId)
+  const mdString = n2m.toMarkdownString(mdBlocks)
+
+  return mdString
 }

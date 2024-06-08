@@ -41,6 +41,8 @@ export interface FlexStyleProps extends LayoutProps {
   zIndex?: AtomicProps['zIndex']
   /** css cursor property */
   cursor?: AtomicProps['cursor']
+  /** css overflow property */
+  overflow?: AtomicProps['overflow']
 }
 
 export type FlexProps<C extends FlexElements = 'div'> = PolymorphicComponentPropWithRef<
