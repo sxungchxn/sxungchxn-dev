@@ -10,8 +10,6 @@ import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import 'highlight.js/styles/base16/dracula.min.css'
 import { Box, Icon, type LayoutProps, Text } from '@sxungchxn/dev-ui'
-import { renderToStaticMarkup } from 'react-dom/server'
-import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
 import {
   CodeBlock,
   BlockQuote,
@@ -26,6 +24,7 @@ import {
 } from '@/app/blog/[pageId]/components/article-content-renderer/components'
 import * as styles from './article-content-renderer.css'
 import { IconLink } from '@sxungchxn/dev-icons'
+import { convertToHastNode } from '@/utils/convert-to-hast-node'
 
 export interface ArticleContentRendererProps extends LayoutProps {
   content: string
@@ -46,14 +45,9 @@ export const ArticleContentRenderer = ({
           [
             rehypeAutolinkHeadings,
             {
-              content: fromHtmlIsomorphic(
-                renderToStaticMarkup(
-                  <Icon source={IconLink} size={24} color="textSecondary" marginRight="8px" />,
-                ),
-                {
-                  fragment: true,
-                },
-              ).children,
+              content: convertToHastNode(
+                <Icon source={IconLink} size={24} color="textSecondary" marginRight="8px" />,
+              ),
             },
           ],
         ]}
