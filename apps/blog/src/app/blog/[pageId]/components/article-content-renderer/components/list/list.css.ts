@@ -1,5 +1,6 @@
 import { recipe } from '@vanilla-extract/recipes'
 import { vars } from '@sxungchxn/dev-ui'
+import { wrapper } from '@/app/blog/[pageId]/components/article-content-renderer/article-content-renderer.css'
 
 export const list = recipe({
   base: {
@@ -8,9 +9,13 @@ export const list = recipe({
     flexDirection: 'column',
     gap: vars.space['8px'],
     paddingInlineStart: vars.space['24px'],
-    padding: `${vars.space['24px']} ${vars.space['32px']}`,
     backgroundColor: vars.colors.secondary,
     borderRadius: '8px',
+    selectors: {
+      [`${wrapper} > &`]: {
+        padding: `${vars.space['24px']} ${vars.space['32px']}`,
+      },
+    },
   },
   variants: {
     variant: {

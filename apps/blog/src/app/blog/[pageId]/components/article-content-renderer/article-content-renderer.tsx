@@ -3,11 +3,13 @@
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
+import remarkToc from 'remark-toc'
 import rehypeHighlight from 'rehype-highlight'
 import remarkRehype from 'remark-rehype'
+import rehypeSlug from 'rehype-slug'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import 'highlight.js/styles/base16/dracula.min.css'
 import { Box, type LayoutProps, Text } from '@sxungchxn/dev-ui'
-import * as styles from './article-content-renderer.css'
 import {
   CodeBlock,
   BlockQuote,
@@ -20,6 +22,7 @@ import {
   Th,
   Td,
 } from '@/app/blog/[pageId]/components/article-content-renderer/components'
+import * as styles from './article-content-renderer.css'
 
 export interface ArticleContentRendererProps extends LayoutProps {
   content: string
@@ -32,8 +35,8 @@ export const ArticleContentRenderer = ({
   return (
     <Box {...layoutProps} position="relative" maxWidth="100%" className={styles.wrapper}>
       <ReactMarkdown
-        remarkPlugins={[remarkGfm, remarkRehype]}
-        rehypePlugins={[rehypeRaw, rehypeHighlight]}
+        remarkPlugins={[remarkGfm, [remarkToc, { tight: false }], remarkRehype]}
+        rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeSlug, rehypeAutolinkHeadings]}
         components={{
           h1: props => <Heading as="h1" {...props} />,
           h2: props => <Heading as="h2" {...props} />,
