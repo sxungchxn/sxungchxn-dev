@@ -9,7 +9,9 @@ import remarkRehype from 'remark-rehype'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import 'highlight.js/styles/base16/dracula.min.css'
-import { Box, type LayoutProps, Text } from '@sxungchxn/dev-ui'
+import { Box, Icon, type LayoutProps, Text } from '@sxungchxn/dev-ui'
+import { renderToStaticMarkup } from 'react-dom/server'
+import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
 import {
   CodeBlock,
   BlockQuote,
@@ -23,6 +25,7 @@ import {
   Td,
 } from '@/app/blog/[pageId]/components/article-content-renderer/components'
 import * as styles from './article-content-renderer.css'
+import { IconLink } from '@sxungchxn/dev-icons'
 
 export interface ArticleContentRendererProps extends LayoutProps {
   content: string
@@ -36,7 +39,24 @@ export const ArticleContentRenderer = ({
     <Box {...layoutProps} position="relative" maxWidth="100%" className={styles.wrapper}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm, [remarkToc, { tight: false }], remarkRehype]}
-        rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeSlug, rehypeAutolinkHeadings]}
+        rehypePlugins={[
+          rehypeRaw,
+          rehypeHighlight,
+          rehypeSlug,
+          [
+            rehypeAutolinkHeadings,
+            {
+              content: fromHtmlIsomorphic(
+                renderToStaticMarkup(
+                  <Icon source={IconLink} size={24} color="textSecondary" marginRight="8px" />,
+                ),
+                {
+                  fragment: true,
+                },
+              ).children,
+            },
+          ],
+        ]}
         components={{
           h1: props => <Heading as="h1" {...props} />,
           h2: props => <Heading as="h2" {...props} />,
@@ -45,6 +65,7 @@ export const ArticleContentRenderer = ({
           hr: Divider,
           img: props => (
             <Box
+              asChild
               display="flex"
               position="relative"
               justifyContent="center"
@@ -53,7 +74,6 @@ export const ArticleContentRenderer = ({
               marginY="24px"
               borderRadius="8px"
               maxWidth="100%"
-              asChild
             >
               <img {...props} />
             </Box>

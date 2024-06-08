@@ -129,7 +129,5 @@ export const fetchArticlePageHeaderData = async (
 
 export const fetchArticlePageContent = async (pageId: string) => {
   const mdBlocks = await n2m.pageToMarkdown(pageId)
-  const mdString = n2m.toMarkdownString(mdBlocks)
-
-  return mdString
+  return n2m.toMarkdownString(mdBlocks)
 }
