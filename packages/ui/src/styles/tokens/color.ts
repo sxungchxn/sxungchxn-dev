@@ -1,3 +1,5 @@
+import { convertHexToRGBA } from '@/utils/hex-to-rgba'
+
 export type Mode = 'light' | 'dark'
 
 const hexaColors = {
@@ -58,7 +60,9 @@ export const colors = {
   base: baseColors,
   light: {
     primary: baseColors.white,
+    primaryTransparent: convertHexToRGBA(baseColors.white, 0.5),
     secondary: baseColors.purple100,
+    secondaryTransparent: convertHexToRGBA(baseColors.purple100, 0.5),
     textPrimary: baseColors.purple700,
     textSecondary: baseColors.purple300,
     transparent: baseColors.transparentGrey,
@@ -66,7 +70,9 @@ export const colors = {
   },
   dark: {
     primary: baseColors.purple700,
+    primaryTransparent: convertHexToRGBA(baseColors.purple700, 0.5),
     secondary: baseColors.purple600,
+    secondaryTransparent: convertHexToRGBA(baseColors.purple600, 0.5),
     textPrimary: baseColors.purple100,
     textSecondary: baseColors.purple200,
     transparent: baseColors.transparentWhite,
