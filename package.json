@@ -8,6 +8,7 @@
     "format": "prettier --write \"**/*.{js*,ts*,md,json}\"",
     "dev:playground": "turbo run dev --filter react-playground",
     "dev:blog": "turbo run dev --filter blog",
+    "build:blog": "turbo run build --filter blog",
     "pre-commit": "lint-staged && pnpm --filter '{packages/*}' '{apps/*}' pre-commit",
     "check": "turbo run check-types test --filter dev-ui --filter dev-icons --filter blog --cache-dir=.turbo"
   },
