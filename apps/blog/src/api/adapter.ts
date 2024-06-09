@@ -1,5 +1,6 @@
 import type {
   AllArticle,
+  ArticleLinkerData,
   ArticlePageHeaderData,
   ArticleTag,
   DataBaseMetaDataResponse,
@@ -25,6 +26,18 @@ export class NotionPageAdapter {
       tagList: tags.multi_select.map(({ id, name }) => ({ id, name })),
       createdAt: new Date(createdAt.date?.start ?? created_time),
       thumbnailUrl: thumbnail.files?.[0]?.file.url ?? '기본 이미지 url',
+    }
+  }
+
+  convertToArticleLinkerData(): ArticleLinkerData {
+    const {
+      id: pageId,
+      properties: { name },
+    } = this.page
+
+    return {
+      pageId,
+      title: name.title?.[0]?.plain_text ?? '',
     }
   }
 }

@@ -83,6 +83,14 @@ export interface QueryPageResponse extends Omit<PageObjectResponse, 'properties'
       }>
     }
     releasable: { type: 'checkbox'; checkbox: boolean; id: string }
+    prevArticleId: {
+      type: 'number'
+      number: number
+    }
+    nextArticleId: {
+      type: 'number'
+      number: number
+    }
   }
 }
 
@@ -170,4 +178,14 @@ export interface ArticlePageHeaderData {
 
 export interface ArticlePageHeaderDataWithBlur extends ArticlePageHeaderData {
   blurDataUrl: string
+}
+
+export interface ArticleLinkerData {
+  pageId: AllArticle['pageId']
+  title: AllArticle['title']
+}
+
+export interface ArticlePageFooterData {
+  prevArticle?: ArticleLinkerData
+  nextArticle?: ArticleLinkerData
 }

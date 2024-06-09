@@ -8,16 +8,20 @@ import {
 } from '@/api/adapter'
 import type {
   AllArticleWithBlur,
+  ArticlePageFooterData,
   ArticlePageHeaderDataWithBlur,
   DataBaseMetaDataResponse,
   FeaturedArticleWithBlur,
   QueryPageResponse,
 } from '@/api/types'
 import { getPlaiceholder } from 'plaiceholder'
+import { isNil } from '@/utils/is-nil'
 
 export const fetchBlurDataUrl = async (thumbnailUrl: string) => {
   try {
-    const buffer = await fetch(thumbnailUrl).then(async res => Buffer.from(await res.arrayBuffer()))
+    const buffer = await fetch(thumbnailUrl, {
+      cache: process.env.NODE_ENV === 'development' ? 'no-cache' : 'default',
+    }).then(async res => Buffer.from(await res.arrayBuffer()))
     const { base64 } = await getPlaiceholder(buffer)
     return base64
   } catch (err) {
@@ -122,6 +126,64 @@ export const fetchArticlePageHeaderData = async (
   return {
     ...convertedArticlePageHeaderData,
     blurDataUrl: await fetchBlurDataUrl(convertedArticlePageHeaderData.thumbnailUrl),
+  }
+}
+
+export const fetchArticlePageFooterData = async (
+  pageId: string,
+): Promise<ArticlePageFooterData> => {
+  const {
+    properties: {
+      prevArticleId: { number: prevArticleId },
+      nextArticleId: { number: nextArticleId },
+    },
+  } = (await notion.pages.retrieve({
+    page_id: pageId,
+  })) as QueryPageResponse
+
+  const prevArticlePageData = isNil(prevArticleId)
+    ? undefined
+    : await notion.databases.query({
+        database_id: process.env.NOTION_DATABASE_ID!,
+        filter: {
+          and: [
+            {
+              property: 'id',
+              number: {
+                equals: prevArticleId,
+              },
+            },
+          ],
+        },
+      })
+
+  const nextArticlePageData = isNil(nextArticleId)
+    ? undefined
+    : await notion.databases.query({
+        database_id: process.env.NOTION_DATABASE_ID!,
+        filter: {
+          and: [
+            {
+              property: 'id',
+              number: {
+                equals: nextArticleId,
+              },
+            },
+          ],
+        },
+      })
+
+  return {
+    prevArticle: prevArticlePageData
+      ? new NotionPageAdapter(
+          prevArticlePageData?.results[0] as QueryPageResponse,
+        ).convertToArticleLinkerData()
+      : undefined,
+    nextArticle: nextArticlePageData
+      ? new NotionPageAdapter(
+          nextArticlePageData?.results[0] as QueryPageResponse,
+        ).convertToArticleLinkerData()
+      : undefined,
   }
 }
 
