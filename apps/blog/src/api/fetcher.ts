@@ -17,9 +17,7 @@ import { getPlaiceholder } from 'plaiceholder'
 
 export const fetchBlurDataUrl = async (thumbnailUrl: string) => {
   try {
-    const buffer = await fetch(thumbnailUrl, {
-      cache: 'no-cache',
-    }).then(async res => Buffer.from(await res.arrayBuffer()))
+    const buffer = await fetch(thumbnailUrl).then(async res => Buffer.from(await res.arrayBuffer()))
     const { base64 } = await getPlaiceholder(buffer)
     return base64
   } catch (err) {
