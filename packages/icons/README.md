@@ -1,22 +1,12 @@
 # @sxungchxn/dev-icons
 
-> shared react icons component library which is tree-shakable
-
-<br/>
-
-## Install
-
-`npm install @sxungchxn/dev-icons`
-
-`yarn add @sxungchxn/dev-icons`
-
-`pnpm add @sxungchxn/dev-icons`
+> tree-shakable 한 공통 아이콘 에셋 라이브러리
 
 <br/>
 
 ## Usage
 
-import icon source as react component.
+아이콘 에셋을 리액트 컴포넌트로 import 해올 수 있습니다.
 
 ```tsx
 import { IconX } from '@sxungchxn/dev-icons'
@@ -26,7 +16,7 @@ const Component = () => {
 }
 ```
 
-⚠️ it is not recommended to import `icons` object like below as it is not tree-shakable.
+⚠️ `icons` 오브젝트 자체를 import 하는 것은 트리셰이킹 되지 않기 때문에 권장되지 않습니다
 
 ```tsx
 import { icons } from '@sxungchxn/dev-icons'
@@ -36,7 +26,7 @@ const Icon = icons.IconX // ❌
 
 <br/>
 
-## Stacks
+## 사용 패키지
 
 - `rollup` - for the tree-shakable bundling
 - `babel` - for the transpiling js code
