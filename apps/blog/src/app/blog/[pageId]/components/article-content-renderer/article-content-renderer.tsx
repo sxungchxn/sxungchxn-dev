@@ -23,7 +23,7 @@ import {
   Td,
 } from '@/app/blog/[pageId]/components/article-content-renderer/components'
 import * as styles from './article-content-renderer.css'
-import { IconLink } from '@sxungchxn/dev-icons'
+import { IconHash } from '@sxungchxn/dev-icons'
 import { convertToHastNode } from '@/utils/convert-to-hast-node'
 
 export interface ArticleContentRendererProps extends LayoutProps {
@@ -37,7 +37,7 @@ export const ArticleContentRenderer = ({
   return (
     <Box {...layoutProps} position="relative" maxWidth="100%" className={styles.wrapper}>
       <ReactMarkdown
-        remarkPlugins={[remarkGfm, [remarkToc, { tight: false }], remarkRehype]}
+        remarkPlugins={[remarkGfm, [remarkToc, { tight: false, heading: '목차' }], remarkRehype]}
         rehypePlugins={[
           rehypeRaw,
           rehypeHighlight,
@@ -46,7 +46,7 @@ export const ArticleContentRenderer = ({
             rehypeAutolinkHeadings,
             {
               content: convertToHastNode(
-                <Icon source={IconLink} size={24} color="textSecondary" marginRight="8px" />,
+                <Icon source={IconHash} size={32} color="textSecondary" marginRight="8px" />,
               ),
             },
           ],

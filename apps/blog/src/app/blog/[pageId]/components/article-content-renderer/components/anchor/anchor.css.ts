@@ -5,5 +5,9 @@ export const anchor = style({
     '&:hover': {
       textDecoration: 'underline !important',
     },
+    ':is(h1, h2, h3) > &': {
+      display: 'flex',
+      alignItems: 'center',
+    },
   },
 })

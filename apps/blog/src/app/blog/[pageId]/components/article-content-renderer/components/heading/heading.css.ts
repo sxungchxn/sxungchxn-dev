@@ -3,6 +3,8 @@ import { vars } from '@sxungchxn/dev-ui'
 
 export const heading = recipe({
   base: {
+    display: 'flex',
+    alignItems: 'center',
     marginBottom: vars.space['16px'],
   },
   variants: {
