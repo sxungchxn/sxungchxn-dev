@@ -7,6 +7,7 @@ import { Footer } from '@/components/footer/footer'
 import { type PropsWithChildren, useState } from 'react'
 import { HeaderBorderIntersection } from '@/components/header/header-border-intersection/header-border-intersection'
 import { Fab } from '@/components/fab/fab'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export interface CommonLayoutProps extends PropsWithChildren {}
 
@@ -29,6 +30,7 @@ export const CommonLayout = ({ children }: CommonLayoutProps) => {
       </Flex>
       <Footer />
       <Fab />
+      <SpeedInsights />
     </>
   )
 }

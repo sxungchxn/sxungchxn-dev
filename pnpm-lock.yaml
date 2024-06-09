@@ -56,6 +56,9 @@ importers:
       '@vanilla-extract/recipes':
         specifier: ^0.5.1
         version: 0.5.1(@vanilla-extract/css@1.15.1)
+      '@vercel/speed-insights':
+        specifier: ^1.0.11
+        version: 1.0.11(next@14.2.3)(react@18.3.1)
       clsx:
         specifier: ^2.1.0
         version: 2.1.0
@@ -7375,6 +7378,34 @@ packages:
       - supports-color
       - terser
     dev: true
+
+  /@vercel/speed-insights@1.0.11(next@14.2.3)(react@18.3.1):
+    resolution: {integrity: sha512-l9hzSNmJvb2Yqpgd/BzpiT0J0aQDdtqxOf3Xm+iW4PICxVvhY1ef7Otdx4GXI+88dVkws57qMzXiShz19gXzSQ==}
+    requiresBuild: true
+    peerDependencies:
+      '@sveltejs/kit': ^1 || ^2
+      next: '>= 13'
+      react: ^18 || ^19
+      svelte: ^4
+      vue: ^3
+      vue-router: ^4
+    peerDependenciesMeta:
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      react:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+      vue-router:
+        optional: true
+    dependencies:
+      next: 14.2.3(@babel/core@7.24.5)(react-dom@18.3.1)(react@18.3.1)
+      react: 18.3.1
+    dev: false
 
   /@vitejs/plugin-react-swc@3.5.0(vite@5.0.11):
     resolution: {integrity: sha512-1PrOvAaDpqlCV+Up8RkAh9qaiUjoDUcjtttyhXDKw53XA6Ve16SOp6cCOpRs8Dj8DqUQs6eTW5YkLcLJjrXAig==}
