@@ -1,4 +1,4 @@
-# @sxungchxn/blog
+# @sxungchxn/blog (WIP)
 
 > WIP
 
@@ -21,3 +21,14 @@
 - `rehype-*`
 - `remark-*`
 - `highlight.js`
+
+<br/>
+
+## Requirements
+
+- `.env.local`
+
+```
+NOTION_SECRET_ID=...
+NOTION_DATABASE_ID=...
+```
