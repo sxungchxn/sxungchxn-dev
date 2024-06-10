@@ -9,6 +9,7 @@ export const wrapper = style({
   alignItems: 'center',
   overflow: 'hidden',
   borderRadius: vars.radius.circle,
+  flexShrink: 0,
   boxShadow: `0 0 0 1px ${vars.colors.transparent} inset`,
 })
 
