@@ -5,7 +5,7 @@ export interface ParagraphProps extends Omit<TextProps<'p'>, 'as' | 'color' | 'r
 
 export const Paragraph = ({ children, ...props }: ParagraphProps) => {
   return (
-    <Text {...props} as="p" variant="body1" color="textPrimary" className={styles.paragraph}>
+    <Text {...props} as="p" variant="body2" color="textPrimary" className={styles.paragraph}>
       {children}
     </Text>
   )

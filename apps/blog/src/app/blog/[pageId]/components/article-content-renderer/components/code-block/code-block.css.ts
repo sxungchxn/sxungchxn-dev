@@ -17,5 +17,5 @@ globalStyle(`:not(pre) > ${code}`, {
   margin: vars.space['2px'],
   backgroundColor: `${vars.colors.secondary}`,
   color: `${vars.colors.textSecondary}`,
-  fontSize: '16px',
+  fontSize: '14px',
 })

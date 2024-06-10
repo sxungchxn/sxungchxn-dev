@@ -10,7 +10,7 @@ export const Anchor = ({ className, ...props }: AnchorProps) => {
       {...props}
       className={clsx(className, styles.anchor)}
       as="a"
-      variant="title2"
+      variant="title3"
       color="textSecondary"
     />
   )

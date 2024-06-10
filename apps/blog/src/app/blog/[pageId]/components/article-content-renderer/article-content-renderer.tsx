@@ -46,7 +46,7 @@ export const ArticleContentRenderer = ({
             rehypeAutolinkHeadings,
             {
               content: convertToHastNode(
-                <Icon source={IconHash} size={32} color="textSecondary" marginRight="8px" />,
+                <Icon source={IconHash} size={24} color="textSecondary" marginRight="8px" />,
               ),
             },
           ],
@@ -75,7 +75,7 @@ export const ArticleContentRenderer = ({
           ul: props => <List as="ul" {...props} />,
           ol: props => <List as="ol" {...props} />,
           li: ({ children }) => (
-            <Text as="li" variant="body1" color="textPrimary">
+            <Text as="li" variant="body2" color="textPrimary">
               {children}
             </Text>
           ),

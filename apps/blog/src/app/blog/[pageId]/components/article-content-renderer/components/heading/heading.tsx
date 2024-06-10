@@ -5,10 +5,10 @@ import * as styles from './heading.css'
 export type HeadingElement = 'h1' | 'h2' | 'h3' | 'h4'
 
 export const HeadingVariants: Record<HeadingElement, TextProps['variant']> = {
-  h1: 'display4',
-  h2: 'heading1',
-  h3: 'heading2',
-  h4: 'heading3',
+  h1: 'heading1',
+  h2: 'heading2',
+  h3: 'heading3',
+  h4: 'heading4',
 }
 
 export type HeadingProps<C extends HeadingElement> = Omit<TextProps<C>, 'variant' | 'color' | 'ref'>
