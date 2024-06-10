@@ -57,8 +57,10 @@ export const MobileMenu = () => {
       }
     }
     window.addEventListener('resize', handleCloseMenu)
+    window.addEventListener('scroll', handleCloseMenu)
     return () => {
       window.removeEventListener('resize', handleCloseMenu)
+      window.removeEventListener('scroll', handleCloseMenu)
     }
   }, [isOpen, closeMenu])
 
