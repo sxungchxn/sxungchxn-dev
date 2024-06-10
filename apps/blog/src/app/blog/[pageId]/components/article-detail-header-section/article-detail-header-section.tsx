@@ -12,17 +12,17 @@ export const ArticleDetailHeaderSection = async ({ pageId }: ArticleDetailHeader
   const { title, createdAt, tagList, thumbnailUrl, blurDataUrl } =
     await fetchArticlePageHeaderData(pageId)
   return (
-    <Flex as="section" direction="column" width="100%" marginTop="40px" className={styles.section}>
-      <Text as="h1" variant="display3" color="textPrimary" marginBottom="24px">
+    <Flex as="section" direction="column" width="100%" className={styles.section}>
+      <Text as="h1" variant="display4" color="textPrimary" marginBottom="24px">
         {title}
       </Text>
-      <Text as="span" variant="body1" color="textSecondary" marginBottom="24px">
+      <Text as="span" variant="body2" color="textSecondary" marginBottom="24px">
         {getYearMonthDay(createdAt)}&nbsp;&nbsp;{getDistanceFromToday(createdAt)}
       </Text>
       <Flex as="ul" gap="16px" flexWrap="wrap" width="100%" marginBottom="48px">
         {tagList.map(({ id, name }) => (
           <Chip key={id} as="li" color="secondary">
-            <Text variant="body1">{name}</Text>
+            <Text variant="body2">{name}</Text>
           </Chip>
         ))}
       </Flex>
