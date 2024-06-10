@@ -5,6 +5,7 @@ export const table = style({
   width: '100%',
   borderCollapse: 'collapse',
   border: `1px solid ${vars.colors.textSecondary} !important`,
+  tableLayout: 'fixed',
 })
 
 export const th = style({
