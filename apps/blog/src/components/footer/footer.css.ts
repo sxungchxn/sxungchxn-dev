@@ -1,12 +1,20 @@
 import { style } from '@vanilla-extract/css'
 import { createVar } from '@vanilla-extract/css'
-import { vars } from '@sxungchxn/dev-ui'
+import { mediaQuery, vars } from '@sxungchxn/dev-ui'
 
 const footerHeight = createVar()
 
 export const footerWrapper = style({
   vars: {
     [footerHeight]: '300px',
+  },
+  '@media': {
+    [mediaQuery.pc]: {},
+    [mediaQuery.belowPc]: {
+      vars: {
+        [footerHeight]: '240px',
+      },
+    },
   },
 })
 
@@ -29,4 +37,9 @@ export const footer = style({
   gap: vars.space['32px'],
   justifyContent: 'center',
   alignItems: 'center',
+  '@media': {
+    [mediaQuery.belowPc]: {
+      gap: vars.space['24px'],
+    },
+  },
 })

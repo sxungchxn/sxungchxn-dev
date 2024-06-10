@@ -11,7 +11,7 @@ export const ArticleDetailFooterSection = async ({ pageId }: ArticleDetailFooter
   const { prevArticle, nextArticle } = await fetchArticlePageFooterData(pageId)
 
   return (
-    <Box className={styles.wrapper}>
+    <Box as="section" className={styles.wrapper}>
       {prevArticle ? <ArticleLinkCard type="prev" articleLinkerData={prevArticle} /> : <div />}
       {nextArticle ? <ArticleLinkCard type="next" articleLinkerData={nextArticle} /> : <div />}
     </Box>

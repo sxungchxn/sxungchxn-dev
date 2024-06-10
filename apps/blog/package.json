@@ -11,6 +11,7 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@giscus/react": "^3.0.0",
     "@notionhq/client": "^2.2.15",
     "@plaiceholder/next": "^3.0.0",
     "@sxungchxn/dev-icons": "workspace:*",

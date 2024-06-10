@@ -35,7 +35,13 @@ export const ArticleContentRenderer = ({
   ...layoutProps
 }: ArticleContentRendererProps) => {
   return (
-    <Box {...layoutProps} position="relative" maxWidth="100%" className={styles.wrapper}>
+    <Box
+      {...layoutProps}
+      as="section"
+      position="relative"
+      maxWidth="100%"
+      className={styles.wrapper}
+    >
       <ReactMarkdown
         remarkPlugins={[remarkGfm, [remarkToc, { tight: false, heading: '목차' }], remarkRehype]}
         rehypePlugins={[
