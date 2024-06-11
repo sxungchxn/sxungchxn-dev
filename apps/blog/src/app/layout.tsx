@@ -7,6 +7,7 @@ import { Box, vars } from '@sxungchxn/dev-ui'
 import { Providers } from '@/providers'
 import { assignInlineVars } from '@vanilla-extract/dynamic'
 import { CommonLayout } from '@/components/common-layout/common-layout'
+import { Analytics } from '@vercel/analytics/react'
 
 const kalam = Kalam({
   weight: ['400', '700'],
@@ -45,6 +46,7 @@ export default function RootLayout({
       <Box as="body" backgroundColor="primary" style={inlinedKalamFontFamily}>
         <Providers>
           <CommonLayout>{children}</CommonLayout>
+          <Analytics />
         </Providers>
       </Box>
     </html>
