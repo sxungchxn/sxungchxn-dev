@@ -11,7 +11,7 @@ export const BackNavigateButton = () => {
     <ProgressHoverButton
       icon={<Icon source={IconArrowLeft} size={20} color="textPrimary" />}
       marginTop="36px"
-      onClick={router.back}
+      onClick={() => router.back()}
     >
       뒤로 가기
     </ProgressHoverButton>
