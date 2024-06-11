@@ -1,18 +1,15 @@
 'use client'
 
-import { Flex, Icon, ProgressiveHoverCircle, Text } from '@sxungchxn/dev-ui'
+import { Flex, Text } from '@sxungchxn/dev-ui'
 import Image from 'next/image'
-import { useBooleanState } from '@/hooks/utils/use-boolean-state'
-import { IconReload } from '@sxungchxn/dev-icons'
 import type { MouseEventHandler } from 'react'
+import { ProgressHoverButton } from '@/components/progress-hover-button/progress-hover-button'
 
 export interface BlurImageFallbackProps {
   onClickReload: () => void
 }
 
 export const BlurImageFallback = ({ onClickReload }: BlurImageFallbackProps) => {
-  const [isHover, , setHoverTrue, setHoverFalse] = useBooleanState(false)
-
   const handleClickReloadButton: MouseEventHandler<HTMLButtonElement> = event => {
     event.preventDefault()
     event.stopPropagation()
@@ -37,22 +34,7 @@ export const BlurImageFallback = ({ onClickReload }: BlurImageFallbackProps) => 
         <Text color="textPrimary" variant="title3" marginTop="16px">
           이미지 로드 실패
         </Text>
-        <Flex
-          as="button"
-          alignItems="center"
-          onMouseEnter={setHoverTrue}
-          onMouseLeave={setHoverFalse}
-          onClick={handleClickReloadButton}
-          gap="8px"
-          marginTop="36px"
-        >
-          <ProgressiveHoverCircle isHover={isHover} fillColor="textPrimary">
-            <Icon source={IconReload} size={20} color="textPrimary" />
-          </ProgressiveHoverCircle>
-          <Text variant="title3" color="textPrimary">
-            다시 불러오기
-          </Text>
-        </Flex>
+        <ProgressHoverButton onClick={handleClickReloadButton}>다시 불러오기</ProgressHoverButton>
       </Flex>
     </Flex>
   )
