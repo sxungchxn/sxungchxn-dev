@@ -1,6 +1,7 @@
 import { style } from '@vanilla-extract/css'
 
 export const anchor = style({
+  wordWrap: 'break-word',
   selectors: {
     '&:hover': {
       textDecoration: 'underline !important',
