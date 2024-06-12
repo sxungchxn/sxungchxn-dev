@@ -13,7 +13,14 @@ export const list = style({
 })
 
 export const listItem = style({
-  maxWidth: '100%',
+  '@media': {
+    [mediaQuery.pc]: {
+      maxWidth: '478px',
+    },
+    [mediaQuery.belowPc]: {
+      maxWidth: '100%',
+    },
+  },
 })
 
 export const thumbnailWrapper = style({
