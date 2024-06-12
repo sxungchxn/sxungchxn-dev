@@ -4,16 +4,20 @@ import { Flex, Text } from '@sxungchxn/dev-ui'
 import Image from 'next/image'
 import type { MouseEventHandler } from 'react'
 import { ProgressHoverButton } from '@/components/progress-hover-button/progress-hover-button'
+import { useRouter } from 'next/navigation'
 
 export interface BlurImageFallbackProps {
   onClickReload: () => void
 }
 
 export const BlurImageFallback = ({ onClickReload }: BlurImageFallbackProps) => {
+  const router = useRouter()
+
   const handleClickReloadButton: MouseEventHandler<HTMLButtonElement> = event => {
     event.preventDefault()
     event.stopPropagation()
     onClickReload()
+    router.refresh()
   }
 
   return (
