@@ -20,10 +20,9 @@ export const ProgressHoverButton = ({ children, icon, ...flexProps }: ProgressHo
       onMouseEnter={setHoverTrue}
       onMouseLeave={setHoverFalse}
       gap="8px"
-      marginTop="36px"
     >
-      <ProgressiveHoverCircle isHover={isHover} fillColor="textPrimary">
-        {icon ?? <Icon source={IconReload} size={20} color="textPrimary" />}
+      <ProgressiveHoverCircle isHover={isHover} fillColor="textPrimary" size={28}>
+        {icon ?? <Icon source={IconReload} size={16} color="textPrimary" />}
       </ProgressiveHoverCircle>
       <Text variant="title3" color="textPrimary">
         {children}

@@ -4,20 +4,17 @@ import { Flex, Text } from '@sxungchxn/dev-ui'
 import Image from 'next/image'
 import type { MouseEventHandler } from 'react'
 import { ProgressHoverButton } from '@/components/progress-hover-button/progress-hover-button'
-import { useRouter } from 'next/navigation'
 
 export interface BlurImageFallbackProps {
   onClickReload: () => void
 }
 
 export const BlurImageFallback = ({ onClickReload }: BlurImageFallbackProps) => {
-  const router = useRouter()
-
   const handleClickReloadButton: MouseEventHandler<HTMLButtonElement> = event => {
     event.preventDefault()
     event.stopPropagation()
     onClickReload()
-    router.refresh()
+    location.reload()
   }
 
   return (
@@ -34,11 +31,16 @@ export const BlurImageFallback = ({ onClickReload }: BlurImageFallbackProps) => 
           alt="image_load_fail"
           width={48}
           height={48}
+          unoptimized
         />
         <Text color="textPrimary" variant="title3" marginTop="16px">
           이미지 로드 실패
         </Text>
-        <ProgressHoverButton onClick={handleClickReloadButton}>다시 불러오기</ProgressHoverButton>
+        <ProgressHoverButton onClick={handleClickReloadButton} marginTop="24px">
+          <Text color="textPrimary" variant="title4">
+            페이지 새로고침
+          </Text>
+        </ProgressHoverButton>
       </Flex>
     </Flex>
   )
