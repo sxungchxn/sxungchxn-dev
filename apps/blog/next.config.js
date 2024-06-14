@@ -7,6 +7,7 @@ const withVanillaExtract = createVanillaExtractPlugin()
 const nextConfig = {
   transpilePackages: ['@sxungchxn/dev-ui'],
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -18,7 +19,7 @@ const nextConfig = {
       },
     ],
   },
-  redirects: async () => {
+  redirects: () => {
     return [{ source: '/', destination: '/blog', permanent: true }]
   },
 }
