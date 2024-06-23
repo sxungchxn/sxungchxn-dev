@@ -33,6 +33,7 @@ export const ArticleDetailHeaderSection = async ({ pageId }: ArticleDetailHeader
           alt={title}
           fill
           sizes="(min-width: 1024px) 980px, 100vw"
+          priority
         />
       </Box>
     </Flex>

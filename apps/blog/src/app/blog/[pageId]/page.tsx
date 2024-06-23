@@ -5,7 +5,8 @@ import { ArticleDetailContentSection } from '@/app/blog/[pageId]/components/arti
 import { ArticleDetailFooterSection } from '@/app/blog/[pageId]/components/article-detail-footer-section/article-detail-footer-section'
 import { ArticleCommentSection } from '@/app/blog/[pageId]/components/article-comment-section/article-comment-section'
 
-export const revalidate = 3000
+// 40분마다 갱신
+export const revalidate = 2400
 
 export async function generateStaticParams() {
   const articleList = await fetchAllArticleList()

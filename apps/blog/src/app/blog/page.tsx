@@ -2,8 +2,8 @@ import { Box } from '@sxungchxn/dev-ui'
 import { FeaturedArticleListSection } from '@/app/blog/components'
 import { AllArticleListSection } from '@/app/blog/components'
 
-// 50분마다 갱신
-export const revalidate = 3000
+// 30분마다 갱신
+export const revalidate = 2400
 
 export default function Blog() {
   return (
