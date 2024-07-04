@@ -7,7 +7,6 @@ const withVanillaExtract = createVanillaExtractPlugin()
 const nextConfig = {
   transpilePackages: ['@sxungchxn/dev-ui'],
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -16,6 +15,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'github.githubassets.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
       },
     ],
   },
