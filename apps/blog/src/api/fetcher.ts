@@ -23,6 +23,8 @@ import type {
   ImageBlockObjectResponse,
   ListBlockChildrenResponse,
 } from '@notionhq/client/build/src/api-endpoints'
+import { unstable_cache } from 'next/cache'
+import { ARTICLE_CONTENT, ARTICLE_FOOTER, ARTICLE_HEADER } from '@/constants/cache-key'
 
 /**
  * thumbnailUrl을 blurdataUrl로 변환하는 함수
@@ -147,77 +149,93 @@ export const fetchAllArticleList = cache(async (): Promise<AllArticleWithBlur[]>
 /**
  * 해당 아티클 페이지의 header 부분의 데이터를 불러오는 함수
  */
-export const fetchArticlePageHeaderData = async (
-  pageId: string,
-): Promise<ArticlePageHeaderDataWithBlur> => {
-  const pageResponse = await notion.pages.retrieve({
-    page_id: pageId,
-  })
+export const fetchArticlePageHeaderData = (pageId: string) => {
+  const cacheKey = ARTICLE_HEADER(pageId)
 
-  const { thumbnailUrl, ...rest } = new NotionPageAdapter(
-    pageResponse as QueryPageResponse,
-  ).convertToArticlePageHeaderData()
+  return unstable_cache(
+    async (pageId: string): Promise<ArticlePageHeaderDataWithBlur> => {
+      const pageResponse = await notion.pages.retrieve({
+        page_id: pageId,
+      })
 
-  const convertedThumbnailUrl = await cloudinaryApi.convertToPermanentImage(
-    thumbnailUrl,
-    `${pageId}_thumbnail`,
-  )
+      const { thumbnailUrl, ...rest } = new NotionPageAdapter(
+        pageResponse as QueryPageResponse,
+      ).convertToArticlePageHeaderData()
 
-  return {
-    ...rest,
-    thumbnailUrl: convertedThumbnailUrl,
-    blurDataUrl: await fetchBlurDataUrl(convertedThumbnailUrl),
-  }
+      const convertedThumbnailUrl = await cloudinaryApi.convertToPermanentImage(
+        thumbnailUrl,
+        `${pageId}_thumbnail`,
+      )
+
+      return {
+        ...rest,
+        thumbnailUrl: convertedThumbnailUrl,
+        blurDataUrl: await fetchBlurDataUrl(convertedThumbnailUrl),
+      }
+    },
+    [cacheKey],
+    {
+      tags: [cacheKey],
+    },
+  )(pageId)
 }
 
 /**
  * 해당 아티클 페이지의 footer 부분의 데이터를 불러오는 함수
  */
-export const fetchArticlePageFooterData = async (
-  pageId: string,
-): Promise<ArticlePageFooterData> => {
-  const {
-    properties: {
-      prevArticleId: { number: prevArticleId },
-      nextArticleId: { number: nextArticleId },
-    },
-  } = (await notion.pages.retrieve({
-    page_id: pageId,
-  })) as QueryPageResponse
+export const fetchArticlePageFooterData = (pageId: string) => {
+  const cacheKey = ARTICLE_FOOTER(pageId)
 
-  const [prevArticlePageData, nextArticlePageData] = await Promise.all(
-    [prevArticleId, nextArticleId].map(articleId => {
-      if (isNil(articleId)) {
-        return undefined
-      }
-      return notion.databases.query({
-        database_id: process.env.NOTION_DATABASE_ID!,
-        filter: {
-          and: [
-            {
-              property: 'id',
-              number: {
-                equals: articleId,
-              },
-            },
-          ],
+  return unstable_cache(
+    async (pageId: string): Promise<ArticlePageFooterData> => {
+      const {
+        properties: {
+          prevArticleId: { number: prevArticleId },
+          nextArticleId: { number: nextArticleId },
         },
-      })
-    }),
-  )
+      } = (await notion.pages.retrieve({
+        page_id: pageId,
+      })) as QueryPageResponse
 
-  return {
-    prevArticle: prevArticlePageData
-      ? new NotionPageAdapter(
-          prevArticlePageData?.results[0] as QueryPageResponse,
-        ).convertToArticleLinkerData()
-      : undefined,
-    nextArticle: nextArticlePageData
-      ? new NotionPageAdapter(
-          nextArticlePageData?.results[0] as QueryPageResponse,
-        ).convertToArticleLinkerData()
-      : undefined,
-  }
+      const [prevArticlePageData, nextArticlePageData] = await Promise.all(
+        [prevArticleId, nextArticleId].map(articleId => {
+          if (isNil(articleId)) {
+            return undefined
+          }
+          return notion.databases.query({
+            database_id: process.env.NOTION_DATABASE_ID!,
+            filter: {
+              and: [
+                {
+                  property: 'id',
+                  number: {
+                    equals: articleId,
+                  },
+                },
+              ],
+            },
+          })
+        }),
+      )
+
+      return {
+        prevArticle: prevArticlePageData
+          ? new NotionPageAdapter(
+              prevArticlePageData?.results[0] as QueryPageResponse,
+            ).convertToArticleLinkerData()
+          : undefined,
+        nextArticle: nextArticlePageData
+          ? new NotionPageAdapter(
+              nextArticlePageData?.results[0] as QueryPageResponse,
+            ).convertToArticleLinkerData()
+          : undefined,
+      }
+    },
+    [cacheKey],
+    {
+      tags: [cacheKey],
+    },
+  )(pageId)
 }
 
 /**
@@ -296,9 +314,19 @@ export const updateImageBlocks = async (pageId: string) => {
 /**
  * 해당 아티클 페이지의 content 부분의 데이터를 불러오는 함수
  */
-export const fetchArticlePageContent = async (pageId: string) => {
-  await updateImageBlocks(pageId)
+export const fetchArticlePageContent = (pageId: string) => {
+  const cacheKey = ARTICLE_CONTENT(pageId)
 
-  const mdBlocks = await n2m.pageToMarkdown(pageId)
-  return n2m.toMarkdownString(mdBlocks)
+  return unstable_cache(
+    async (pageId: string) => {
+      await updateImageBlocks(pageId)
+
+      const mdBlocks = await n2m.pageToMarkdown(pageId)
+      return n2m.toMarkdownString(mdBlocks)
+    },
+    [cacheKey],
+    {
+      tags: [cacheKey],
+    },
+  )(pageId)
 }

@@ -5,8 +5,6 @@ import { ArticleDetailContentSection } from '@/app/blog/[pageId]/components/arti
 import { ArticleDetailFooterSection } from '@/app/blog/[pageId]/components/article-detail-footer-section/article-detail-footer-section'
 import { ArticleCommentSection } from '@/app/blog/[pageId]/components/article-comment-section/article-comment-section'
 import type { Metadata } from 'next'
-import { unstable_cache } from 'next/cache'
-import { ARTICLE_HEADER } from '@/constants/cache-key'
 
 type ArticleDetailPageProps = { params: { pageId: string } }
 
@@ -21,14 +19,11 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params: { pageId },
 }: ArticleDetailPageProps): Promise<Metadata> {
-  const cacheKey = ARTICLE_HEADER(pageId)
   const {
     title: articleTitle,
     description,
     thumbnailUrl,
-  } = await unstable_cache(() => fetchArticlePageHeaderData(pageId), [cacheKey], {
-    tags: [cacheKey],
-  })()
+  } = await fetchArticlePageHeaderData(pageId)
 
   const title = `${articleTitle} | sxungchxn.dev blog`
 
