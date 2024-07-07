@@ -1,5 +1,6 @@
 import { revalidatePath, revalidateTag } from 'next/cache'
 import type { NextRequest } from 'next/server'
+import { ARTICLE_CONTENT, ARTICLE_FOOTER, ARTICLE_HEADER } from '@/constants/cache-key'
 
 export async function POST(request: NextRequest) {
   const { revalidateKey, pageId } = (await request.json()) as {
@@ -8,9 +9,9 @@ export async function POST(request: NextRequest) {
   }
 
   if (pageId && revalidateKey === process.env.REVALIDATE_KEY) {
-    revalidateTag(`${pageId}_header`)
-    revalidateTag(`${pageId}_content`)
-    revalidateTag(`${pageId}_footer`)
+    revalidateTag(ARTICLE_HEADER(pageId))
+    revalidateTag(ARTICLE_CONTENT(pageId))
+    revalidateTag(ARTICLE_FOOTER(pageId))
     revalidatePath('/blog', 'page')
 
     return Response.json({

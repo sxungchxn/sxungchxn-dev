@@ -4,13 +4,14 @@ import * as styles from './article-detail-header-section.css'
 import { BlurImage } from '@/components/blur-image/blur-image'
 import { fetchArticlePageHeaderData } from '@/api/fetcher'
 import { unstable_cache } from 'next/cache'
+import { ARTICLE_HEADER } from '@/constants/cache-key'
 
 export interface ArticleDetailHeaderSectionProps {
   pageId: string
 }
 
 export const ArticleDetailHeaderSection = async ({ pageId }: ArticleDetailHeaderSectionProps) => {
-  const cacheKey = `${pageId}_header`
+  const cacheKey = ARTICLE_HEADER(pageId)
   const { title, createdAt, tagList, thumbnailUrl, blurDataUrl } = await unstable_cache(
     () => fetchArticlePageHeaderData(pageId),
     [cacheKey],

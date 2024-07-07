@@ -3,13 +3,14 @@ import { Box } from '@sxungchxn/dev-ui'
 import * as styles from './article-detail-footer-section.css'
 import { ArticleLinkCard } from '@/app/blog/[pageId]/components/article-detail-footer-section/article-link-card/article-link-card'
 import { unstable_cache } from 'next/cache'
+import { ARTICLE_FOOTER } from '@/constants/cache-key'
 
 export interface ArticleDetailFooterSectionProps {
   pageId: string
 }
 
 export const ArticleDetailFooterSection = async ({ pageId }: ArticleDetailFooterSectionProps) => {
-  const cacheKey = `${pageId}_footer`
+  const cacheKey = ARTICLE_FOOTER(pageId)
   const { prevArticle, nextArticle } = await unstable_cache(
     () => fetchArticlePageFooterData(pageId),
     [cacheKey],
