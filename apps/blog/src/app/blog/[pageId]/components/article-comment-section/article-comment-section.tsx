@@ -12,9 +12,9 @@ export const ArticleCommentSection = () => {
     <Box as="section" className={styles.wrapper}>
       <Giscus
         repo="sxungchxn/sxungchxn-dev"
-        repoId="R_kgDOLJExUg"
+        repoId={process.env.NEXT_PUBLIC_GISCUS_REPO_ID!}
         category="Comments"
-        categoryId="DIC_kwDOLJExUs4Cf9pv"
+        categoryId={process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID}
         mapping="pathname"
         strict="0"
         reactionsEnabled="1"
