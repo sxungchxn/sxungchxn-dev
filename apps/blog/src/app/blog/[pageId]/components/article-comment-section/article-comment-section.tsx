@@ -22,7 +22,6 @@ export const ArticleCommentSection = () => {
         inputPosition="bottom"
         theme={resolvedTheme === 'dark' ? 'transparent_dark' : 'light'}
         lang="ko"
-        loading="lazy"
       />
     </Box>
   )
