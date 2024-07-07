@@ -147,78 +147,78 @@ export const fetchAllArticleList = cache(async (): Promise<AllArticleWithBlur[]>
 /**
  * 해당 아티클 페이지의 header 부분의 데이터를 불러오는 함수
  */
-export const fetchArticlePageHeaderData = cache(
-  async (pageId: string): Promise<ArticlePageHeaderDataWithBlur> => {
-    const pageResponse = await notion.pages.retrieve({
-      page_id: pageId,
-    })
+export const fetchArticlePageHeaderData = async (
+  pageId: string,
+): Promise<ArticlePageHeaderDataWithBlur> => {
+  const pageResponse = await notion.pages.retrieve({
+    page_id: pageId,
+  })
 
-    const { thumbnailUrl, ...rest } = new NotionPageAdapter(
-      pageResponse as QueryPageResponse,
-    ).convertToArticlePageHeaderData()
+  const { thumbnailUrl, ...rest } = new NotionPageAdapter(
+    pageResponse as QueryPageResponse,
+  ).convertToArticlePageHeaderData()
 
-    const convertedThumbnailUrl = await cloudinaryApi.convertToPermanentImage(
-      thumbnailUrl,
-      `${pageId}_thumbnail`,
-    )
+  const convertedThumbnailUrl = await cloudinaryApi.convertToPermanentImage(
+    thumbnailUrl,
+    `${pageId}_thumbnail`,
+  )
 
-    return {
-      ...rest,
-      thumbnailUrl: convertedThumbnailUrl,
-      blurDataUrl: await fetchBlurDataUrl(convertedThumbnailUrl),
-    }
-  },
-)
+  return {
+    ...rest,
+    thumbnailUrl: convertedThumbnailUrl,
+    blurDataUrl: await fetchBlurDataUrl(convertedThumbnailUrl),
+  }
+}
 
 /**
  * 해당 아티클 페이지의 footer 부분의 데이터를 불러오는 함수
  */
-export const fetchArticlePageFooterData = cache(
-  async (pageId: string): Promise<ArticlePageFooterData> => {
-    const {
-      properties: {
-        prevArticleId: { number: prevArticleId },
-        nextArticleId: { number: nextArticleId },
-      },
-    } = (await notion.pages.retrieve({
-      page_id: pageId,
-    })) as QueryPageResponse
+export const fetchArticlePageFooterData = async (
+  pageId: string,
+): Promise<ArticlePageFooterData> => {
+  const {
+    properties: {
+      prevArticleId: { number: prevArticleId },
+      nextArticleId: { number: nextArticleId },
+    },
+  } = (await notion.pages.retrieve({
+    page_id: pageId,
+  })) as QueryPageResponse
 
-    const [prevArticlePageData, nextArticlePageData] = await Promise.all(
-      [prevArticleId, nextArticleId].map(articleId => {
-        if (isNil(articleId)) {
-          return undefined
-        }
-        return notion.databases.query({
-          database_id: process.env.NOTION_DATABASE_ID!,
-          filter: {
-            and: [
-              {
-                property: 'id',
-                number: {
-                  equals: articleId,
-                },
+  const [prevArticlePageData, nextArticlePageData] = await Promise.all(
+    [prevArticleId, nextArticleId].map(articleId => {
+      if (isNil(articleId)) {
+        return undefined
+      }
+      return notion.databases.query({
+        database_id: process.env.NOTION_DATABASE_ID!,
+        filter: {
+          and: [
+            {
+              property: 'id',
+              number: {
+                equals: articleId,
               },
-            ],
-          },
-        })
-      }),
-    )
+            },
+          ],
+        },
+      })
+    }),
+  )
 
-    return {
-      prevArticle: prevArticlePageData
-        ? new NotionPageAdapter(
-            prevArticlePageData?.results[0] as QueryPageResponse,
-          ).convertToArticleLinkerData()
-        : undefined,
-      nextArticle: nextArticlePageData
-        ? new NotionPageAdapter(
-            nextArticlePageData?.results[0] as QueryPageResponse,
-          ).convertToArticleLinkerData()
-        : undefined,
-    }
-  },
-)
+  return {
+    prevArticle: prevArticlePageData
+      ? new NotionPageAdapter(
+          prevArticlePageData?.results[0] as QueryPageResponse,
+        ).convertToArticleLinkerData()
+      : undefined,
+    nextArticle: nextArticlePageData
+      ? new NotionPageAdapter(
+          nextArticlePageData?.results[0] as QueryPageResponse,
+        ).convertToArticleLinkerData()
+      : undefined,
+  }
+}
 
 /**
  * 해당 아티클 페이지의 모든 block들을 불러오는 함수
@@ -296,9 +296,9 @@ export const updateImageBlocks = async (pageId: string) => {
 /**
  * 해당 아티클 페이지의 content 부분의 데이터를 불러오는 함수
  */
-export const fetchArticlePageContent = cache(async (pageId: string) => {
+export const fetchArticlePageContent = async (pageId: string) => {
   await updateImageBlocks(pageId)
 
   const mdBlocks = await n2m.pageToMarkdown(pageId)
   return n2m.toMarkdownString(mdBlocks)
-})
+}
