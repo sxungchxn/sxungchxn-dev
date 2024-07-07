@@ -17,7 +17,7 @@ import type {
 } from '@/api/types'
 import { getPlaiceholder } from 'plaiceholder'
 import { isNil } from '@/utils/is-nil'
-import { convertToPermanentImage } from '@/lib/image-converter'
+import { cloudinaryApi } from '@/api/cloudinary'
 import type {
   GetBlockResponse,
   ImageBlockObjectResponse,
@@ -77,7 +77,10 @@ export const fetchFeaturedArticleList = cache(async (): Promise<FeaturedArticleW
     convertedFeaturedArticleList.map(async ({ thumbnailUrl, pageId, ...rest }) => ({
       ...rest,
       pageId,
-      thumbnailUrl: await convertToPermanentImage(thumbnailUrl, `${pageId}_thumbnail`),
+      thumbnailUrl: await cloudinaryApi.convertToPermanentImage(
+        thumbnailUrl,
+        `${pageId}_thumbnail`,
+      ),
       blurDataUrl: await fetchBlurDataUrl(thumbnailUrl),
     })),
   )
@@ -125,12 +128,19 @@ export const fetchAllArticleList = cache(async (): Promise<AllArticleWithBlur[]>
   ).convertToAllArticleList()
 
   return Promise.all(
-    convertedAllArticleList.map(async ({ thumbnailUrl, pageId, ...rest }) => ({
-      ...rest,
-      pageId,
-      thumbnailUrl: await convertToPermanentImage(thumbnailUrl, `${pageId}_thumbnail`),
-      blurDataUrl: await fetchBlurDataUrl(thumbnailUrl),
-    })),
+    convertedAllArticleList.map(async ({ thumbnailUrl, pageId, ...rest }) => {
+      const convertedThumbnailUrl = await cloudinaryApi.convertToPermanentImage(
+        thumbnailUrl,
+        `${pageId}_thumbnail`,
+      )
+
+      return {
+        ...rest,
+        pageId,
+        thumbnailUrl: convertedThumbnailUrl,
+        blurDataUrl: await fetchBlurDataUrl(convertedThumbnailUrl),
+      }
+    }),
   )
 })
 
@@ -147,7 +157,10 @@ export const fetchArticlePageHeaderData = cache(
       pageResponse as QueryPageResponse,
     ).convertToArticlePageHeaderData()
 
-    const convertedThumbnailUrl = await convertToPermanentImage(thumbnailUrl, `${pageId}_thumbnail`)
+    const convertedThumbnailUrl = await cloudinaryApi.convertToPermanentImage(
+      thumbnailUrl,
+      `${pageId}_thumbnail`,
+    )
 
     return {
       ...rest,
@@ -255,37 +268,36 @@ export const fetchAllImageBlocksInPage = cache(async (pageId: string) => {
 })
 
 /**
- * 각 이미지 블락의 url을 바꾸어 업데이트하는 함수
- * - 주어진 imageurl이 notion으로부터 오는 url인 경우에만 업데이트를 진행하고 그렇지않으면 바로 종료
+ * 페이지 내의 image 블락들을 불러들여 파싱 진행
  */
-export const updateImageBlockUrl = cache((blockId: string, url: string) => {
-  return notion.blocks.update({
-    block_id: blockId,
-    image: {
-      external: {
-        url,
-      },
-    },
-  })
-})
-
-/**
- * 해당 아티클 페이지의 content 부분의 데이터를 불러오는 함수
- */
-export const fetchArticlePageContent = cache(async (pageId: string) => {
+export const updateImageBlocks = async (pageId: string) => {
   const allImageBlocks = await fetchAllImageBlocksInPage(pageId)
 
   for (const [index, imageBlock] of allImageBlocks.entries()) {
     const { image, id: blockId } = imageBlock
     // notion에 직접 업로드된 이미지 파일들만 cloudinary에 업로드하여 변환
     if ('type' in image && image.type === 'file') {
-      const convertedImageUrl = await convertToPermanentImage(
+      const convertedImageUrl = await cloudinaryApi.convertToPermanentImage(
         (image as FileImageBlock).file.url,
         `${pageId}_imageblock_${index + 1}`,
       )
-      await updateImageBlockUrl(blockId, convertedImageUrl)
+      await notion.blocks.update({
+        block_id: blockId,
+        image: {
+          external: {
+            url: convertedImageUrl,
+          },
+        },
+      })
     }
   }
+}
+
+/**
+ * 해당 아티클 페이지의 content 부분의 데이터를 불러오는 함수
+ */
+export const fetchArticlePageContent = cache(async (pageId: string) => {
+  await updateImageBlocks(pageId)
 
   const mdBlocks = await n2m.pageToMarkdown(pageId)
   return n2m.toMarkdownString(mdBlocks)
