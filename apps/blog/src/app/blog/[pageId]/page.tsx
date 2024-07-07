@@ -1,9 +1,14 @@
-import { fetchAllArticleList } from '@/api/fetcher'
+import { fetchAllArticleList, fetchArticlePageHeaderData } from '@/api/fetcher'
 import { Box } from '@sxungchxn/dev-ui'
 import { ArticleDetailHeaderSection } from '@/app/blog/[pageId]/components/article-detail-header-section/article-detail-header-section'
 import { ArticleDetailContentSection } from '@/app/blog/[pageId]/components/article-detail-content-section/article-detail-content-section'
 import { ArticleDetailFooterSection } from '@/app/blog/[pageId]/components/article-detail-footer-section/article-detail-footer-section'
 import { ArticleCommentSection } from '@/app/blog/[pageId]/components/article-comment-section/article-comment-section'
+import type { Metadata } from 'next'
+import { unstable_cache } from 'next/cache'
+import { ARTICLE_HEADER } from '@/constants/cache-key'
+
+type ArticleDetailPageProps = { params: { pageId: string } }
 
 export async function generateStaticParams() {
   const articleList = await fetchAllArticleList()
@@ -13,7 +18,31 @@ export async function generateStaticParams() {
   }))
 }
 
-export default function ArticleDetailPage({ params: { pageId } }: { params: { pageId: string } }) {
+export async function generateMetadata({
+  params: { pageId },
+}: ArticleDetailPageProps): Promise<Metadata> {
+  const cacheKey = ARTICLE_HEADER(pageId)
+  const {
+    title: articleTitle,
+    description,
+    thumbnailUrl,
+  } = await unstable_cache(() => fetchArticlePageHeaderData(pageId), [cacheKey], {
+    tags: [cacheKey],
+  })()
+
+  const title = `${articleTitle} | sxungchxn.dev blog`
+
+  return {
+    title,
+    openGraph: {
+      title,
+      description,
+      images: [thumbnailUrl],
+    },
+  }
+}
+
+export default function ArticleDetailPage({ params: { pageId } }: ArticleDetailPageProps) {
   return (
     <Box maxWidth="980px" width="100%" minHeight="1200px" marginX="auto">
       <ArticleDetailHeaderSection pageId={pageId} />

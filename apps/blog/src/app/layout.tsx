@@ -1,7 +1,6 @@
 import '@sxungchxn/dev-ui/styles'
 import '@/styles/global.css'
 import type { CSSProperties, ReactNode } from 'react'
-import type { Metadata } from 'next'
 import { Kalam } from 'next/font/google'
 import { Box, vars } from '@sxungchxn/dev-ui'
 import { Providers } from '@/providers'
@@ -17,11 +16,6 @@ const kalam = Kalam({
   display: 'swap',
   variable: '--fonts-secondary',
 })
-
-export const metadata: Metadata = {
-  title: 'sxungchxn.dev',
-  description: 'dev blog built by sxungchxn',
-}
 
 export default function RootLayout({
   children,
