@@ -189,3 +189,10 @@ export interface ArticlePageFooterData {
   prevArticle?: ArticleLinkerData
   nextArticle?: ArticleLinkerData
 }
+
+export type FileImageBlock = {
+  type: 'file'
+  file: {
+    url: string
+  }
+}

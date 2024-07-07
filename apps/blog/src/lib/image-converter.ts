@@ -11,6 +11,7 @@ export const convertToPermanentImage = async (notionImageUrl: string, title: str
     {
       folder: process.env.CLOUDINARY_UPLOAD_FOLDER!,
       public_id: title.split(' ').join('_').trim(),
+      overwrite: true,
     },
   )
 
