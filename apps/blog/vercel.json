@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "src/app/blog/**/*": {
+      "maxDuration": 60
+    }
+  }
+}

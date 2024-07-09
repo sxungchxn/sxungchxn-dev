@@ -2,7 +2,7 @@ import { revalidatePath, revalidateTag } from 'next/cache'
 import type { NextRequest } from 'next/server'
 import { ARTICLE_CONTENT, ARTICLE_FOOTER, ARTICLE_HEADER } from '@/constants/cache-key'
 
-export const maxDuration = 30
+export const maxDuration = 60
 
 export async function POST(request: NextRequest) {
   const { revalidateKey, pageId } = (await request.json()) as {
