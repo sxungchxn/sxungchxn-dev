@@ -18,18 +18,6 @@ class CloudinaryApi {
     })
   }
 
-  private uploadImage(image: string, options: UploadApiOptions = {}): Promise<{ url: string }> {
-    return cloudinary.uploader
-      .upload(image, options)
-      .then(result => ({
-        url: result.secure_url,
-      }))
-      .catch(error => {
-        console.error(error)
-        return { url: '' }
-      })
-  }
-
   private downloadImageToBase64(url: string): Promise<string> {
     return new Promise((resolve, reject) => {
       const req = https.request(url, response => {
@@ -47,6 +35,18 @@ class CloudinaryApi {
       req.on('error', reject)
       req.end()
     })
+  }
+
+  private uploadImage(image: string, options: UploadApiOptions = {}): Promise<{ url: string }> {
+    return cloudinary.uploader
+      .upload(image, options)
+      .then(result => ({
+        url: result.secure_url,
+      }))
+      .catch(error => {
+        console.error(error)
+        return { url: '' }
+      })
   }
 
   async convertToPermanentImage(notionImageUrl: string, title: string) {
