@@ -1,6 +1,7 @@
 import { recipe } from '@vanilla-extract/recipes'
 import { vars } from '@sxungchxn/dev-ui'
 import { wrapper } from '@/app/blog/[pageId]/components/article-content-renderer/article-content-renderer.css'
+import { globalStyle } from '@vanilla-extract/css'
 
 export const list = recipe({
   base: {
@@ -27,4 +28,16 @@ export const list = recipe({
       },
     },
   },
+})
+
+globalStyle('li > ul', {
+  marginTop: `${vars.space['10px']} !important`,
+})
+
+globalStyle('h2#목차 + ul', {
+  gap: vars.space['16px'],
+})
+
+globalStyle('h2#목차 + ul ul, h2#목차 + ul li', {
+  listStyleType: 'none !important',
 })
