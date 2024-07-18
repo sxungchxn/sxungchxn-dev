@@ -26,7 +26,13 @@ export const AllArticleListItem = ({ article }: AllArticleListItemProps) => {
             />
           </Box>
           <Flex direction="column" gap="16px">
-            <Text as="h3" color="textPrimary" variant="heading3" ellipsis>
+            <Text
+              as="h3"
+              color="textPrimary"
+              variant="heading3"
+              ellipsis
+              className={styles.listItemTitle}
+            >
               {title}
             </Text>
             <Text as="span" variant="body3" color="textSecondary">

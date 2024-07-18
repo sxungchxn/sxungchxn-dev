@@ -46,7 +46,13 @@ export const ArticleLinkCard = ({ type, articleLinkerData }: ArticleLinkCardProp
           >
             {type === 'prev' ? '이전' : '다음'}&nbsp;게시글
           </Text>
-          <Text variant="title2" color="textPrimary" ellipsis>
+          <Text
+            variant="title2"
+            color="textPrimary"
+            ellipsis
+            textAlign={type === 'prev' ? 'left' : 'right'}
+            className={styles.linkTitle}
+          >
             {title}
           </Text>
         </Flex>

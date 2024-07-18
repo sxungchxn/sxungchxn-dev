@@ -53,3 +53,11 @@ export const thumbnail = style({
   objectFit: 'cover',
   objectPosition: 'top',
 })
+
+export const listItemTitle = style({
+  '@media': {
+    [mediaQuery.belowPc]: {
+      whiteSpace: 'pre-wrap',
+    },
+  },
+})

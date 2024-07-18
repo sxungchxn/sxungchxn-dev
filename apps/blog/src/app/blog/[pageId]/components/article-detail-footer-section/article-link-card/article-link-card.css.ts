@@ -1,7 +1,10 @@
 import { recipe } from '@vanilla-extract/recipes'
 import { style } from '@vanilla-extract/css'
+import { mediaQuery } from '@sxungchxn/dev-ui'
 
-export const cardBase = style({})
+export const cardBase = style({
+  height: '106px',
+})
 
 export const card = recipe({
   variants: {
@@ -38,6 +41,14 @@ export const linkArrow = recipe({
           },
         },
       },
+    },
+  },
+})
+
+export const linkTitle = style({
+  '@media': {
+    [mediaQuery.belowPc]: {
+      whiteSpace: 'pre-wrap',
     },
   },
 })
