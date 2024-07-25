@@ -21,17 +21,20 @@ import {
   Table,
   Th,
   Td,
-} from '@/app/blog/[pageId]/components/article-content-renderer/components'
+} from '@/components/article-content-renderer/components'
 import * as styles from './article-content-renderer.css'
 import { IconHash } from '@sxungchxn/dev-icons'
 import { convertToHastNode } from '@/utils/convert-to-hast-node'
+import { clsx } from 'clsx'
 
 export interface ArticleContentRendererProps extends LayoutProps {
   content: string
+  withMarginTop?: boolean
 }
 
 export const ArticleContentRenderer = ({
   content,
+  withMarginTop,
   ...layoutProps
 }: ArticleContentRendererProps) => {
   return (
@@ -40,7 +43,7 @@ export const ArticleContentRenderer = ({
       as="section"
       position="relative"
       maxWidth="100%"
-      className={styles.wrapper}
+      className={clsx(styles.wrapper, styles.wrapperVariants({ withMarginTop }))}
     >
       <ReactMarkdown
         remarkPlugins={[remarkGfm, [remarkToc, { tight: false, heading: '목차' }], remarkRehype]}

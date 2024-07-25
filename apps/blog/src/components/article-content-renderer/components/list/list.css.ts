@@ -1,6 +1,6 @@
 import { recipe } from '@vanilla-extract/recipes'
 import { vars } from '@sxungchxn/dev-ui'
-import { wrapper } from '@/app/blog/[pageId]/components/article-content-renderer/article-content-renderer.css'
+import { wrapper } from '@/components/article-content-renderer/article-content-renderer.css'
 import { globalStyle } from '@vanilla-extract/css'
 
 export const list = recipe({

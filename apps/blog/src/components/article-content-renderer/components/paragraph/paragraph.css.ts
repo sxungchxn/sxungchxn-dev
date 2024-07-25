@@ -1,4 +1,4 @@
-import { wrapper } from '@/app/blog/[pageId]/components/article-content-renderer/article-content-renderer.css'
+import { wrapper } from '@/components/article-content-renderer/article-content-renderer.css'
 import { style } from '@vanilla-extract/css'
 import { vars } from '@sxungchxn/dev-ui'
 
