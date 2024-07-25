@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.sxungchxn.dev/blog
+
+# Sitemaps
+Sitemap: https://www.sxungchxn.dev/blog/sitemap.xml

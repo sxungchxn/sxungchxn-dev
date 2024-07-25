@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap --config next-sitemap.config.cjs",
     "start": "next start",
     "lint": "next lint",
     "check-types": "tsc --noEmit"
@@ -29,6 +30,7 @@
     "highlight.js": "^11.9.0",
     "https": "^1.0.0",
     "next": "14.2.3",
+    "next-sitemap": "^4.2.3",
     "next-themes": "^0.3.0",
     "notion-to-md": "^3.1.1",
     "plaiceholder": "^3.0.0",
