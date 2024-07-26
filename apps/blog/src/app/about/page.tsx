@@ -9,7 +9,9 @@ export default async function About() {
 
   return (
     <Flex width="100%" minHeight="800px" alignItems="center" direction="column">
-      <ArticleContentRenderer content={parent as string} withMarginTop={false} />
+      <Flex maxWidth="980px">
+        <ArticleContentRenderer content={parent as string} withMarginTop={false} />
+      </Flex>
       {/*<InProgress width={200} height={200} />*/}
       {/*<Text variant="title1">아직 완성되지 못했어요.</Text>*/}
       {/*<BackNavigateButton />*/}
