@@ -26,6 +26,9 @@ export const metadata: Metadata = {
     locale: 'ko_KR',
     type: 'website',
   },
+  verification: {
+    google: 'LuFkph6en1gnzQDkrEzZRK_3H8WNfgaLXJQGQ7M1A_Q',
+  },
 }
 
 export default function Blog() {
