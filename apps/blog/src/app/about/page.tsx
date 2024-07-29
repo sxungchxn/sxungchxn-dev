@@ -9,7 +9,7 @@ export default async function About() {
 
   return (
     <Flex width="100%" minHeight="800px" alignItems="center" direction="column">
-      <Flex maxWidth="980px">
+      <Flex maxWidth="980px" marginBottom="64px">
         <ArticleContentRenderer content={parent as string} withMarginTop={false} />
       </Flex>
       {/*<InProgress width={200} height={200} />*/}
