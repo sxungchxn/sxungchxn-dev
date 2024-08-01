@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://www.sxungchxn.dev/blog
+Host: https://www.sxungchxn.dev
 
 # Sitemaps
-Sitemap: https://www.sxungchxn.dev/blog/sitemap.xml
+Sitemap: https://www.sxungchxn.dev/sitemap.xml

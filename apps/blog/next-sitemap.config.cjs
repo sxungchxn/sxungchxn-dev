@@ -1,5 +1,5 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://www.sxungchxn.dev/blog',
+  siteUrl: 'https://www.sxungchxn.dev',
   generateRobotsTxt: true,
 }
