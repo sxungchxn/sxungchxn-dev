@@ -3,6 +3,7 @@ import { fetchArticlePageContent } from '@/api/fetcher'
 import { ArticleContentRenderer } from '@/components/article-content-renderer/article-content-renderer'
 import type { Metadata } from 'next'
 import { ABOUT_PAGE_ID } from '@/constants/page-id'
+import { ArticleCommentSection } from '@/components/article-comment-section/article-comment-section'
 
 export const metadata: Metadata = {
   title: 'sxungchxn.dev blog',
@@ -37,8 +38,9 @@ export default async function About() {
 
   return (
     <Flex width="100%" minHeight="800px" alignItems="center" direction="column">
-      <Flex maxWidth="980px" marginBottom="64px">
+      <Flex maxWidth="980px" marginBottom="64px" direction="column">
         <ArticleContentRenderer content={parent as string} withMarginTop={false} />
+        <ArticleCommentSection />
       </Flex>
     </Flex>
   )

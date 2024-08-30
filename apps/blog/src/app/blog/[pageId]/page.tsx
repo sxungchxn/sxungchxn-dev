@@ -3,7 +3,7 @@ import { Box } from '@sxungchxn/dev-ui'
 import { ArticleDetailHeaderSection } from '@/app/blog/[pageId]/components/article-detail-header-section/article-detail-header-section'
 import { ArticleDetailContentSection } from '@/app/blog/[pageId]/components/article-detail-content-section/article-detail-content-section'
 import { ArticleDetailFooterSection } from '@/app/blog/[pageId]/components/article-detail-footer-section/article-detail-footer-section'
-import { ArticleCommentSection } from '@/app/blog/[pageId]/components/article-comment-section/article-comment-section'
+import { ArticleCommentSection } from '@/components/article-comment-section/article-comment-section'
 import type { Metadata } from 'next'
 
 type ArticleDetailPageProps = { params: { pageId: string } }
