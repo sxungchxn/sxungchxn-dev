@@ -1,6 +1,7 @@
 import { revalidatePath, revalidateTag } from 'next/cache'
 import type { NextRequest } from 'next/server'
 import { ARTICLE_CONTENT, ARTICLE_FOOTER, ARTICLE_HEADER } from '@/constants/cache-key'
+import { ABOUT_PAGE_ID } from '@/constants/page-id'
 
 export const maxDuration = 60
 
@@ -11,6 +12,16 @@ export async function POST(request: NextRequest) {
   }
 
   if (pageId && revalidateKey === process.env.REVALIDATE_KEY) {
+    if (pageId === ABOUT_PAGE_ID) {
+      revalidatePath('/about', 'page')
+
+      return Response.json({
+        revalidated: true,
+        now: Date.now(),
+        revalidatedPath: `/about`,
+      })
+    }
+
     revalidateTag(ARTICLE_HEADER(pageId))
     revalidateTag(ARTICLE_CONTENT(pageId))
     revalidateTag(ARTICLE_FOOTER(pageId))
